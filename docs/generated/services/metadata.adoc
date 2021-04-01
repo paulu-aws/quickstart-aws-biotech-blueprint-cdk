@@ -28,9 +28,6 @@
 :template_aws_route53_hostedzone:
 :template_aws_s3_bucket:
 :template_aws_s3_bucketpolicy:
-:template_aws_servicecatalog_cloudformationproduct:
-:template_aws_servicecatalog_portfolio:
-:template_aws_servicecatalog_portfolioproductassociation:
 :template_cdk:
 :template_cloudformation:
 :template_config:
@@ -40,4 +37,3 @@
 :template_logs:
 :template_route53:
 :template_s3:
-:template_servicecatalog:
