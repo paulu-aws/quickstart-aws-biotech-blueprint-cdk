@@ -823,7 +823,7 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_restricting_iam_actions_to_specific_aws_regions">Restricting IAM actions to specific AWS Regions</a>
 <ul class="sectlevel2">
 <li><a href="#_enabling_automatic_remediation">Enabling automatic remediation</a></li>
-<li><a href="#_region_restriction_capabilities_in_multi_account_configurations">Region Restriction Capabilities in Multi Account Configurations:</a></li>
+<li><a href="#_aws_region_restriction_in_multi_account_configurations">AWS Region restriction in multi-account configurations</a></li>
 </ul>
 </li>
 <li><a href="#_deploying_resources_into_vpcs">Deploying resources into VPCs</a></li>
@@ -1564,10 +1564,7 @@ AWS Config conformance packs provide a general-purpose compliance framework desi
 <h2 id="_restricting_iam_actions_to_specific_aws_regions">Restricting IAM actions to specific AWS Regions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A common requirement of startups using AWS is to be able to restrict IAM actions to specific AWS Regions. For example, they may want to restrict the creation of Amazon Elastic Compute Cloud (Amazon EC2) instances or AWS Simple Storage Service (Amazon S3) buckets to only European Regions. This could be for compliance reasons or simply because its a good practice to keep resources out of Regions you never intend to use.</p>
-</div>
-<div class="paragraph">
-<p>If you have a single AWS account, the best way to enforce AWS Region restrictions is with an <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html" target="_blank" rel="noopener">IAM permission boundary</a>. The <code>RegionRestriction</code> class configured in <code>lib/aws-startup-blueprint-stack.ts</code> creates an IAM permission boundary. It restricts IAM actions to the AWS Regions you specify. For example:</p>
+<p>You can restrict IAM actions to EU or US AWS Regions. For example, you may want to restrict the creation of Amazon Elastic Compute Cloud (Amazon EC2) instances or AWS Simple Storage Service (Amazon S3) buckets to only European Regions. This could be for compliance reasons or simply because its a good practice to keep resources out of Regions you never intend to use. If you have a single AWS account, the best way to enforce AWS Region restrictions is with an <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html" target="_blank" rel="noopener">IAM permission boundary</a>. The <code>RegionRestriction</code> class configured in <code>lib/aws-startup-blueprint-stack.ts</code> creates an IAM permission boundary. It restricts IAM actions to the AWS Regions you specify. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1577,13 +1574,10 @@ AWS Config conformance packs provide a general-purpose compliance framework desi
 </div>
 </div>
 <div class="paragraph">
-<p>In order for the permission boundary to have any effect, it should be attached to all existing and future IAM users and roles.</p>
+<p>To apply the Region restriction, set the context variable <code>apply_EU_RegionRestriction</code> or <code>apply_US_RegionRestriction) in the `cdk.json</code> file to <code>true</code>. Then run <code>cdk deploy</code> again.</p>
 </div>
 <div class="paragraph">
-<p>To enforce the permission boundary, the <code>RegionRestriction</code> class creates an AWS Config rule to detect and remediate a missing IAM permission boundary.</p>
-</div>
-<div class="paragraph">
-<p>For example, in AWS Config Rules console, select the <code>AwsBiotechBlueprint-RegionRestriction</code> rule.</p>
+<p>In order for the permission boundary to have any effect, it should be attached to all existing and future IAM users and roles. To enforce the permission boundary, the <code>RegionRestriction</code> class creates an AWS Config rule to detect and remediate a missing IAM permission boundary. For example, in AWS Config Rules console, select the <code>AwsBiotechBlueprint-RegionRestriction</code> rule.</p>
 </div>
 <div id="rules" class="imageblock">
 <div class="content">
@@ -1650,7 +1644,7 @@ Enabling automatic remediation will impact existing IAM users and roles not crea
 </div>
 </div>
 <div class="sect2">
-<h3 id="_region_restriction_capabilities_in_multi_account_configurations">Region Restriction Capabilities in Multi Account Configurations:</h3>
+<h3 id="_aws_region_restriction_in_multi_account_configurations">AWS Region restriction in multi-account configurations</h3>
 <div class="paragraph">
 <p>In a multi-account setup, Service Control Polices (SCPs) are superior to permission boundaries. SCPs are applied across an entire account and do not need to be individually attached to IAM principals. However, if you have only one account, use permission boundaries discussed previously to restrict Regions. SCPs only apply to sub-accounts. When you create a new account, the Region-restricting SCP created by the Biotech Blueprint will be applied automatically to any new account you create.</p>
 </div>
@@ -1898,7 +1892,7 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-51e945502ef3c9d5bc6a2221598f49dffccb8ebf
+7ac3539639c903ead90889d9a280e485655aa9dc
 
 submodule config:
 +59b9927c61cd1831141cf0350520c89abb2246da docs/boilerplate (heads/main)
