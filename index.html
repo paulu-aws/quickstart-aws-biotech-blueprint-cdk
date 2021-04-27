@@ -804,32 +804,32 @@ p.footer-text a{color:#d7d8d8}
 <li><a href="#_deployment_steps">Deployment steps</a>
 <ul class="sectlevel2">
 <li><a href="#_sign_in_to_your_aws_account">Sign in to your AWS account</a></li>
-<li><a href="#_deployment_options_2">Deployment Options</a></li>
-<li><a href="#_deployment_option_1_aws_cloudformation_deployment_quick_and_easy">Deployment Option 1: AWS CloudFormation Deployment (quick and easy)</a></li>
-<li><a href="#_deployment_option_2_aws_cdk_deployment">Deployment Option 2: AWS CDK Deployment</a></li>
+<li><a href="#_aws_cloudformation_deployment">AWS CloudFormation deployment</a></li>
+<li><a href="#_aws_cdk_deployment">AWS CDK deployment</a></li>
 </ul>
 </li>
 <li><a href="#_post_deployment_steps">Post deployment steps</a>
 <ul class="sectlevel2">
 <li><a href="#_connect_to_the_vpn">Connect to the VPN</a></li>
+<li><a href="#_optional_dns_setup">Optional DNS setup</a></li>
+<li><a href="#_delete_the_default_vpc">Delete the default VPC</a></li>
 </ul>
 </li>
-<li><a href="#_security_and_compliance">Security and Compliance.</a>
+<li><a href="#_security_and_compliance">Security and Compliance</a>
 <ul class="sectlevel2">
-<li><a href="#_notes_on_the_operational_best_practices_for_hipaa_security_pack">Notes on the Operational Best Practices for HIPAA Security pack</a></li>
+<li><a href="#_operational_best_practices_for_hipaa_security_conformance_pack">Operational Best Practices for HIPAA Security conformance pack</a></li>
 </ul>
 </li>
-<li><a href="#_region_restriction_capabilities">Region Restriction Capabilities</a>
+<li><a href="#_restricting_iam_actions_to_specific_aws_regions">Restricting IAM actions to specific AWS Regions</a>
 <ul class="sectlevel2">
+<li><a href="#_enabling_automatic_remediation">Enabling automatic remediation</a></li>
 <li><a href="#_region_restriction_capabilities_in_multi_account_configurations">Region Restriction Capabilities in Multi Account Configurations:</a></li>
 </ul>
 </li>
-<li><a href="#_other_useful_information">Other useful information</a>
+<li><a href="#_deploying_resources_into_vpcs">Deploying resources into VPCs</a></li>
+<li><a href="#_aws_service_catalog">AWS Service Catalog</a>
 <ul class="sectlevel2">
-<li><a href="#_where_to_go_from_here">Where to go from here?</a></li>
-<li><a href="#_optional_enable_biotech_blueprint_informatics_catalog">(Optional) Enable Biotech Blueprint Informatics Catalog</a></li>
-<li><a href="#_optional_dns_setup">(Optional) DNS Setup</a></li>
-<li><a href="#_optional_delete_the_default_vpc">(Optional) Delete the "Default VPC"</a></li>
+<li><a href="#_aws_service_catalog_permissions">AWS Service Catalog permissions</a></li>
 </ul>
 </li>
 <li><a href="#_faq">FAQ</a></li>
@@ -851,8 +851,9 @@ p.footer-text a{color:#d7d8d8}
 </div>
 </div>
 <div class="paragraph text-center">
-<p><strong>November 2020</strong><br>
-<em>Paul Underwood, Eric Zimmerman, Aaron Friedman, Michael Miller, Sean Murphy, Shivansh Singh, AWS</em></p>
+<p><strong>April 2021</strong><br>
+<em>Paul Underwood, Eric Zimmerman, Aaron Friedman, Michael Miller, and Sean Murphy, AWS WWCO Startup team</em><br>
+<em>Shivansh Singh, AWS Quick Start team</em></p>
 </div>
 <div class="admonitionblock tip text-left">
 <table>
@@ -876,16 +877,10 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_overview">Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guide provides instructions for deploying the Biotech Blueprint Quick Start reference architecture on the AWS Cloud.</p>
+<p>This Quick Start reference deployment guide provides instructions for deploying Biotech Blueprint on the AWS Cloud.</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start is for Biotech startups looking for a turnkey research environment in the cloud following AWS best practices on day 1.</p>
-</div>
-<div class="paragraph">
-<p>The Biotech Blueprint core landing zone builds out a secure home for your future informatics and scientfic computing needs in under 15 minutes. That includes identity management and  access control, encryption, VPN, network isolation, logging, alarms, DNS, and built-in compliance auditing.</p>
-</div>
-<div class="paragraph">
-<p>Optionally, we have also included a number of the industry&#8217;s leading  informatics and computational tools from commercial and opensource communties. These tools are made available through the AWS Service Catalog after deploying the core landing zone.</p>
+<p>This Quick Start is for teams and individuals responsible for managing informatics infrastructure for a biotech company. It builds an architecture for you that includes identity management, access control, encryption, VPN, network isolation, logging, alarms, DNS, and compliance auditing.</p>
 </div>
 </div>
 </div>
@@ -893,7 +888,10 @@ report bugs, or submit feature ideas for this Quick Start.
 <h2 id="_biotech_blueprint_on_aws">Biotech Blueprint on AWS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Biotech Blueprint Quick Starts help you deploy turnkey research enviornments and tooling on the AWS Cloud following AWS best practices on Day 1.</p>
+<p>Biotech Blueprint is an informatics architecture built for biotech companies on the Amazon Web Services (AWS) Cloud. This Quick Start deploys a virtual data center with partitioned virtual private clouds (VPCs) to separate biotech development, production, and management processes. It deploys this infrastructure and configures it for identity management, access control, logging, alarms, and compliance auditing according to AWS best practices. Into the core architecture the Quick Start deploys, you can launch the industry’s leading scientific research applications from the AWS Service Catalog.</p>
+</div>
+<div class="paragraph">
+<p>For more information on what this Quick Start deploys, see <a href="#_architecture">Architecture</a>, later in this guide.</p>
 </div>
 </div>
 </div>
@@ -928,16 +926,13 @@ After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccoun
 <h2 id="_software_licenses">Software licenses</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The core of the Biotech Blueprint is released under the Apache License 2.0. The tools listed in the Biotech Blueprint Service Catalog have different licensing terms.</p>
+<p>The core of the Biotech Blueprint is released under the Apache License 2.0. Software available from the Biotech Blueprint AWS Service Catalog have different licensing terms.</p>
 </div>
 <div class="paragraph">
-<p><strong>Open Source Tools</strong> - The Nextflow and Hail Service Catalog listings are open source and do not require a licnese to begin using them.</p>
+<p>Nextflow and Hail 0.2 are open-source and do not require a license. Dotmatics and Titian require licenses. Before deploying Dotmatics and Titian from the AWS Service Catalog, sign up for a license by contacting the support contact provided in the AWS Service Catalog listing.</p>
 </div>
 <div class="paragraph">
-<p><strong>License Information</strong> - The Dotmatics and Titian Service Catalog listings requires a license. Before deploying those tools from the Service Catalog, sign up for a license by contacting the support contact listed in the Service Catalog product listing.</p>
-</div>
-<div class="paragraph">
-<p><strong>AMI information</strong> - The ChemAxon Quick Start requires a subscription to an Amazon Machine Image (AMI), which is available from <a href="https://aws.amazon.com/marketplace/pp/B077F6VV3B" class="bare">https://aws.amazon.com/marketplace/pp/B077F6VV3B</a>. Additional pricing, terms, and conditions may apply.</p>
+<p>The ChemAxon Quick Start requires a subscription to an Amazon Machine Image (AMI), which is available from <a href="https://aws.amazon.com/marketplace/pp/B077F6VV3B" class="bare">https://aws.amazon.com/marketplace/pp/B077F6VV3B</a>. Additional pricing, terms, and conditions may apply.</p>
 </div>
 </div>
 </div>
@@ -945,17 +940,11 @@ After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccoun
 <h2 id="_architecture">Architecture</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Biotech Blueprint Quick Start helps you build a preclinical research enviornment using cloud-based infrastructure on the AWS Cloud, based on industry best practices.</p>
-</div>
-<div class="paragraph">
-<p>Deploying this Quick Start will build a core landing zone in aws,  configured for identity management, access control, encryption, VPN,  network isolation, logging, alarms, partitioned environments, and built-in compliance auditing.</p>
-</div>
-<div class="paragraph">
-<p>After you deploy the core Quick Start, you can install prepackaged informatics tools from leading biotech software vendors and open source tools using AWS Service Catalog.</p>
+<p>Deploying this Quick Start for a new virtual private cloud (VPC) with default parameters builds the following Biotech Blueprint environment in the AWS Cloud.</p>
 </div>
 <div id="architecture1" class="imageblock">
 <div class="content">
-<a class="image" href="bb-diagram.png"><img src="images/bb-diagram.png" alt="Architecture" width="100%" height="100%"></a>
+<img src="images/biotech-blueprint-architecture-diagram.png" alt="Architecture" width="100%" height="100%">
 </div>
 <div class="title">Figure 1. Quick Start architecture for Biotech Blueprint on AWS</div>
 </div>
@@ -965,68 +954,32 @@ After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccoun
 <div class="ulist">
 <ul>
 <li>
-<p>A highly available architecture that spans two Availability Zones.</p>
-</li>
-<li>
-<p>A Production, Managment, and Research VPC configured with public, private, and isolated subnets, according to AWS
-best practices, to provide you with your own virtual networks on AWS.</p>
-</li>
-<li>
-<p>Secure Networking</p>
+<p>A highly available architecture with three virtual private clouds (VPCs), each with two Availability Zones. VPCs contain public and private subnets according to AWS best practices, to provide you with your own virtual network on AWS.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed AWS Client VPN that allows for secure connectivity into your VPCs</p>
+<p>A production VPC into which you can deploy optional research and informatics software from the AWS Service Catalog.</p>
 </li>
 <li>
-<p>Peering connections from the Managment VPC to allow  secure shell or remote desktop access to servers in private subnets in the Production or Research VPCs.</p>
+<p>A management VPC with AWS Client VPN endpoints in the public subnets.</p>
+</li>
+<li>
+<p>A development VPC to build and test research workloads.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>AWS Config Packs - Automatic alerting when resources may have been deployed insecurely.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Control Tower Detective Guard Rails</p>
+<p>Peering connections to allow Secure Shell (SSH) and remote desktop access from the management VPC to private subnets in the production and development VPCs.</p>
 </li>
 <li>
-<p>IAM Best Practices</p>
+<p>AWS Config to assess, audit, and evaluate security compliance of your AWS resources and remediate deviations.</p>
 </li>
 <li>
-<p>NIST CSF Best Practices</p>
+<p>Amazon Route 53 for a private Domain Name System (DNS).</p>
 </li>
 <li>
-<p>S3 Best Practices</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Internal DNS - Your own private DNS for employees/developers. No need to remember IP addresses!</p>
-</li>
-<li>
-<p><strong>OPTIONAL</strong> Biotech Blueprint Informatics Catalog - Easily deploy any of the following tools into the Blueprint&#8217;s landing zone.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>ChemAxon - Compound Registry</p>
-</li>
-<li>
-<p>Nextflow - Nextflow enables scalable and reproducible scientific workflows using software containers. It allows the adaptation of pipelines written in the most common scripting languages.</p>
-</li>
-<li>
-<p>Dotmatics Suite</p>
-</li>
-<li>
-<p>Hail 0.2 - An open-source library for scalable genomic data exploration, on AWS EMR.</p>
-</li>
-<li>
-<p>Titian Mosaic FreezerManagment</p>
-</li>
-</ul>
-</div>
+<p>(Optional) An AWS Service Catalog portfolio with informatics software and computational biology tooling you can deploy into the production and development VPCs. For more information, see <a href="#_aws_service_catalog">AWS Service Catalog</a>, later in this guide.</p>
 </li>
 </ul>
 </div>
@@ -1044,7 +997,7 @@ and <a href="https://aws.amazon.com/training/" target="_blank" rel="noopener">AW
 deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 </div>
 <div class="paragraph">
-<p>This Quick Start assumes familiarity with basic concepts of networking. For example, being able to use a VPN client software like Open VPN Client Connect or AWS' VPN Client.</p>
+<p>This Quick Start assumes familiarity with basic concepts of networking and VPN client software such as AWS Client VPN or Open VPN Client Connect.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1079,123 +1032,123 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ConfigurationRecorder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configuration recorders</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Config Coformance Packs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Config conformance packs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Config Delivery Channels</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Config delivery channels</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Client Vpn Auth Rule</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client VPN authorization rules</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Client VPN Endpoint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client VPN endpoints</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ClientVpnRoute</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client VPN routes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ClientVpnTargetNetworkAssociation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Client VPN target network associations</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EIP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Elastic IP addresses</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">InternetGateway</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Internet gateways</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">NatGateway</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NAT gateways</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Route</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Routes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">RouteTable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Route tables</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SecurityGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Security groups</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Subnet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subnets</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SubnetRouteTableAssociation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Subnet route table associations</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPCs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPCEndpoint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC endpoints</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPCGatewayAttachment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC gateway attachments</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">VPCPeeringConnection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">VPC peering connections</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IAM Policy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IAM policies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">IAM Role</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">IAM roles</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Lambda Function</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Lambda functions</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LogGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log groups</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LogStream</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Log streams</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HostedZone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosted zones</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">S3 Buckets</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon S3 buckets</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BucketPolicy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon S3 bucket policies</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ServiceCatalog CloudFormationProduct</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Service Catalog CloudFormation products</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ServiceCatalog PortfolioProductAssociation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Service Catalog portfolio product associations</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ServiceCatalog Portfolio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AWS Service Catalog portfolios</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 </tbody>
@@ -1204,7 +1157,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <div class="sect3">
 <h4 id="_supported_regions">Supported Regions</h4>
 <div class="paragraph">
-<p>All regions are currently support with the exception of AWS China Regions.</p>
+<p>This Quick Start does not support AWS China Regions. All other <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html" target="_blank" rel="noopener">AWS Regions</a> are supported.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1233,10 +1186,10 @@ Certain Regions are available on an opt-in basis. For more information, see <a h
 <div class="ulist">
 <ul>
 <li>
-<p><strong>CloudFormation Only Deployment</strong>. This option uses CloudFormation directly to deploy the Biotech Blueprint into your AWS account immediately. Use this option if you are unfamiliar with the AWS Cloud Development Kit and just want to get going ASAP.</p>
+<p><strong>AWS CloudFormation-only deployment</strong>. Deploy Biotech Blueprint into your AWS account using the AWS CloudFormation console. Use this option if you are unfamiliar with the AWS Cloud Development Kit. This option takes about seven minutes.</p>
 </li>
 <li>
-<p><strong>CDK Deployment</strong>. This option uses the AWS Cloud Development Kit to deploy the Biotech Blueprint. If you  want to cleanly manage/adapt/update the architecture over time, or you already aware of what the <a href="https://aws.amazon.com/cdk/" target="_blank" rel="noopener">AWS CDK</a> is, use this deployment option.</p>
+<p><strong>AWS CDK deployment</strong>. Use <a href="https://aws.amazon.com/cdk/" target="_blank" rel="noopener">AWS CDK</a> to deploy Biotech Blueprint. This option takes about five minutes longer than the AWS CloudFormation-only option.</p>
 </li>
 </ul>
 </div>
@@ -1273,22 +1226,7 @@ You are responsible for the cost of the AWS services used while running this Qui
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deployment_options_2">Deployment Options</h3>
-<div class="paragraph">
-<p>The Biotech Blueprint is built with the AWS CDK which allows for two deployment options.</p>
-</div>
-<div class="paragraph">
-<p>If you just want to get going ASAP, follow the CloudFormation Deployment option (1).</p>
-</div>
-<div class="paragraph">
-<p>If you prefer using the awesome <a href="https://aws.amazon.com/cdk/">AWS CDK</a>, follow the CDK Deployment option (2).</p>
-</div>
-<div class="paragraph">
-<p>Both deployment options take about ~7 minutes to complete and create the exact same resources. The primary difference is that the AWS CDK option takes a little more time to initially setup (&lt;5 min), but the CDK code is easier to maintain overtime compared to the CloudFormation template in option 1.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_deployment_option_1_aws_cloudformation_deployment_quick_and_easy">Deployment Option 1: AWS CloudFormation Deployment (quick and easy)</h3>
+<h3 id="_aws_cloudformation_deployment">AWS CloudFormation deployment</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1303,8 +1241,8 @@ You are responsible for the cost of the AWS services used while running this Qui
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://qs_launch_link" target="_blank" rel="noopener">Deploy Biotech Blueprint into your AWS Account</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://qs_template_link" target="_blank" rel="noopener">View template</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://fwd.aws/RAnNy" target="_blank" rel="noopener">Deploy Biotech Blueprint into your AWS Account</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://fwd.aws/DzbRN" target="_blank" rel="noopener">View template</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -1348,44 +1286,87 @@ You are responsible for the cost of the AWS services used while running this Qui
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deployment_option_2_aws_cdk_deployment">Deployment Option 2: AWS CDK Deployment</h3>
+<h3 id="_aws_cdk_deployment">AWS CDK deployment</h3>
 <div class="paragraph">
-<p>First you need to make sure you have the AWS CDK installed on your development machine.</p>
+<p>To deploy Biotech Blueprint using AWS CDK, do the following:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic" start="1">
 <li>
-<p><a href="https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_prerequisites">CDK Prerequisites</a></p>
+<p>Verify that you have the <a href="https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_prerequisites" target="_blank" rel="noopener">prerequisites</a> to install the AWS CDK.</p>
 </li>
 <li>
-<p><a href="https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_install">Install the AWS CDK</a></p>
+<p><a href="https://docs.aws.amazon.com/cdk/latest/guide/getting_started.html#getting_started_install" target="_blank" rel="noopener">Install the AWS CDK</a>.</p>
 </li>
 <li>
-<p>Clone the repo, build the project, and then bootstrap your AWS account for the AWS CDK.</p>
+<p>Clone the Biotech Blueprint Quick Start repository.</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">git clone https://github.com/aws-quickstart/quickstart-aws-biotech-blueprint-cdk.git
-npm run build
-cdk bootstrap</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">git clone https://github.com/aws-samples/aws-startup-blueprint.git</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic" start="4">
 <li>
-<p>Feel free to review the code and make any changes you see fit. For example, you might want to use different VPC CIDR ranges (<code>aws-vpcs.ts</code>) or a different internal DNS apex (<code>aws-dns.ts</code> defaults to corp).</p>
+<p>Build the project.</p>
 </li>
-</ul>
+</ol>
 </div>
-<div class="paragraph">
-<p>When you are ready, or when you need update the blueprint&#8217;s architecture in the future based on changes you make, you just need to run:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">npm run build</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>Bootstrap your AWS environment.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">cdk bootstrap</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can review and change code. For example, you can use different VPC CIDR ranges (<code>aws-vpcs.ts</code>) or a different internal DNS apex (<code>aws-dns.ts</code> defaults to <code>corp</code>).
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="6">
+<li>
+<p>Deploy.</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">npm run build &amp;&amp; cdk deploy</code></pre>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To update the architecture after making changes later, run the command in Step 6.
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -1396,59 +1377,122 @@ cdk bootstrap</code></pre>
 <div class="sect2">
 <h3 id="_connect_to_the_vpn">Connect to the VPN</h3>
 <div class="paragraph">
-<p>In order for you to route into the private subnets in the VPCs, you need to connect to the VPN. The blueprint has deployed a client vpn endpoint in the Management vpc that will NAT traffic over peering connections into the Production and Development vpcs. We are using the Management VPC as a hub VPC for networking into other VPCs. The Development and Production environments are designed to NOT be able to communicate with each other.</p>
+<p>The Quick Start deploys a client VPN endpoint in the management VPC that will route traffic over peering connections to the production and development VPCs. The management VPC is the hub for networking into the other VPCs. The production and development VPCs are designed not to be able to communicate with each other directly. After deploying the Quick Start, follow these instructions to connect to the VPN.</p>
 </div>
-<div id="vpn1" class="imageblock">
-<div class="content">
-<a class="image" href="VPNRoutingDiagram.png"><img src="images/VPNRoutingDiagram.png" alt="VPN" width="100%" height="100%"></a>
-</div>
-<div class="title">Figure 3. VPN routing rules in the Biotech Blueprint on AWS</div>
-</div>
-<div class="paragraph">
-<p>Once the deployment is complete, go to the <a href="https://console.aws.amazon.com/vpc/home?#ClientVPNEndpoints:sort=clientVpnEndpointId">Client VPN Endpoint section in the AWS VPC web console</a>. Select the Client VPN Endpoint listed and click the "Download Client Configuration" button. Your browser will download a downloaded-client-config.ovpn file.</p>
-</div>
-<div class="imageblock">
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p>Navigate to the <a href="https://console.aws.amazon.com/vpc/home?#ClientVPNEndpoints:sort=clientVpnEndpointId" target="_blank" rel="noopener">Client VPN Endpoint section in the AWS VPC web console</a>.</p>
+</li>
+<li>
+<p>Select the client VPN endpoint listed,</p>
+</li>
+<li>
+<p>Select <strong>Download Client Configuration</strong>. Your browser downloads a <code>downloaded-client-config.ovpn</code> file.</p>
+<div id="downloadclientconfig" class="imageblock">
 <div class="content">
 <img src="images/downloadclientconfig.png" alt="VPN" width="100%" height="100%">
 </div>
+<div class="title">Figure 3. Download Client Configuration</div>
 </div>
-<div class="paragraph">
-<p>Now go to the AWS S3 web console and open the bucket prefixed awsstartupblueprintstack-clientvpnvpnconfigbucket*. You will see 5 files listed. Download the <code>client1.domain.tld.key</code> and <code>client1.domain.tld.crt</code>. The other three files are the CA chain and server key/cert. You will need those if you want to create additional client certificates later on. For now, you just need <code>client1.domain.tld.key</code> and <code>client1.domain.tld.crt</code>.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>At this point we have to edit make some tweaks to the downloaded-client-config.ovpn file so open it in a text editor:</p>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>Navigate to the AWS S3 console.</p>
+</li>
+<li>
+<p>Open the bucket with the prefix <code>awsstartupblueprintstack-clientvpnvpnconfigbucket*</code>.</p>
+</li>
+<li>
+<p>Download the <code>client1.domain.tld.key</code> and <code>client1.domain.tld.crt</code>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The other three files are the CA chain and server key/cert. You will need those to create additional client certificates.
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">
-<p>Add the following lines to the bottom of the file, replace the contents of the two files inside the respective <code>&lt;cert&gt;</code> and <code>&lt;key&gt;</code> sections.</p>
+</li>
+</ol>
 </div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>Open <code>downloaded-client-config.ovpn</code> in a text editor.</p>
+</li>
+<li>
+<p>Add the following lines to the bottom of the file. Replace the contents of the two files inside the respective <code>&lt;cert&gt;</code> and <code>&lt;key&gt;</code> sections.</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>&lt;cert&gt;
-Contents of client certificate (client1.domain.tld.crt) file
+Contents of client certificate file (client1.domain.tld.crt)
 &lt;/cert&gt;
 
 &lt;key&gt;
-Contents of private key (client1.domain.tld.key) file
+Contents of private key file (client1.domain.tld.key)
 &lt;/key&gt;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Save the downloaded-client-config.ovpn. You should be able to open/import that file with any OpenVPN client.</p>
+</li>
+</ol>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="7">
+<li>
+<p>Save and close the file. You can establish a VPN connection with the configuration and an OpenVPN client or AWS provided client.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.aws.amazon.com/vpn/latest/clientvpn-user/connect.html" target="_blank" rel="noopener">Connect using an OpenVPN client</a></p>
+</li>
+<li>
+<p><a href="https://docs.aws.amazon.com/vpn/latest/clientvpn-user/connect-aws-client-vpn-connect.html" target="_blank" rel="noopener">Connect using an AWS provided client</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>AWS offers is own lightweight VPN client that works on most operating systems. <a href="https://docs.aws.amazon.com/vpn/latest/clientvpn-user/connect-aws-client-vpn-connect.html">Install and usage instructions here.</a></p>
+<p>With a VPN connection, you can connect to resources you launch into your VPCs using private IP addresses. For more information about deploying resources, see <a href="#_deploying_resources_into_VPCs">Deploying resources into VPCs</a>, later in this guide.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_optional_dns_setup">Optional DNS setup</h3>
+<div class="paragraph">
+<p>The Quick Start sets up a private DNS with <code>.corp</code> as the apex domain using <a href="https://console.aws.amazon.com/route53/v2/home#Dashboard" target="_blank" rel="noopener">Amazon Route 53 in your account</a>. Using the Amazon Route 53 console, you can create <code>A</code> or <code>CNAME</code> records to private applications you deploy.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_delete_the_default_vpc">Delete the default VPC</h3>
+<div class="paragraph">
+<p>Every new AWS account comes with a default VPC with public subnets in each Availability Zone. It is recommended that you delete this default VPC and only deploy resources into the production, management, and development VPCs that the Biotech Blueprint Quick Start provisions. If you have already deployed resources into the default VPC before launching the Quick Start, it is recommended that you migrate these resources to the Biotech Blueprint VPCs and then delete the default VPC. Removing the default VPC will ensure that a user does not launch resources into one of its exposed public subnets.</p>
 </div>
 <div class="paragraph">
-<p>Usage instructions for other OpenVPN clients like <a href="https://openvpn.net/download-open-vpn/">OpenVPN Connect</a> can be found <a href="https://docs.aws.amazon.com/vpn/latest/clientvpn-user/connect.html">in our docs</a></p>
+<p><a href="#defaultvpc">Figure 4</a> shows the default VPC listed in the Amazon VPC console with the VPCs created by the Biotech Blueprint Quick Start.</p>
+</div>
+<div id="defaultvpc" class="imageblock">
+<div class="content">
+<img src="images/defaultvpc_0.png" alt="Config" width="100%" height="100%">
+</div>
+<div class="title">Figure 4. Default VPC</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_security_and_compliance">Security and Compliance.</h2>
+<h2 id="_security_and_compliance">Security and Compliance</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Blueprint creates a number of AWS Config Conformance Packs during the deployment:</p>
+<p>The Quick Start deploys the following AWS Config conformance packs:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1470,37 +1514,36 @@ Contents of private key (client1.domain.tld.key) file
 </ul>
 </div>
 <div class="paragraph">
-<p>These packs create a number of AWS Config rules that regularly evaluate resources in your account against security best practices. When AWS Config finds an offending resource, it will flag it for your review in the AWS Config Console. Any resources you created in your account BEFORE you deployed the Blueprint will also be scanned during the next AWS Config Rule evaluation. This can be handy to help identify resources you are already using, or create in the future, that fall short of the best practices defined in the Config packs above.</p>
+<p>These packs create AWS Config rules that regularly evaluate resources in your AWS account against security best practices. When AWS Config finds an offending resource, it will flag it for your review in the AWS Config console. AWS Config also scans resources created in your account before deploying the Quick Start.</p>
 </div>
 <div class="paragraph">
-<p>Your first step should be simply visiting the AWS Config console and getting a feel for how AWS Config tracks individual resources, rules, and remediation. You&#8217;ll quickly find that AWS Config will become a big part of your compliance story going forward. Every resource tracked by AWS Config, from S3 buckets, to IAM resources, to EC2 hosts, etc has it&#8217;s history tracked over time in a very easy to consume and understand way (compared to consuming raw CloudTrail events for example).</p>
+<p>For example, the Operational Best Practices for NIST Cyber Security Framework (CSF) conformance pack comes with 93 rules. One of which is <code>encrypted-volumes-conformance-pack</code>, which checks whether attached Amazon Elastic Block Store (Amazon EBS) volumes are encrypted.</p>
 </div>
-<div class="paragraph">
-<p>For example, the Operational Best Practices for NIST-CSF Conformance pack comes with 93 rules, one of which, <code>encrypted-volumes-conformance-pack</code> checks whether EBS volumes that are in an attached state are encrypted.</p>
-</div>
-<div class="imageblock">
+<div id="nist" class="imageblock">
 <div class="content">
 <img src="images/conformancepacks_0.png" alt="Config" width="100%" height="100%">
 </div>
+<div class="title">Figure 5. Operational Best Practices for NIST-CSF</div>
 </div>
 <div class="paragraph">
-<p>If you drill into the <code>encrypted-volumes-conformance-pack</code>, you can see a list of relevant resources and their compliance status.</p>
+<p>Select <code>encrypted-volumes-conformance-pack</code> to display a list of relevant resources and their compliance status.</p>
 </div>
-<div class="imageblock">
+<div id="encryptedvolumes" class="imageblock">
 <div class="content">
 <img src="images/conformancepacks_1.png" alt="Config" width="100%" height="100%">
 </div>
+<div class="title">Figure 6. Encrytped volumes conformance pack</div>
 </div>
 <div class="paragraph">
-<p>Going forward, you can update the AWS Config delivery channel to include an Amazon SNS topic to send email or text notifications when resources are flagged. More sophisticated approaches might include simply regularly reviewing Config reports, using AWS Config&#8217;s auto remediation capabilities, and/or integrating AWS Config with security ticketing or SEIM solutions.</p>
+<p>You can update the AWS Config delivery channel to include an Amazon Simple Notification Service (Amazon SNS) topic to send email or text notifications when resources are flagged. More sophisticated approaches might include regularly reviewing AWS Config reports, using AWS Config&#8217;s automatic remediation capabilities, or integrating AWS Config with security ticketing or SEIM solutions.</p>
 </div>
 <div class="sect2">
-<h3 id="_notes_on_the_operational_best_practices_for_hipaa_security_pack">Notes on the Operational Best Practices for HIPAA Security pack</h3>
+<h3 id="_operational_best_practices_for_hipaa_security_conformance_pack">Operational Best Practices for HIPAA Security conformance pack</h3>
 <div class="paragraph">
-<p>While HIPAA might not be a concern for every Biotech, a large majority need or will eventually store/transmit/process PHI. Whether you handle PHI or not, the HIPAA security conformance pack has &gt;80 rules that still capture a number of best practices that any secure company should consider implementing.</p>
+<p>While the Health Insurance Portability and Accountability Act (HIPAA) might not be a concern for every user of this Quick Start, many store, transmit, or process protected health information (PHI). Whether you handle PHI or not, the HIPAA security conformance pack has over 80 rules that capture a number of best practices that any user should consider implementing.</p>
 </div>
 <div class="paragraph">
-<p>If you do have HIPAA/PHI needs, it is <strong>strongly</strong> encouraged that you check out the <a href="https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-hipaa_security.html">documentation on the config pack</a>. For every config rule included in the pack, there is a corresponding HIPAA control ID along with AWS guidance for each check. This Conformance Pack was validated by AWS Security Assurance Services LLC (AWS SAS), which is a team of Payment Card Industry Qualified Security Assessors (QSAs), HITRUST Certified Common Security Framework Practitioners (CCSFPs), and compliance professionals certified to provide guidance and assessments for various industry frameworks. AWS SAS professionals designed this Conformance Pack to enable a customer to align to a subset of the HIPAA.</p>
+<p>If you do have HIPAA/PHI needs, it is strongly encouraged that you read  <a href="https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-hipaa_security.html">Operational Best Practices for HIPAA Security</a>.</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1509,7 +1552,7 @@ Contents of private key (client1.domain.tld.key) file
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Conformance packs provide a general-purpose compliance framework designed to enable you to create security, operational or cost-optimization governance checks using managed or custom AWS Config rules and AWS Config remediation actions. Conformance Packs, as sample templates, are not designed to fully ensure compliance with a specific governance or compliance standard. You are responsible for making your own assessment of whether your use of the Services meets applicable legal and regulatory requirements.
+AWS Config conformance packs provide a general-purpose compliance framework designed to enable you to create security, operational or cost-optimization governance checks using managed or custom AWS Config rules and AWS Config remediation actions. Conformance packs, as sample templates, are not designed to fully ensure compliance with a specific governance or compliance standard. You are responsible for making your own assessment of whether your use of the Services meets applicable legal and regulatory requirements.
 </td>
 </tr>
 </table>
@@ -1518,19 +1561,13 @@ Conformance packs provide a general-purpose compliance framework designed to ena
 </div>
 </div>
 <div class="sect1">
-<h2 id="_region_restriction_capabilities">Region Restriction Capabilities</h2>
+<h2 id="_restricting_iam_actions_to_specific_aws_regions">Restricting IAM actions to specific AWS Regions</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>A common ask from Startups using AWS is to restrict all IAM actions to specific regions. For example, you may only want users to create EC2 instances or S3 buckets in EU-only regions. This could be for compliance reasons or simply because its a good practice to keep resources out of regions you never intend to use.</p>
+<p>A common requirement of startups using AWS is to be able to restrict IAM actions to specific AWS Regions. For example, they may want to restrict the creation of Amazon Elastic Compute Cloud (Amazon EC2) instances or AWS Simple Storage Service (Amazon S3) buckets to only European Regions. This could be for compliance reasons or simply because its a good practice to keep resources out of Regions you never intend to use.</p>
 </div>
 <div class="paragraph">
-<p>If you have a single AWS account, the best way to enforce region restrictions is with an <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html">IAM permission boundary</a>. IAM permission boundaries are similar to, but distinct from, identity polices that you may be familiar with. An entity&#8217;s permissions boundary allows it to perform only the actions that are allowed by both its identity-based policies <strong>and</strong> it&#8217;s permissions boundaries. This means that even the broadest identity-based permission polices like 'arn:aws:iam::aws:policy/AdministratorAccess', which gives * access to *, will still be denied if the principal&#8217;s permission boundary does not allow it.</p>
-</div>
-<div class="paragraph">
-<p>The <code>RegionRestriction</code> class configured in 'lib/aws-startup-blueprint-stack.ts' creates just such an IAM permission boundary restriction actions to the regions you specify:</p>
-</div>
-<div class="paragraph">
-<p>For example:</p>
+<p>If you have a single AWS account, the best way to enforce AWS Region restrictions is with an <a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html" target="_blank" rel="noopener">IAM permission boundary</a>. The <code>RegionRestriction</code> class configured in <code>lib/aws-startup-blueprint-stack.ts</code> creates an IAM permission boundary. It restricts IAM actions to the AWS Regions you specify. For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1540,18 +1577,22 @@ Conformance packs provide a general-purpose compliance framework designed to ena
 </div>
 </div>
 <div class="paragraph">
-<p>In order for the permission boundary to have any effect, it needs to be attached to all existing and future IAM users and roles. As a best practice, you should always attach this permission boundary when creating any future IAM user or role. While a best practice, sometimes good intentions are forgotten. To enforce the permission boundary, the <code>RegionRestriction</code> class also creates an AWS Config Rule and Remediation to detect and automatically fix a missing permission boundary to any existing, updated, or future IAM principals.</p>
+<p>In order for the permission boundary to have any effect, it should be attached to all existing and future IAM users and roles.</p>
 </div>
 <div class="paragraph">
-<p>If you visit the AWS Config Rules console, find and click on the rule titled <code>AwsBiotechBlueprint-RegionRestriction&#8230;&#8203;</code></p>
+<p>To enforce the permission boundary, the <code>RegionRestriction</code> class creates an AWS Config rule to detect and remediate a missing IAM permission boundary.</p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p>For example, in AWS Config Rules console, select the <code>AwsBiotechBlueprint-RegionRestriction</code> rule.</p>
+</div>
+<div id="rules" class="imageblock">
 <div class="content">
 <img src="images/regionrestriction_config0.png" alt="Config" width="100%" height="100%">
 </div>
+<div class="title">Figure 7. AwsBiotechBlueprint-RegionRestriction rule</div>
 </div>
 <div class="paragraph">
-<p>The Config Rule will have evaluated all of your IAM users and roles and listed their compliance status. You can quickly remediate a non-compliant resource by selecting the radio button next to it and clicking the 'Remediate' button. That will immediately apply the service control policy and that user or role will no longer be able to perform any action outside of the region you specified.</p>
+<p>The Config Rule will have evaluated all of your IAM users and roles and listed their compliance status. To remediate a non-compliant resource, select the resource and select <strong>Remediate</strong>. The service control policy is applied and that user or role will no longer be able to perform any action outside of the specified Region.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1559,18 +1600,12 @@ Conformance packs provide a general-purpose compliance framework designed to ena
 </div>
 </div>
 <div class="paragraph">
-<p>After the remediation is complete, AWS CloudTrail will eventually trigger the AWS Config rule. CloudTrail tells Config that that the IAM principal has been updated and that its time to reevaluate the offending resource (takes about 15 minutes). Because the boundary has been applied, the reevaluation will report the role or user as compliant.</p>
+<p>After the remediation is complete, AWS CloudTrail triggers the AWS Config rule. CloudTrail tells AWS Config that that the IAM principal has been updated and that its time to reevaluate the offending resource (takes about 15 minutes). Because the boundary has been applied, the reevaluation will report the role or user as compliant.</p>
 </div>
+<div class="sect2">
+<h3 id="_enabling_automatic_remediation">Enabling automatic remediation</h3>
 <div class="paragraph">
-<p><strong>What about automatically remediating resources?</strong> The Blueprint intentionally leaves the remediation configuration set to "Manual" instead of "Automatic". This is in the event you have existing IAM users or roles. Automatically applying the remediation and attaching the permission boundary will impact those existing IAM principals permissions. You should verify if any of the flagged IAM principals depend on any non-approved regions before applying the boundary. If you are working in a brand new account or are unconcerned about the impact on existing IAM principals, you turn on automatic remediation:</p>
-</div>
-<div class="paragraph">
-<p>Click the edit button in the "Remediation Action" section of the <code>AwsBiotechBlueprint-RegionRestriction</code> Config Rule.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/regionrestriction_config2.png" alt="Config" width="100%" height="100%">
-</div>
+<p>The Biotech Blueprint Quick Start intentionally leaves the remediation configuration set to <strong>Manual</strong> instead of <strong>Automatic</strong>. This is in the event you have existing IAM users or roles. Automatically applying the remediation and attaching the permission boundary will impact those existing IAM principals permissions. You should verify if any of the flagged IAM principals depend on any non-approved Regions before applying the boundary. If you are working in a brand new account or are unconcerned about the impact on existing IAM principals, you can turn on automatic remediation by following these steps:</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1579,155 +1614,200 @@ Conformance packs provide a general-purpose compliance framework designed to ena
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-Turning on automatic remediation will impact existing IAM users and roles not created by the Blueprint itself.
+Enabling automatic remediation will impact existing IAM users and roles not created by the Biotech Blueprint.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Select the "Automatic Remediation" radio button and click "Save changes"</p>
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p>In the AWS Config console, select <strong>Edit</strong> in the <strong>Remediation Action</strong> section of the <code>AwsBiotechBlueprint-RegionRestriction</code> AWS Config rule.</p>
+</li>
+</ol>
 </div>
-<div class="imageblock">
+<div id="ruleedit" class="imageblock">
+<div class="content">
+<img src="images/regionrestriction_config2.png" alt="Config" width="100%" height="100%">
+</div>
+<div class="title">Figure 8. AwsBiotechBlueprint-RegionRestriction rule</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Select <strong>Automatic Remediation</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Save changes</strong>.</p>
+</li>
+</ol>
+</div>
+<div id="editaction" class="imageblock">
 <div class="content">
 <img src="images/regionrestriction_config3.png" alt="Config" width="100%" height="100%">
+</div>
+<div class="title">Figure 9. Edit Remediation action</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_region_restriction_capabilities_in_multi_account_configurations">Region Restriction Capabilities in Multi Account Configurations:</h3>
 <div class="paragraph">
-<p>In a multi-account setup, Service Control Polices (SCPs) are superior to Permission Boundaries. SCPs are applied across an entire account and don&#8217;t need to be individually attached to IAM principals. The only hiccup with SCPs is that they can only take effect on your sub-accounts. So if you just have one account right now, SCPs can&#8217;t really help. Thats just fine! The permission boundary and Config approach are enough restrict regions in a single account setup. But when the time comes to create a new account, the Blueprint has already created a region restricting SCP that will automatically be applied to any new account you create right off the bat.</p>
+<p>In a multi-account setup, Service Control Polices (SCPs) are superior to permission boundaries. SCPs are applied across an entire account and do not need to be individually attached to IAM principals. However, if you have only one account, use permission boundaries discussed previously to restrict Regions. SCPs only apply to sub-accounts. When you create a new account, the Region-restricting SCP created by the Biotech Blueprint will be applied automatically to any new account you create.</p>
 </div>
 <div class="paragraph">
-<p>You can take a look at the service control policy by looking at it in the <a href="https://console.aws.amazon.com/iam/home?organizations/ServiceControlPolicies/#/organizations/ServiceControlPolicies">IAM Console</a></p>
+<p>For more information about the service control policy, see <a href="https://console.aws.amazon.com/iam/home?organizations/ServiceControlPolicies/#/organizations/ServiceControlPolicies">IAM Console</a></p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The SCP created by the applies only to your sub accounts, if and when you create them!
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
+<div id="regionrestriction" class="imageblock">
 <div class="content">
 <img src="images/regionrestriction_config4.png" alt="Config" width="100%" height="100%">
 </div>
+<div class="title">Figure 10. RegionRestriction</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_other_useful_information">Other useful information</h2>
+<h2 id="_deploying_resources_into_vpcs">Deploying resources into VPCs</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This Quick Start builds an architecture with three VPCs: production, development, and management. Use the management VPC for operational resources such as DevOps tools, Active Directories, and security appliances. For example, the Biotech Blueprint Quick Start deploys Client VPN endpoints into the public subnets of the management VPC. Production and development VPCs are provided so you can manage live and test environments with different levels of controls.</p>
+</div>
+<div class="paragraph">
+<p>Reserve public subnets for internet-facing resources such as load balancers. Use private subnets for resources that should not be internet-facing but require outbound internet access. Deploy sensitive resources such as databases addressable only by internal networks to isolated subnets which do not route traffic to the internet. For more information about public and private subnets, see <a href="https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario2.html" target="_blank" rel="noopener">VPC with public and private subnets (NAT)</a>.</p>
+</div>
+<div class="paragraph">
+<p>The following table provides some examples.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Resource</th>
+<th class="tableblock halign-left valign-top">VPC</th>
+<th class="tableblock halign-left valign-top">Subnet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Test server</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Development</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Amazon Relational Database Server (Amazon RDS) snapshot restored from development VPC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Production</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Isolated</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application Load Balancer to test a custom TLS certificate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Development</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Public</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DevOps tool to automate deployments to production and development VPCs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Okta Cloud Connect appliance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Management VPC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Private</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_aws_service_catalog">AWS Service Catalog</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After deploying the Biotech Blueprint Quick Start, you can launch a selection of informatics and scientific applications from the <a href="https://us-east-1.console.aws.amazon.com/servicecatalog/home?isSceuc=true&amp;region=us-east-1#/products" target="_blank" rel="noopener">AWS Service Catalog console</a>. You can also deploy these from the launch links provided on their Quick Start pages and in their deployment guides. The following table provides information to learn more about the available applications.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">Partner</th>
+<th class="tableblock halign-left valign-top">Product</th>
+<th class="tableblock halign-left valign-top">To install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compound registry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ChemAxon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://chemaxon.com/products/compound-registration" target="_blank" rel="noopener">Compound Registration</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fwd.aws/x45Rg" target="_blank" rel="noopener">Launch Quick Start template</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Genomics analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nextflow</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.nextflow.io/" target="_blank" rel="noopener">Nextflow</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fwd.aws/ejxNx">Quick Start page</a> | <a href="https://fwd.aws/B4VnD" target="_blank" rel="noopener">View guide</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Genomics analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://hail.is/docs/0.2/index.html" target="_blank" rel="noopener">Hail 0.2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fwd.aws/w9E8d" target="_blank" rel="noopener">Quick Start page</a> | <a href="https://fwd.aws/GMvwj" target="_blank" rel="noopener">View guide</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Knowledge management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dotmatics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.dotmatics.com/" target="_blank" rel="noopener">Dotmatics suite</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fwd.aws/A5K9B" target="_blank" rel="noopener">Quick Start page</a> | <a href="https://fwd.aws/RvJpR" target="_blank" rel="noopener">View guide</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sample management</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Titian</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.titian.co.uk/products/aws-mosaic-freezermanagement" target="_blank" rel="noopener">Mosaic FreezerManagement</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://fwd.aws/E736X" target="_blank" rel="noopener">Quick Start page</a> | <a href="https://fwd.aws/KNmPd" target="_blank" rel="noopener">View guide</a></p></td>
+</tr>
+</tbody>
+</table>
 <div class="sect2">
-<h3 id="_where_to_go_from_here">Where to go from here?</h3>
+<h3 id="_aws_service_catalog_permissions">AWS Service Catalog permissions</h3>
 <div class="paragraph">
-<p>Once you are connected to the VPN, you essentially have a private encrypted channel into your new VPCs. You can now connect to any resources you launch into your VPCs using private IP addresses without having to hassle with insecure/public bastion hosts.</p>
+<p>Access to AWS Service Catalog requires credentials. Those credentials must have permission to access AWS resources, such as an AWS Service Catalog portfolio or product. AWS Service Catalog integrates with AWS Identity and Access Management (IAM) to enable you to grant AWS Service Catalog end users permissions to launch products and manage provisioned products. To control access, you attach these policies to the IAM users, groups, and roles that you use with AWS Service Catalog.</p>
 </div>
-<div class="paragraph">
-<p>Are you unsure where to launch your first server? If you are confused about which VPC and/or which subnets you should be deploying resources into, check out the FAQ section. We did our best to explain some of the theory and give some concrete examples.</p>
+<div class="olist arabic">
+<ol class="arabic" start="1">
+<li>
+<p>Navigate to the <a href="https://console.aws.amazon.com/servicecatalog/home?#portfolios?activeTab=localAdminPortfolios" target="_blank" rel="noopener">AWS Service Catalog console</a>.</p>
+</li>
+<li>
+<p>Select the <strong>Biotech Blueprint Informatics Catalog</strong> portfolio.</p>
+</li>
+<li>
+<p>Select the <strong>Groups, roles, and users</strong> tab.</p>
+</li>
+</ol>
 </div>
-<div class="paragraph">
-<p>We&#8217;ve filled out some of the subnets in the diagram below to give an generalized example of the sorts of things you may end up deploying into your VPCs and subnets.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/bb-diagram-filled-out.png" alt="bbdiagramfilledout" width="100%" height="100%">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_optional_enable_biotech_blueprint_informatics_catalog">(Optional) Enable Biotech Blueprint Informatics Catalog</h3>
-<div class="paragraph">
-<p>All of the informatics and scientific computing tools mentioned earlier in this guide are made available to you through the AWS Service Catalog as the <code>Biotech Blueprint Informatics Catalog</code>.</p>
-</div>
-<div class="paragraph">
-<p>Service Catalog requires that you explicitly give permissions to individual IAM users/groups/roles to launch products from a Service Catalog portfolio.</p>
-</div>
-<div class="paragraph">
-<p>To grant that permission you first need to visit the <a href="https://console.aws.amazon.com/servicecatalog/home?#portfolios?activeTab=localAdminPortfolios">Service Catalog Portfolio Console</a>.</p>
-</div>
-<div class="paragraph">
-<p>Click on the <code>Biotech Blueprint Informatics Catalog</code> portfolio and then the <code>Groups, roles, and users</code> tab.</p>
-</div>
-<div class="imageblock">
+<div id="scpermissions" class="imageblock">
 <div class="content">
 <img src="images/service-catalog-permission.png" alt="scpermission" width="100%" height="100%">
 </div>
+<div class="title">Figure 11. Quick Start architecture for Biotech Blueprint on AWS</div>
 </div>
-<div class="paragraph">
-<p>Click on the <code>Add groups, users, and roles</code> button and select any IAM users/groups/roles that you want grant permissions to. <strong>Make sure you add yourself.</strong></p>
-</div>
-<div class="paragraph">
-<p>Anyone you just added can now visit the <a href="https://us-east-1.console.aws.amazon.com/servicecatalog/home?isSceuc=true&amp;region=us-east-1#/products">'Products list' section of the Service Catalog console</a> and deploy any of the tools listed.</p>
-</div>
-<div class="paragraph">
-<p>Please reference the following documentation pages for tool specific deployment and usage instructions</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic" start="4">
 <li>
-<p><a href="https://aws.amazon.com/marketplace/pp/B077F6VV3B?qid=1553611079631">ChemAxon Compound Registry</a></p>
+<p>Select <strong>Add groups, users, and roles</strong>.</p>
 </li>
 <li>
-<p><a href="https://fwd.aws/RvJpR">Dotmatics Suite</a></p>
+<p>Select the IAM identities requiring AWS Service Catalog permissions. Do not forget to include yourself if you need permissions.</p>
 </li>
-<li>
-<p><a href="https://aws-quickstart.github.io/quickstart-hail/">Hail 0.2 on EMR</a></p>
-</li>
-<li>
-<p><a href="https://fwd.aws/KNmPd">Mosaic FreezerMangement</a></p>
-</li>
-<li>
-<p><a href="https://fwd.aws/B4VnD">Nextflow</a></p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://docs.opendata.aws/genomics-workflows/orchestration/nextflow/nextflow-overview/">Source Documentation</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_optional_dns_setup">(Optional) DNS Setup</h3>
-<div class="paragraph">
-<p>A private DNS is setup by the Blueprint with <code>.corp</code> (default) as the apex domain using <a href="https://console.aws.amazon.com/route53/v2/home#Dashboard">Amazon Route 53 in your account</a>. From there, you can create private A or CNAME records to any private resources you create.</p>
-</div>
-<div class="paragraph">
-<p>For example, you may decide to launch a development server that gets a private IP like <code>10.60.0.198</code>. Instead of you having to remember that IP, you can create an 'A' record in the .corp Route 53 hosted zone for <code>pauls-machine.corp</code> to the private IP <code>10.60.0.198</code>. Resources in all three VPCs, and clients connected to the Client VPN Endpoint, will then all be able to resolve <code>pauls-machine.corp</code> from a browser, terminal, api call, etc.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_optional_delete_the_default_vpc">(Optional) Delete the "Default VPC"</h3>
-<div class="paragraph">
-<p>Every brand new account created in AWS automatically comes with a "Default VPC". You will see it listed in the VPC console list alongside the Production, Management, and Development VPCs that the Blueprint created.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/defaultvpc_0.png" alt="Config" width="100%" height="100%">
-</div>
-</div>
-<div class="paragraph">
-<p>The default VPC consists of <strong>public</strong> subnets in every availability zone. It is a fundamentally insecure VPC and should not be used. If you are starting from a brand new account, and know you have never launched anything into the default VPC, you are best off <strong>DELETING</strong> the Default VPC, right from the start, and only using the VPCs created by the Blueprint. If you have already launched a resources into the Default VPC, you should begin migrating them to the VPCs created by the Blueprint, and <strong>then</strong> delete the Default VPC. By deleting the Default VPC, you will drastically reduce the likelihood a user mistakenly launches a resource into an exposed public subnet.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-If you have a brand new account, delete the Default VPC as soon as possible. If you have already have resources using the Default VPC, migrate them to Blueprint VPCs, then delete the Default VPC.
-</td>
-</tr>
-</table>
+</ol>
 </div>
 </div>
 </div>
@@ -1736,94 +1816,16 @@ If you have a brand new account, delete the Default VPC as soon as possible. If 
 <h2 id="_faq">FAQ</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q.</strong> What VPC and Subnet should I deploy into?</p>
-</div>
-<div class="paragraph">
-<p><strong>A.</strong> These are the primary landing zones for resources you deploy into AWS. You can think of VPCs as houses and the subnets as rooms. When you deploy a load balancer, EC2 instance, RDS databases, etc you will need to tell AWS what VPC and subnet it should deploy into.</p>
-</div>
-<div class="paragraph">
-<p>If the resource you want to deploy is for Production or Development purposes, make sure to use the Production or Development VPC. Separating the Production and Development VPCs allows you to manage the environments with different levels of controls and restrictions.</p>
-</div>
-<div class="paragraph">
-<p>You want to use the Management VPC only for resources that more operational in nature, like a DevOps tool, active directory, security appliance, etc. For example, the Blueprint deploys the Client VPN Endpoint into the Management VPC.</p>
-</div>
-<div class="paragraph">
-<p>All three VPCs have similar classes of subnets. Public, Private, and Isolated. When you are deploying a resource, if the resource needs to be publically addressable by the internet at large, you need to specify the Public subnet. Ideally, this should only ever be things like AWS application load balancers (ALB). If you are deploying a resource like application server that should never be directly internet facing (but perhaps sits behind an ALB) that still needs outbound internet access, use the Private subnet. If you are deploying a sensitive resource like a database that should only be addressable to your internal networks and needs no outbound internet access, use the isolated subnets.</p>
-</div>
-<div class="paragraph">
-<p>In short, when you are deploying a VPC aware resource into AWS (ALB, EC2, RDS, etc), consider first the VPC it should belong to then consider its level of isolation. Here are some examples:</p>
-</div>
-<div class="paragraph">
-<p><strong>Q.</strong> Can you give me some examples of stuff I&#8217;ll be launching and where it should go?</p>
-</div>
-<div class="paragraph">
-<p><strong>A.</strong> Here are some common situations you might find yourself in:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Need a server where I&#8217;m going to test out installing an application to test out on my own or show to a coworker?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Development VPC, Private Subnet</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Restoring an RDS snapshot in Development into Production?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Production VPC, Isolated Subnet</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Launching an application load balancer to try installing a custom TLS certificate?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Development VPC, Public Subnet</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Standing up a DevOps tool like Jenkins to automate deployments into Production and Development?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Management VPC, Private Subnet</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Standing up and Okta Cloud Connect appliance or Active Directory?</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Management VPC, Private Subnet</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
 <p><strong>Q.</strong> Why are there two subnets of the same class in each VPC?</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> This is an important requirement for high availability on AWS. Each subnet of the same class is in a different availability zone, which is to say a physically distinct data center. In the event of an availability zone outage, having another subnet in another availability zone allows your service or AWS services to cleanly failover. For example AWS auto scaling, RDS multi-az, and the Client VPN Endpoint all take advantage of multi-az capability for clean failover in the event of a physical disaster. Outside of the subnets being in different AZ, subnets of the same class are identical from a networking perspective, it really does not matter which one you choose.</p>
+<p><strong>A.</strong> Each subnet of the same class is in a different Availability Zone, providing high availability. Subnets of the same class are identical from a networking perspective, so it does not matter which you specify when deploying a resource.</p>
 </div>
 <div class="paragraph">
 <p><strong>Q.</strong> I encountered a <strong>CREATE_FAILED</strong> error when I launched the Quick Start.</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> If AWS CloudFormation fails to create the stack, we recommend that you relaunch the template with <strong>Rollback on failure</strong> set to <strong>Disabled</strong>. (This setting is under <strong>Advanced</strong> in the AWS CloudFormation console, <strong>Options</strong> page.) With this setting, the stack’s state is retained and the instance is left running, so you can troubleshoot the issue. (For Windows, look at the log files in %ProgramFiles%\Amazon\EC2ConfigService and C:\cfn\log.)</p>
+<p><strong>A.</strong> If AWS CloudFormation fails to create the stack, we recommend that you relaunch the template with <strong>Rollback on failure</strong> set to <strong>Disabled</strong>. (This setting is under <strong>Advanced</strong> in the AWS CloudFormation console, <strong>Options</strong> page.) With this setting, the stack’s state is retained and the instance is left running, so you can troubleshoot the issue. (For Windows, look at the log files in <code>%ProgramFiles%\Amazon\EC2ConfigService</code> and <code>C:\cfn\log</code>.)</p>
 </div>
 <div class="admonitionblock warning">
 <table>
@@ -1832,19 +1834,19 @@ If you have a brand new account, delete the Default VPC as soon as possible. If 
 <i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, you continue to incur AWS charges for this stack. Please make sure to delete the stack when you finish troubleshooting.
+When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, you continue to incur AWS charges for this stack. Ensure that you delete the stack after troubleshooting.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For additional information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html" target="_blank" rel="noopener">Troubleshooting AWS CloudFormation</a> on the AWS website.</p>
+<p>For additional information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html" target="_blank" rel="noopener">Troubleshooting AWS CloudFormation</a>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Q.</strong> I encountered a size limitation error when I deployed the AWS CloudFormation templates.</p>
 </div>
 <div class="paragraph">
-<p><strong>A.</strong> We recommend that you launch the Quick Start templates from the links in this guide or from another S3 bucket. If you deploy the templates from a local copy on your computer or from a location other than an S3 bucket, you might encounter template size limitations. For more information about AWS CloudFormation quotas, see the <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html" target="_blank" rel="noopener">AWS documentation</a>.</p>
+<p><strong>A.</strong> We recommend that you launch the Quick Start templates from the links in this guide or from another S3 bucket. If you deploy the templates from a local copy on your computer or from a location other than an S3 bucket, you might encounter template size limitations. For more information about AWS CloudFormation quotas, see <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html" target="_blank" rel="noopener">AWS CloudFormation quotas</a>.</p>
 </div>
 </div>
 </div>
@@ -1896,7 +1898,7 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-f4c325977a50d67f320435cfd6ac7dcc97419869
+51e945502ef3c9d5bc6a2221598f49dffccb8ebf
 
 submodule config:
 +59b9927c61cd1831141cf0350520c89abb2246da docs/boilerplate (heads/main)
