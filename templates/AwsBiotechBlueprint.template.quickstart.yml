@@ -90,30 +90,180 @@ Parameters:
     Default: quickstart-aws-biotech-blueprint-cdk/lambda_functions/packages/assetc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c/||lambda.zip
     Description: S3 key for asset version "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c"
     Type: String
-Metadata:
-  AWS::CloudFormation::Interface:
-    ParameterGroups: 
-      - 
-        Label: 
-          default: "AWS Quick Start configuration"
-        Parameters: 
-          - AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43
-          - AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7
-          - AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7
-    ParameterLabels:
-      AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7: 
-        default: "Lambda asset hash"
-      AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43: 
-        default: "Quick Start S3 bucket name"
-      AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7: 
-        default: "Lambda asset S3 object key"   
 Resources:
+  BlueprintServiceCatalogChemAxon00A4428F:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/ChemAxon
+    Properties:
+      Description: ChemAxon's Compound Registration is a system built on a set of
+        web services, aiding users to register molecular structures into a compound
+        database. The registration process spots unique compounds among a set of structures
+        already contained within the database.
+      Distributor: AWS
+      Name: ChemAxon Compound Registry
+      Owner: ChemAxon
+      ProvisioningArtifactParameters:
+      - Info:
+          LoadTemplateFromURL: https://s3.amazonaws.com/aws-quickstart/quickstart-chemaxon-registry/templates/chemaxon-registry.template
+      SupportDescription: You need to subscribe to the ChemAxon marketplace AMI before
+        you can deploy this software. https://aws.amazon.com/marketplace/pp/B077F6VV3B?qid=1553611079631&sr=0-1&ref_=srh_res_product_title.
+      SupportEmail: support@chemaxon.com
+      SupportUrl: https://chemaxon.com/support
+    Type: AWS::ServiceCatalog::CloudFormationProduct
+  BlueprintServiceCatalogChemAxonAssociation8FDD4D57:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/ChemAxonAssociation
+    Properties:
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogChemAxon00A4428F
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+  BlueprintServiceCatalogDotmatics7C3629F0:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/Dotmatics
+    Properties:
+      Description: Dotmatics Suite running on AWS.  Please contact sales@dotmatics.com
+        for licensing details.
+      Distributor: Dotmatics
+      Name: Dotmatics Suite
+      Owner: Dotmatics
+      ProvisioningArtifactParameters:
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-dotmatics/templates/dotmatics.template
+      SupportDescription: "Support is provided through our usual channels \u2013 please\
+        \ visit our support pages or drop us an email."
+      SupportEmail: support@dotmatics.com
+      SupportUrl: https://aws-quickstart.s3.amazonaws.com/quickstart-dotmatics/doc/dotmatics-suite-on-the-aws-cloud.pdf
+    Type: AWS::ServiceCatalog::CloudFormationProduct
+  BlueprintServiceCatalogDotmaticsAssociation19F858FD:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/DotmaticsAssociation
+    Properties:
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogDotmatics7C3629F0
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+  BlueprintServiceCatalogHailCluster2883A297:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailCluster
+    Properties:
+      Description: Deploys Hail 0.2, an open-source library for scalable genomic data
+        exploration, on AWS EMR.
+      Distributor: Broad Institute
+      Name: Hail Cluster on AWS EMR
+      Owner: AWS
+      ProvisioningArtifactParameters:
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-core.template.yaml
+      SupportUrl: https://aws-quickstart.github.io/quickstart-hail/
+    Type: AWS::ServiceCatalog::CloudFormationProduct
+  BlueprintServiceCatalogHailClusterAssociation0C188407:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailClusterAssociation
+    Properties:
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogHailCluster2883A297
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+  BlueprintServiceCatalogHailNotebook8BAA992E:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailNotebook
+    Properties:
+      Description: Deploys an AWS SageMaker notebook that can integrate with with
+        Hail 0.2 cluster on EMR.
+      Distributor: Broad Institute
+      Name: Hail Notebook on AWS SageMaker
+      Owner: AWS
+      ProvisioningArtifactParameters:
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-sagemaker.template.yaml
+      SupportUrl: https://aws-quickstart.github.io/quickstart-hail/
+    Type: AWS::ServiceCatalog::CloudFormationProduct
+  BlueprintServiceCatalogHailNotebookAssociationE8CC88BA:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailNotebookAssociation
+    Properties:
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogHailNotebook8BAA992E
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+  BlueprintServiceCatalogInformaticsCatalog2B70227E:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/InformaticsCatalog
+    Properties:
+      Description: Collection of bio and chem informatics tools easily deployed into
+        the Biotech Blueprint.
+      DisplayName: Biotech Blueprint Informatics Catalog
+      ProviderName: AWS
+    Type: AWS::ServiceCatalog::Portfolio
+  BlueprintServiceCatalogNextflowAssocation851EF07D:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/NextflowAssocation
+    Properties:
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogNextflowB4A674B7
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+  BlueprintServiceCatalogNextflowB4A674B7:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/Nextflow
+    Properties:
+      Description: Nextflow enables scalable and reproducible scientific workflows
+        using software containers. It allows the adaptation of pipelines written in
+        the most common scripting languages.
+      Distributor: Comparative Bioinformatics group at the Barcelona Centre for Genomic
+        Regulation (CRG).
+      Name: Nextflow
+      Owner: AWS
+      ProvisioningArtifactParameters:
+      - Info:
+          LoadTemplateFromURL: https://s3.amazonaws.com/aws-genomics-workflows/templates/aws-genomics-root-novpc.template.yaml
+      SupportUrl: https://docs.opendata.aws/genomics-workflows/orchestration/nextflow/nextflow-overview/
+    Type: AWS::ServiceCatalog::CloudFormationProduct
+  BlueprintServiceCatalogTitianAssociation0A117A6A:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/TitianAssociation
+    Properties:
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogTitianE7AADF00
+    Type: AWS::ServiceCatalog::PortfolioProductAssociation
+  BlueprintServiceCatalogTitianE7AADF00:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/Titian
+    Properties:
+      Description: 'Mosaic FreezerManagement is a comprehensive and cost-effective
+        software solution for managing and tracking all types of sample inventory,
+        backed by a full audit trail. It provides a flexible interface to define and
+        record properties for any type of sample or container, and manages your entire
+        hierarchy of storage including freezers, shelves, cupboards, etc. Other features
+        include an intuitive search interface, and expiry date tracking. IMPORTANT
+        NOTE:  Please contact Titian at info@titian.co.uk for validation before you
+        launch the template below, otherwise the template will fail.'
+      Distributor: Titian Software Limited
+      Name: Mosaic FreezerManagement
+      Owner: Titian Software Limited
+      ProvisioningArtifactParameters:
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-titian-mosaic/templates/titian-mosaic.template
+      SupportDescription: "Titian supports a worldwide customer base \u2013 including\
+        \ customer sites in Europe, USA and Asia. Support may be provided by email,\
+        \ telephone or shared Desktop sessions"
+      SupportEmail: info@titian.co.uk
+      SupportUrl: https://aws-quickstart.s3.amazonaws.com/quickstart-titian-mosaic/doc/titian-mosaic-freezermanagement-on-the-aws-cloud.pdf
+    Type: AWS::ServiceCatalog::CloudFormationProduct
   CDKMetadata:
     Condition: CDKMetadataAvailable
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/CDKMetadata/Default
     Properties:
-      Analytics: v2:deflate64:H4sIAAAAAAAAA11STW/bMAz9Lb0ratOth92WeV1XYCgMp8hhN0VmHDW2GFBUgszwfx9lu3aQkx4fKX48vKX+9qSXd9/NOSxsebhvLRLods3GHlSGPjBFy6qAgJEsqFUIwJKtnK9UFgNjM+Wynb/GuSHTAAOlQFqVjh36TqVRLdhH3W6ONuU2eabyuK2dXcetB07cjAqMDO9mW8PMz5zsg9aZ1HkqTuD5NU/Pm+EXw3A2F5WTOwmcG7962U3wZ8GwyRitWBTYN+BZjYws++zLIzrPY+lNmAOQqCKXerD9QmuwkRxfXgjjsd/+lshqJyM2R3/dayLfDVXAb8BnpMPNpVPRKvIeyf3rM0UcZJqyvSCdcqbRbYFDsn9zFL37owfUqfBFtz+iPQzqjGh45uLruFO1abalEbvI3TUw+l/RD6dPQP584jRiYZKBgu59pGqsgm7/YDUJMmEBayYwzcgOQacs+p2rdCvsT6jdCeiS7Y1IXo82k2ykQQwQM5eT/3ZIjfEWcrF2pygJ8yQnj774jYGh/Iu+l2iOOhnZ23xBo7eDzglPThp3ymMJ+iPcn5YP+vGrfrj7CM4tKHp2DehieP8DM2955GQDAAA=
+      Analytics: v2:deflate64:H4sIAAAAAAAAA11TTW/bMAz9Lb0rat1t96Ve2xUYCiMpcthNkRlHjS0GFJUgM/zfR9muHeTEx0eaH89UprMs0w93P805LGx5uG8tEuh2zcYeVI4+MEXLagUBI1lQyxCAJVo5X6k8BsZmiuU7f40LQ6YBBkqOlCodO/SdSq1asI+63Rxtim2KXBVxWzu7jlsPnLgZrTAyfJhtDTM/czIPWmdS5Sk5gee3Ipl3w6+G4WwuqiB3EjgXfvMym+CvhGGS0VuyKLBvwLMaGRn22ZdHdJ7H1Bu3ACBRRTb1YPuB1mAjOb68EsZjP/0tkddOWmyO/rrWRH4YqoDfgc9Ih5tNp6Rl5D2S+9dHVnGQaYr2gnTKmUa3KxyCvS1Q9O6XHlCnwjfdPkV7GNQZ0WCeTIARzt9d+52qTbMtjVyOSFADo3+JflBhAvLNF07dFibdUtD9Sakaq6DbP1hN2kxYwJoJTDOyg9Mpi37nKt0K+wtqdwK65Hsj6tfjxUk00qALyF2X0ynukBrjLRRy5Z2ipNEP2X48kd8YGMq/6Hu1Zk+GBjo5C9awkXn7zgUS70QDHGTHWL6k4qlpQVimx3OdNXJXP7OTRfp3tKDx8QQtWScn43bKYwn6M9yfsgf9+F1nd5/BuQVFz64BvRrsf7s9QovGAwAA
     Type: AWS::CDK::Metadata
   ClientVpn0clientVpnEndpointAssociation8160B577:
     Metadata:
