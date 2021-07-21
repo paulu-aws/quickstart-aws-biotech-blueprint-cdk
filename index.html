@@ -182,7 +182,7 @@ p a>code:hover{color:rgba(0,0,0,.9)}
   padding-top:0;
   overflow:hidden;
   background:#283e5b;
-  border-bottom: 4px solid #435c7c;
+  /* border-bottom: 4px solid #435c7c; */
   width:320px;
   height:154px;
   top:0;
@@ -411,7 +411,7 @@ span.icon>.fa{cursor:default}
 a span.icon>.fa{cursor:inherit}
 .admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
 .admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
-.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";color: rgb(3, 87, 21);}
 .admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
 .admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
 .admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
@@ -747,8 +747,43 @@ p {
   font-weight  : 300 !important;
 }
 
-#toc.toc2 #toctitle{
-  background-image: url('images/AWS-Logo.svg');
+/* image layout */
+#toc.toc2 #toctitle {
+  background-image: url("images/AWS-Logo.svg");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: center;
+  width: auto;
+  height: 15%;
+}
+
+/* Left Navbar size */
+#toc.toc2 {
+  width: 17%;
+  min-width: 15em;
+}
+
+/* auto width for main page */
+body.toc2 {
+  padding-left: 22%;
+  padding-right: 2%;
+}
+
+/* hide left nav bar if page size is smaller than 767px */
+@media screen and (max-width: 767px) {
+  #toc {
+      display: none !important;
+  }
+  body.toc2 {
+    padding-left: 1%;
+    padding-right: 1%;
+    position: relative;
+  }
+
+  #content {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
 }
 
 /* QS Tables */
@@ -834,6 +869,7 @@ p.footer-text a{color:#d7d8d8}
 </ul>
 </li>
 <li><a href="#_faq">FAQ</a></li>
+<li><a href="#_customer_responsibility">Customer responsibility</a></li>
 <li><a href="#_send_us_feedback">Send us feedback</a></li>
 <li><a href="#_quick_start_reference_deployments">Quick Start reference deployments</a></li>
 <li><a href="#_github_repository">GitHub repository</a></li>
@@ -919,7 +955,7 @@ see the pricing pages for each AWS service you use. Prices are subject to change
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-After you deploy the Quick Start, <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">create AWS Cost and Usage Reports</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. These reports provide cost estimates based on usage throughout each month and aggregate the data at the end of the month. For more information, see <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-costusage.html" target="_blank" rel="noopener">What are AWS Cost and Usage Reports?</a>
+After you deploy the Quick Start, create <a href="https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-reports-gettingstarted-turnonreports.html" target="_blank" rel="noopener">AWS Cost and Usage Reports</a> to deliver billing metrics to an Amazon Simple Storage Service (Amazon S3) bucket in your account. These reports provide cost estimates based on usage throughout each month and aggregate the data at the end of the month. For more information, see <a href="https://docs.aws.amazon.com/cur/latest/userguide/what-is-cur.html" target="_blank" rel="noopener">What are AWS Cost and Usage Reports?</a>
 </td>
 </tr>
 </table>
@@ -1021,7 +1057,7 @@ deploy, and operate your infrastructure and applications on the AWS Cloud.</p>
 <div class="sect3">
 <h4 id="_resource_quotas">Resource quotas</h4>
 <div class="paragraph">
-<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might request quota increases to avoid exceeding the default limits for any resources that are shared across multiple deployments. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">What is Service Quotas?</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html" target="_blank" rel="noopener">AWS service quotas</a>.</p>
+<p>If necessary, request <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">service quota increases</a> for the following resources. You might need to request increases if your existing deployment currently uses these resources and if this Quick Start deployment could result in exceeding the default quotas. The <a href="https://console.aws.amazon.com/servicequotas/home?region=us-east-2#!/" target="_blank" rel="noopener">Service Quotas console</a> displays your usage and quotas for some aspects of some services. For more information, see <a href="https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html" target="_blank" rel="noopener">What is Service Quotas?</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html" target="_blank" rel="noopener">AWS service quotas</a>.</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -1305,15 +1341,9 @@ The option to restrict your account to specific regions (ex US or EU only) is on
 <p>Monitor the status of the stack. When the status is <strong>CREATE_COMPLETE</strong>, the Biotech Blueprint deployment is ready.</p>
 </li>
 <li>
-<p>Use the values displayed in the <strong>Outputs</strong> tab for the stack, as shown in <a href="#cfn_outputs">Figure 2</a>, to view the created resources.</p>
+<p>To view the created resources, see the values displayed in the <strong>Outputs</strong> tab for the stack.</p>
 </li>
 </ol>
-</div>
-<div id="cfn_outputs" class="imageblock">
-<div class="content">
-<a class="image" href="images/cfn_outputs.png"><img src="images/cfn_outputs.png" alt="cfn_outputs" width="100%" height="100%"></a>
-</div>
-<div class="title">Figure 2. Biotech Blueprint outputs after successful deployment</div>
 </div>
 </div>
 <div class="sect2">
@@ -1426,7 +1456,7 @@ To update the architecture after making changes later, run the command in Step 6
 <div class="content">
 <img src="images/downloadclientconfig.png" alt="VPN" width="100%" height="100%">
 </div>
-<div class="title">Figure 3. Download Client Configuration</div>
+<div class="title">Figure 2. Download Client Configuration</div>
 </div>
 </li>
 </ol>
@@ -1563,13 +1593,13 @@ Contents of private key file (client1.domain.tld.key)
 <p>Every new AWS account comes with a default VPC with public subnets in each Availability Zone. It is recommended that you delete this default VPC and only deploy resources into the production, management, and development VPCs that the Biotech Blueprint Quick Start provisions. If you have already deployed resources into the default VPC before launching the Quick Start, it is recommended that you migrate these resources to the Biotech Blueprint VPCs and then delete the default VPC. Removing the default VPC will ensure that a user does not launch resources into one of its exposed public subnets.</p>
 </div>
 <div class="paragraph">
-<p><a href="#defaultvpc">Figure 4</a> shows the default VPC listed in the Amazon VPC console with the VPCs created by the Biotech Blueprint Quick Start.</p>
+<p><a href="#defaultvpc">Figure 3</a> shows the default VPC listed in the Amazon VPC console with the VPCs created by the Biotech Blueprint Quick Start.</p>
 </div>
 <div id="defaultvpc" class="imageblock">
 <div class="content">
 <img src="images/defaultvpc_0.png" alt="Config" width="100%" height="100%">
 </div>
-<div class="title">Figure 4. Default VPC</div>
+<div class="title">Figure 3. Default VPC</div>
 </div>
 </div>
 </div>
@@ -1609,7 +1639,7 @@ Contents of private key file (client1.domain.tld.key)
 <div class="content">
 <img src="images/conformancepacks_0.png" alt="Config" width="100%" height="100%">
 </div>
-<div class="title">Figure 5. Operational Best Practices for NIST-CSF</div>
+<div class="title">Figure 4. Operational Best Practices for NIST-CSF</div>
 </div>
 <div class="paragraph">
 <p>Select <code>encrypted-volumes-conformance-pack</code> to display a list of relevant resources and their compliance status.</p>
@@ -1618,7 +1648,7 @@ Contents of private key file (client1.domain.tld.key)
 <div class="content">
 <img src="images/conformancepacks_1.png" alt="Config" width="100%" height="100%">
 </div>
-<div class="title">Figure 6. Encrytped volumes conformance pack</div>
+<div class="title">Figure 5. Encrytped volumes conformance pack</div>
 </div>
 <div class="paragraph">
 <p>You can update the AWS Config delivery channel to include an Amazon Simple Notification Service (Amazon SNS) topic to send email or text notifications when resources are flagged. More sophisticated approaches might include regularly reviewing AWS Config reports, using AWS Config&#8217;s automatic remediation capabilities, or integrating AWS Config with security ticketing or SEIM solutions.</p>
@@ -1675,7 +1705,7 @@ AWS Config conformance packs provide a general-purpose compliance framework desi
 <div class="content">
 <img src="images/regionrestriction_config0.png" alt="Config" width="100%" height="100%">
 </div>
-<div class="title">Figure 7. AwsBiotechBlueprint-RegionRestriction rule</div>
+<div class="title">Figure 6. AwsBiotechBlueprint-RegionRestriction rule</div>
 </div>
 <div class="paragraph">
 <p>The Config Rule evaluates your IAM users and roles and lists their compliance status. To remediate a non-compliant resource, select the resource and select <strong>Remediate</strong>. The service control policy is applied and that user or role will no longer be able to perform any action outside of the specified Region.</p>
@@ -1716,7 +1746,7 @@ Enabling automatic remediation will impact existing IAM users and roles not crea
 <div class="content">
 <img src="images/regionrestriction_config2.png" alt="Config" width="100%" height="100%">
 </div>
-<div class="title">Figure 8. AwsBiotechBlueprint-RegionRestriction rule</div>
+<div class="title">Figure 7. AwsBiotechBlueprint-RegionRestriction rule</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="2">
@@ -1732,7 +1762,7 @@ Enabling automatic remediation will impact existing IAM users and roles not crea
 <div class="content">
 <img src="images/regionrestriction_config3.png" alt="Config" width="100%" height="100%">
 </div>
-<div class="title">Figure 9. Edit Remediation action</div>
+<div class="title">Figure 8. Edit Remediation action</div>
 </div>
 </div>
 <div class="sect2">
@@ -1747,7 +1777,7 @@ Enabling automatic remediation will impact existing IAM users and roles not crea
 <div class="content">
 <img src="images/regionrestriction_config4.png" alt="Config" width="100%" height="100%">
 </div>
-<div class="title">Figure 10. RegionRestriction</div>
+<div class="title">Figure 9. RegionRestriction</div>
 </div>
 </div>
 </div>
@@ -1828,7 +1858,7 @@ Enabling automatic remediation will impact existing IAM users and roles not crea
 <div class="content">
 <img src="images/service-catalog-permission.png" alt="scpermission" width="100%" height="100%">
 </div>
-<div class="title">Figure 11. Quick Start architecture for Biotech Blueprint on AWS</div>
+<div class="title">Figure 10. Quick Start architecture for Biotech Blueprint on AWS</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="4">
@@ -1882,6 +1912,14 @@ When you set <strong>Rollback on failure</strong> to <strong>Disabled</strong>, 
 </div>
 </div>
 <div class="sect1">
+<h2 id="_customer_responsibility">Customer responsibility</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you successfully deploy this Quick Start, confirm that your resources and services are updated and configured — including any required patches — to meet your security and other needs. For more information, see the <a href="https://aws.amazon.com/compliance/shared-responsibility-model/" target="_blank" rel="noopener">AWS Shared Responsibility Model</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_send_us_feedback">Send us feedback</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1929,8 +1967,8 @@ and to share your customizations with others.</p>
 </html>
 <!--
 repo commit:
-0e0a720327371a1f2b66865a8acdb306e9b9c309
+1ef4ac883e97787b5afa6ddcc3ff4c0957fa7cc2
 
 submodule config:
-+59b9927c61cd1831141cf0350520c89abb2246da docs/boilerplate (heads/main)
++a9193e801b5dab0ad2524a058a2414a028a1a4f4 docs/boilerplate (heads/main)
 -->
