@@ -1438,6 +1438,14 @@ Resources:
     - ConfigEnabledPromiseConfigRecorder0A75B039
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-for-NIST-CSF
+      cfn-lint:
+        config:
+          ignore_checks:
+          - E9101
+          ignore_reasons:
+            E9101: The references to master in this resource refer to EMR service
+              naming. Until the EMR service changes its usage of the term, this needs
+              to be an exception.
     Properties:
       ConformancePackInputParameters: []
       ConformancePackName: Operational-Best-Practices-for-NIST-CSF

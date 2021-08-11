@@ -25,7 +25,7 @@ for resource in templateData['Resources']:
         }
         
     if templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-for-HIPAA-Security' \
-    or templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'Operational-Best-Practices-for-NIST-CSF':
+    or templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-for-NIST-CSF':
         templateData['Resources'][resource]['Metadata']['cfn-lint'] = {
             "config": {
                 "ignore_checks": ['E9101'],
