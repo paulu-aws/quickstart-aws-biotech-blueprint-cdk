@@ -2,20 +2,14 @@ import os
 import yaml 
 
 templateStream = open('./templates/AwsBiotechBlueprint.template.yml', 'r')
-templateData = yaml.load(templateStream)
+templateData = yaml.safe_load(templateStream)
 
+paremeterToPop = ''
 for parameter in templateData['Parameters']:
     if templateData['Parameters'][parameter]['Description'].startswith( 'Artifact hash for asset'):
-        templateData['Parameters'][parameter]['Metadata'] = {
-            "cfn-lint" : {
-                "config": {
-                    "ignore_checks": ['E9010'],
-                    "ignore_reasons": {
-                        "E9010": "This parameter is created automatically by templates created with the AWS CDK that provides a checksum for customers to use if they need it.The developers of this Quick Start have no control over the behavior of the CDK."
-                    }
-                }
-            }
-        }        
+        paremeterToPop = parameter
+        
+if paremeterToPop != '': templateData['Parameters'].pop(paremeterToPop)
 
 for resource in templateData['Resources']:
     if templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/ClientVpn/VpnCertificateLambdaCustomResourceRole/DefaultPolicy/Resource':
