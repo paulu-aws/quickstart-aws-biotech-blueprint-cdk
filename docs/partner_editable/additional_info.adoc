@@ -238,7 +238,6 @@ After deploying the Biotech Blueprint Quick Start, you can launch a selection of
 |Category |Partner |Product |To install
 
 |Compound registry |ChemAxon |https://chemaxon.com/products/compound-registration[Compound Registration^] |https://fwd.aws/x45Rg[Launch Quick Start template^]
-|Genomics analysis |Nextflow |https://www.nextflow.io/[Nextflow^] |https://fwd.aws/ejxNx[Quick Start page] \| https://fwd.aws/B4VnD[View guide^]
 |Genomics analysis |Hail |https://hail.is/docs/0.2/index.html[Hail 0.2^] |https://fwd.aws/w9E8d[Quick Start page^] \| https://fwd.aws/GMvwj[View guide^]
 |Knowledge management |Dotmatics |https://www.dotmatics.com/[Dotmatics suite^] |https://fwd.aws/A5K9B[Quick Start page^] \| https://fwd.aws/RvJpR[View guide^]
 |Sample management |Titian |https://www.titian.co.uk/products/aws-mosaic-freezermanagement[Mosaic FreezerManagement^] |https://fwd.aws/E736X[Quick Start page^] \| https://fwd.aws/KNmPd[View guide^]
