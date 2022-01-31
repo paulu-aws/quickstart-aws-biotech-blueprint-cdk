@@ -70,21 +70,31 @@ Conditions:
       - Fn::Equals:
         - Ref: AWS::Region
         - us-west-2
-  UsingDefaultQuickstartBucketc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c:
+  UsingDefaultQuickstartBucketc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5:
     Fn::Equals:
-    - Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43
+    - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69
     - aws-quickstart
 Description: AWS Biotech Blueprint CDK is an AWS Quick Start that helps Biotech companies
   deploy core AWS Infrastructure as well as CloudFormation templates for common ISV
   solutions. (qs-1of009lua) (ib-1of009lua)
 Parameters:
-  AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43:
-    Default: aws-quickstart
-    Description: S3 bucket for asset "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c"
+  AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3BucketA00C8555:
+    Description: S3 bucket for asset "7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd"
     Type: String
-  AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7:
-    Default: quickstart-aws-biotech-blueprint-cdk/lambda_functions/packages/assetc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c/||lambda.zip
-    Description: S3 key for asset version "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c"
+  AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598:
+    Description: S3 key for asset version "7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd"
+    Type: String
+  AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5ArtifactHashE9AE13B7:
+    Default: c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5
+    Description: Artifact hash for asset "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
+    Type: String
+  AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69:
+    Default: aws-quickstart
+    Description: S3 bucket for asset "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
+    Type: String
+  AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0:
+    Default: quickstart-aws-biotech-blueprint-cdk/lambda_functions/packages/assetc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5/||lambda.zip
+    Description: S3 key for asset version "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
     Type: String
 Resources:
   BlueprintServiceCatalogChemAxon00A4428F:
@@ -259,7 +269,7 @@ Resources:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/CDKMetadata/Default
     Properties:
-      Analytics: v2:deflate64:H4sIAAAAAAAAA11TTW/bMAz9Lb0ratN12HWp+7ECRWEkRQ67KTLjqLHFgKISZIb/+yjbtYOc+PhI8+OZmuv5/Je+u/ltTmFmi/1tY5FANys2dq8y9IEpWlZLCBjJglqEACzR0vlSZTEw1mMs2/pLnBsyNTBQcqRU4dihb1Vq1YC91836YFNsnWcqj5vK2VXceODETWiJkeHTbCqY+ImTedA6kyqPyQk8v+XJfBh+NQwnc1Y5uaPAqfCbl9kEfyf0kwzegkWBXQ2e1cDIsM++OKDzPKReuTkAiSqyqQfbDbQCG8nx+ZUwHrrpr4msctJiffCXtUby01AJ/AF8QtpfbTomLSLvkNy/LrKMvUxjtBOkVc7UulliH+xsjqJ3t3SPWhV+6OYx2n2vzoB682gCDHD67tJvVWXqTWHkckSCChj9S/S9CiOQb75x6jYz6ZaC7k5KVVgG3bxjOWozYgErJjD1wPZOqyz6rSt1I+wTVO4IdM52RtSvhouTaKReF5C7LsZT3CLVxlvI5cpbRUmjn7L9cCJ/MDAUf9F3ak2eDA10dBasYSPzdp1zJN6KBtjLjrF4ScVT05ywSI/nMmvgLn5mK4t072hGw+MJWrKOTsZtlccC9Fe4Pc7v9P2Dnt98BedmFD27GvSyt/8B6E/9E8YDAAA=
+      Analytics: v2:deflate64:H4sIAAAAAAAA/11TS2/bMAz+Lb0rarNuOy/1mq7AUHhO0cNuiswkamwxk6gEmeH/PkrybKMnfXyIj4/kUi4/38m7m2/q4he6Pt52Gh3IbkNKH0WB1pMLmkQFHoPTIIqdHfHKeyD23Bu7j4ZSOdUCgRNF8ITt/BOHqg0ZtL2IqTrQn2T3dtLR9lYWogzbxuhN2FqgqJtQhYHgVW0bmPSTjmtAbVSMPDpH8PhcxudF0ZMiuKirKJ05M5wCP1sulfF/h1zJIK2IGTi0YEkMGi720dYnNJYG11FcN3j5iYmDGWSPEsAxOdy8BZ1q3IAOztD1yWE4pYY+KorGcNa3k51nG5Wvyu2BXoAu6I4fmh+dVoEO6MzfZKlCZm60Jo560eDey45rHTOPmEHFc7QpMAsbcqDawSULvTCqlV2FOXh6S+QRJh4z6oW/X6i4JF6mXWFZdg9BH4EelAeRYfwwoPxMceYyV6zaba14OZnSBgjtOtjM6gjiBAbM2f9wg78ChFRiAr3QaHdmLzvWfIfGnMFdi4Pi+TTDmrI1uMwc8DHUcZ2zAV2rrIaST6MXLrL4hfsZ9uoHeoL6N9qUbJK4DHBno0ErUsx5ylyiox13hXkwGOp1DB6Tlg7reHFzr0E3G3fPjaQbW7jhyLxkr7PhcnthsQb57m/Py69yeS+XN+/emIULPNAWZJXff2tEHrb7AwAA
     Type: AWS::CDK::Metadata
   ClientVpn0clientVpnEndpointAssociation8160B577:
     Metadata:
@@ -415,6 +425,11 @@ Resources:
         - ''
         - - 'arn:'
           - Ref: AWS::Partition
+          - :iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+      - Fn::Join:
+        - ''
+        - - 'arn:'
+          - Ref: AWS::Partition
           - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
     Type: AWS::IAM::Role
   ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1:
@@ -458,6 +473,12 @@ Resources:
                 - ClientVpnVpnConfigBucketF2E04B98
                 - Arn
               - /*
+        - Action: sqs:SendMessage
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20
+            - Arn
         Version: '2012-10-17'
       PolicyName: ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1
       Roles:
@@ -467,6 +488,15 @@ Resources:
     DeletionPolicy: Retain
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/ClientVpn/VpnConfigBucket/Resource
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      LoggingConfiguration:
+        LogFilePrefix: vpnBucketAccessLogs/
+      VersioningConfiguration:
+        Status: Enabled
     Type: AWS::S3::Bucket
     UpdateReplacePolicy: Retain
   ClientVpnVpnUsersSG5BB5DCBE:
@@ -534,19 +564,14 @@ Resources:
     - ClientVpnvpnCertificateProviderframeworkonEventServiceRoleDefaultPolicyE25CE498
     - ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0
     Metadata:
-      aws:asset:path: asset.c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c
+      aws:asset:is-bundled: false
+      aws:asset:path: asset.7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd
       aws:asset:property: Code
       aws:cdk:path: AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider/framework-onEvent/Resource
     Properties:
       Code:
         S3Bucket:
-          Fn::If:
-          - UsingDefaultQuickstartBucketc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c
-          - Fn::Join:
-            - '-'
-            - - Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43
-              - Ref: AWS::Region
-          - Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43
+          Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3BucketA00C8555
         S3Key:
           Fn::Join:
           - ''
@@ -554,12 +579,12 @@ Resources:
               - 0
               - Fn::Split:
                 - '||'
-                - Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7
+                - Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598
             - Fn::Select:
               - 1
               - Fn::Split:
                 - '||'
-                - Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7
+                - Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598
       Description: AWS CDK resource provider framework - onEvent (AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider)
       Environment:
         Variables:
@@ -572,7 +597,7 @@ Resources:
         Fn::GetAtt:
         - ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0
         - Arn
-      Runtime: nodejs14.x
+      Runtime: nodejs12.x
       Timeout: 900
     Type: AWS::Lambda::Function
   ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0:
@@ -614,6 +639,15 @@ Resources:
     DeletionPolicy: Retain
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/ConfigEnabledPromise/ConfigBucket/Resource
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      LoggingConfiguration:
+        LogFilePrefix: ConfigBucketAccessLogs/
+      VersioningConfiguration:
+        Status: Enabled
     Type: AWS::S3::Bucket
     UpdateReplacePolicy: Retain
   ConfigEnabledPromiseConfigBucketPolicy2B9A439D:
@@ -1924,6 +1958,39 @@ Resources:
         VPCRegion:
           Ref: AWS::Region
     Type: AWS::Route53::HostedZone
+  LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A:
+    DependsOn:
+    - VpcCoreretentionRoleDefaultPolicyEEAA8B99
+    - VpcCoreretentionRole1BA39518
+    Metadata:
+      aws:asset:is-bundled: false
+      aws:asset:path: asset.c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5
+      aws:asset:property: Code
+      aws:cdk:path: AwsBiotechBlueprint/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69
+        S3Key:
+          Fn::Join:
+          - ''
+          - - Fn::Select:
+              - 0
+              - Fn::Split:
+                - '||'
+                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+            - Fn::Select:
+              - 1
+              - Fn::Split:
+                - '||'
+                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+      Handler: index.handler
+      Role:
+        Fn::GetAtt:
+        - VpcCoreretentionRole1BA39518
+        - Arn
+      Runtime: nodejs14.x
+    Type: AWS::Lambda::Function
   SingletonLambdaCreateVpnCertificateLambda14FF3DCC:
     DependsOn:
     - ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1
@@ -1964,6 +2031,11 @@ Resources:
           \ --no-cache-dir --ignore-installed --target=/tmp/'];C(F)\n\tif B[E]=='Delete':return\
           \ I(B,D)\n\telif B[E]=='Create':return J(B,D)\n\telif B[E]=='Update':I(B,D,S);return\
           \ J(B,D)"
+      DeadLetterConfig:
+        TargetArn:
+          Fn::GetAtt:
+          - SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20
+          - Arn
       Handler: index.main
       MemorySize: 1024
       Role:
@@ -1972,7 +2044,58 @@ Resources:
         - Arn
       Runtime: python3.7
       Timeout: 300
+      VpcConfig:
+        SecurityGroupIds:
+        - Fn::GetAtt:
+          - SingletonLambdaCreateVpnCertificateLambdaSecurityGroupC03A5216
+          - GroupId
+        SubnetIds:
+        - Ref: VpcCoreManagmentApplicationSubnet1Subnet1DE5C8C4
+        - Ref: VpcCoreManagmentApplicationSubnet2SubnetF1B8CE48
     Type: AWS::Lambda::Function
+  SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20:
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/DeadLetterQueue/Resource
+    Properties:
+      MessageRetentionPeriod: 1209600
+    Type: AWS::SQS::Queue
+    UpdateReplacePolicy: Delete
+  SingletonLambdaCreateVpnCertificateLambdaSecurityGroupC03A5216:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/SecurityGroup/Resource
+    Properties:
+      GroupDescription: Automatic security group for Lambda Function AwsBiotechBlueprintSingletonLambdaCreateVpnCertificateLambdaDED33AFA
+      SecurityGroupEgress:
+      - CidrIp: 0.0.0.0/0
+        Description: Allow all outbound traffic by default
+        IpProtocol: '-1'
+      VpcId:
+        Ref: VpcCoreManagment030DB556
+    Type: AWS::EC2::SecurityGroup
+  VpcCoreDevLogRtention28DE857A:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevLogRtention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreDevVpcLogGroupB93F8F61
+      RetentionInDays: 3
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
+  VpcCoreDevVpcLogGroupB93F8F61:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
   VpcCoreDevelopment37E2B994:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/Resource
@@ -2324,6 +2447,22 @@ Resources:
       VpcId:
         Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreDevlowLogFlowLog6008C134:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreDevVpcLogGroupB93F8F61
+      ResourceId:
+        Ref: VpcCoreDevelopment37E2B994
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
   VpcCoreManagment030DB556:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/Resource
@@ -2594,6 +2733,76 @@ Resources:
       VpcId:
         Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreMgmtFlowLogF6131196:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtFlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreMgmtVpcLogGroup57411704
+      ResourceId:
+        Ref: VpcCoreManagment030DB556
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
+  VpcCoreMgmtLogRtention363D019E:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtLogRtention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreMgmtVpcLogGroup57411704
+      RetentionInDays: 14
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
+  VpcCoreMgmtVpcLogGroup57411704:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
+  VpcCoreProdFlowLog514212F0:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProdFlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreProductionVpcLogGroup8B46D99C
+      ResourceId:
+        Ref: VpcCoreProductionD971AE3A
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
+  VpcCoreProdLogRetention4C6205DA:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProdLogRetention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreProductionVpcLogGroup8B46D99C
+      RetentionInDays: 30
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
   VpcCoreProductionApplicationSubnet1DefaultRouteA2D6D34E:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/DefaultRoute
@@ -2945,6 +3154,14 @@ Resources:
       VpcId:
         Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreProductionVpcLogGroup8B46D99C:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProductionVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
   VpcCoredevIsolatedToMgmt06FAE198F:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/devIsolatedToMgmt-0
@@ -3179,3 +3396,90 @@ Resources:
       VpcPeeringConnectionId:
         Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
+  VpcCoreretentionRole1BA39518:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/retentionRole/Resource
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: lambda.amazonaws.com
+        Version: '2012-10-17'
+    Type: AWS::IAM::Role
+  VpcCoreretentionRoleDefaultPolicyEEAA8B99:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/retentionRole/DefaultPolicy/Resource
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action: logs:CreateLogGroup
+          Effect: Allow
+          Resource: '*'
+        - Action:
+          - logs:PutRetentionPolicy
+          - logs:DeleteRetentionPolicy
+          Effect: Allow
+          Resource: '*'
+        Version: '2012-10-17'
+      PolicyName: VpcCoreretentionRoleDefaultPolicyEEAA8B99
+      Roles:
+      - Ref: VpcCoreretentionRole1BA39518
+    Type: AWS::IAM::Policy
+  VpcCorevpcLogGroupRole0DE2B7DA:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/vpcLogGroupRole/Resource
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: vpc-flow-logs.amazonaws.com
+        Version: '2012-10-17'
+    Type: AWS::IAM::Role
+  VpcCorevpcLogGroupRoleDefaultPolicyCEA46C79:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/vpcLogGroupRole/DefaultPolicy/Resource
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreProductionVpcLogGroup8B46D99C
+            - Arn
+        - Action: iam:PassRole
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCorevpcLogGroupRole0DE2B7DA
+            - Arn
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreMgmtVpcLogGroup57411704
+            - Arn
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreDevVpcLogGroupB93F8F61
+            - Arn
+        Version: '2012-10-17'
+      PolicyName: VpcCorevpcLogGroupRoleDefaultPolicyCEA46C79
+      Roles:
+      - Ref: VpcCorevpcLogGroupRole0DE2B7DA
+    Type: AWS::IAM::Policy
