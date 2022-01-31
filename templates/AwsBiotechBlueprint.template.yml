@@ -80,9 +80,6 @@ Parameters:
   AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598:
     Description: S3 key for asset version "7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd"
     Type: String
-  AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5ArtifactHashE9AE13B7:
-    Description: Artifact hash for asset "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
-    Type: String
   AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69:
     Description: S3 bucket for asset "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
     Type: String

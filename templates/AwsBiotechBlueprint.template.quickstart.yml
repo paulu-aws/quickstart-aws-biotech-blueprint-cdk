@@ -70,10 +70,6 @@ Conditions:
       - Fn::Equals:
         - Ref: AWS::Region
         - us-west-2
-  UsingDefaultQuickstartBucketc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5:
-    Fn::Equals:
-    - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69
-    - aws-quickstart
 Description: AWS Biotech Blueprint CDK is an AWS Quick Start that helps Biotech companies
   deploy core AWS Infrastructure as well as CloudFormation templates for common ISV
   solutions. (qs-1of009lua) (ib-1of009lua)
@@ -84,16 +80,10 @@ Parameters:
   AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598:
     Description: S3 key for asset version "7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd"
     Type: String
-  AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5ArtifactHashE9AE13B7:
-    Default: c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5
-    Description: Artifact hash for asset "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
-    Type: String
   AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69:
-    Default: aws-quickstart
     Description: S3 bucket for asset "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
     Type: String
   AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0:
-    Default: quickstart-aws-biotech-blueprint-cdk/lambda_functions/packages/assetc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5/||lambda.zip
     Description: S3 key for asset version "c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5"
     Type: String
 Resources:
