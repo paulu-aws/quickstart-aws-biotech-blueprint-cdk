@@ -101,6 +101,72 @@ export class BlueprintVpcs extends core.Construct {
         ]
     });
       
+      
+    
+    const prodLogGroup = new log.LogGroup(this, 'ProductionVpcLogGroup');
+    const mgmtLogGroup = new log.LogGroup(this, 'MgmtVpcLogGroup');
+    const devLogGroup = new log.LogGroup(this, 'DevVpcLogGroup');
+    
+    const vpcLogGroupRole = new iam.Role(this, 'vpcLogGroupRole', {
+      assumedBy: new iam.ServicePrincipal('vpc-flow-logs.amazonaws.com')
+    });
+    
+    new ec2.FlowLog(this, 'ProdFlowLog', {
+      resourceType: ec2.FlowLogResourceType.fromVpc(this.ProductionVpc),
+      destination: ec2.FlowLogDestination.toCloudWatchLogs(prodLogGroup, vpcLogGroupRole)
+    });      
+    new ec2.FlowLog(this, 'MgmtFlowLog', {
+      resourceType: ec2.FlowLogResourceType.fromVpc(this.ManagmentVPC),
+      destination: ec2.FlowLogDestination.toCloudWatchLogs(mgmtLogGroup, vpcLogGroupRole)
+    });     
+    new ec2.FlowLog(this, 'DevlowLog', {
+      resourceType: ec2.FlowLogResourceType.fromVpc(this.DevelopmentVpc),
+      destination: ec2.FlowLogDestination.toCloudWatchLogs(devLogGroup, vpcLogGroupRole)
+    });     
+    
+    const retentionRole = new iam.Role(this, 'retentionRole', {
+      assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com')
+    });
+    
+    retentionRole.addToPolicy(new iam.PolicyStatement({
+      resources: ["*"],
+      actions: ['logs:CreateLogGroup'] 
+    }));
+    
+    
+    const prodLogRtention = new log.LogRetention(this, 'ProdLogRetention', {
+      logGroupName: prodLogGroup.logGroupName,
+      retention: log.RetentionDays.ONE_MONTH,
+      logRetentionRetryOptions: {
+        base: core.Duration.minutes(30),
+        maxRetries: 3,
+      },
+      role: retentionRole,
+    });
+    
+    const mgmtLogRtention = new log.LogRetention(this, 'MgmtLogRtention', {
+      logGroupName: mgmtLogGroup.logGroupName,
+      retention: log.RetentionDays.TWO_WEEKS,
+      logRetentionRetryOptions: {
+        base: core.Duration.minutes(30),
+        maxRetries: 3,
+      },
+      role: vpcLogGroupRole,
+    });
+    
+    const devLogRtention = new log.LogRetention(this, 'DevLogRtention', {
+      logGroupName: devLogGroup.logGroupName,
+      retention: log.RetentionDays.THREE_DAYS,
+      logRetentionRetryOptions: {
+        base: core.Duration.minutes(30),
+        maxRetries: 3,
+      },
+      role: vpcLogGroupRole,
+    });
+    
+    
+    
+      
     const mgmtToProductionPeering = new ec2.CfnVPCPeeringConnection(this, 'ManagmentToProductionPeering', {
         vpcId: this.ManagmentVPC.vpcId,
         peerVpcId: this.ProductionVpc.vpcId
