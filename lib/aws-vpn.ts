@@ -33,12 +33,29 @@ export class ClientVpn extends core.Construct {
       resources: ["*"],
       actions: ['acm:ImportCertificate', 'acm:DeleteCertificate'] 
     }));
+    
+    vpnCertCustomResourceRole.addManagedPolicy(
+      iam.ManagedPolicy.fromAwsManagedPolicyName(
+        'service-role/AWSLambdaVPCAccessExecutionRole',
+      ),
+    );
+    
 
     vpnCertCustomResourceRole.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('service-role/AWSLambdaBasicExecutionRole'));
 
-    const vpnBucket = new s3.Bucket(this, 'VpnConfigBucket', {});
+    const vpnBucket = new s3.Bucket(this, 'VpnConfigBucket', {
+      encryption: s3.BucketEncryption.S3_MANAGED,
+      serverAccessLogsPrefix: "vpnBucketAccessLogs/",
+      versioned: true
+    });
 
     vpnBucket.grantReadWrite(vpnCertCustomResourceRole);
+    
+    
+    
+    
+    const privateSubnetSelection = { subnetType: ec2.SubnetType.PRIVATE };
+    
     
     
     const vpnCertificateProvider = new cr.Provider(this, "vpnCertificateProvider", {
@@ -49,9 +66,16 @@ export class ClientVpn extends core.Construct {
             handler: 'index.main',
             timeout: core.Duration.seconds(300),
             runtime: lambda.Runtime.PYTHON_3_7,
-            memorySize: 1024
-        })
+            memorySize: 1024,
+            
+            allowAllOutbound: true,
+            vpc: props.ManagmentVPC,
+            vpcSubnets: props.ManagmentVPC.selectSubnets(privateSubnetSelection),
+            deadLetterQueueEnabled: true,
+        }),
     });
+
+    
 
     const vpnCertificate = new core.CustomResource(this, 'vpnCertificate', { 
         serviceToken: vpnCertificateProvider.serviceToken,
