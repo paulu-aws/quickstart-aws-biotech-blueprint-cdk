@@ -74,11 +74,11 @@ Description: AWS Biotech Blueprint CDK is an AWS Quick Start that helps Biotech 
   deploy core AWS Infrastructure as well as CloudFormation templates for common ISV
   solutions. (qs-1of009lua) (ib-1of009lua)
 Parameters:
-  AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43: {
-    Description: S3 bucket for asset "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c",
+  AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3BucketA00C8555: {
+    Description: S3 bucket for asset "7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd",
     Type: String}
-  AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7: {
-    Description: S3 key for asset version "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c",
+  AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598: {
+    Description: S3 key for asset version "7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd",
     Type: String}
 Resources:
   BlueprintServiceCatalogChemAxon00A4428F:
@@ -218,7 +218,7 @@ Resources:
   CDKMetadata:
     Condition: CDKMetadataAvailable
     Metadata: {'aws:cdk:path': AwsBiotechBlueprint/CDKMetadata/Default}
-    Properties: {Analytics: 'v2:deflate64:H4sIAAAAAAAAA11TTW/bMAz9Lb0ratN12HWp+7ECRWEkRQ67KTLjqLHFgKISZIb/+yjbtYOc+PhI8+OZmuv5/Je+u/ltTmFmi/1tY5FANys2dq8y9IEpWlZLCBjJglqEACzR0vlSZTEw1mMs2/pLnBsyNTBQcqRU4dihb1Vq1YC91836YFNsnWcqj5vK2VXceODETWiJkeHTbCqY+ImTedA6kyqPyQk8v+XJfBh+NQwnc1Y5uaPAqfCbl9kEfyf0kwzegkWBXQ2e1cDIsM++OKDzPKReuTkAiSqyqQfbDbQCG8nx+ZUwHrrpr4msctJiffCXtUby01AJ/AF8QtpfbTomLSLvkNy/LrKMvUxjtBOkVc7UulliH+xsjqJ3t3SPWhV+6OYx2n2vzoB682gCDHD67tJvVWXqTWHkckSCChj9S/S9CiOQb75x6jYz6ZaC7k5KVVgG3bxjOWozYgErJjD1wPZOqyz6rSt1I+wTVO4IdM52RtSvhouTaKReF5C7LsZT3CLVxlvI5cpbRUmjn7L9cCJ/MDAUf9F3ak2eDA10dBasYSPzdp1zJN6KBtjLjrF4ScVT05ywSI/nMmvgLn5mK4t072hGw+MJWrKOTsZtlccC9Fe4Pc7v9P2Dnt98BedmFD27GvSyt/8B6E/9E8YDAAA='}
+    Properties: {Analytics: 'v2:deflate64:H4sIAAAAAAAA/11TTW/bMAz9Lb0rarN2Oy91P1agKIykyGE3RWYcNbYYUFSCzPB/H2W7dpATHx9pfjxTcz1/uNN3N7/NKcxssb9tLBLoZsXG7lWGPjBFy2oJASNZUIsQgCVaOl+qLAbGeoxlW3+Jc0OmBgZKjpQqHDv0rUqtGrA/dLM+2BRb55nK46ZydhU3HjhxE1piZPg0mwomfuJkHrTOpMpjcgLPb3kyH4ZfDcPJnFVO7ihwKvzmZTbB3wn9JIO3YFFgV4NnNTAy7LMvDug8D6lXbg5Aoops6sF2A63ARnJ8fiWMh276ayKrnLRYH/xlrZH8NFQCfwCfkPZXm45Ji8g7JPeviyxjL9MY7QRplTO1bpbYBzubo+jdLd2jVoV73TxGu+/VGVBvHk2AAU7fXfqtqky9KYxcjkhQAaN/ib5XYQTyzTdO3WYm3VLQ3UmpCsugm3csR21GLGDFBKYe2N5plUW/daVuhH2Cyh2BztnOiPrVcHESjdTrAnLXxXiKW6TaeAu5XHmrKGn0U7YfTuQPBobiL/pOrcmToYGOzoI1bGTernOOxFvRAHvZMRYvqXhqmhMW6fFcZg3cxc9sZZHuHc1oeDxBS9bRybit8liA/gq3x/kvPb/X85uv4NyMomdXg1729j/CFRtuxgMAAA=='}
     Type: AWS::CDK::Metadata
   ClientVpn0clientVpnEndpointAssociation8160B577:
     Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/0-clientVpnEndpointAssociation}
@@ -408,11 +408,11 @@ Resources:
   ClientVpnvpnCertificateProviderframeworkonEvent3C19EA05:
     DependsOn: [ClientVpnvpnCertificateProviderframeworkonEventServiceRoleDefaultPolicyE25CE498,
       ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0]
-    Metadata: {'aws:asset:path': asset.c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c,
+    Metadata: {'aws:asset:is-bundled': false, 'aws:asset:path': asset.7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cd,
       'aws:asset:property': Code, 'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider/framework-onEvent/Resource}
     Properties:
       Code:
-        S3Bucket: {Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43}
+        S3Bucket: {Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3BucketA00C8555}
         S3Key:
           Fn::Join:
           - ''
@@ -420,12 +420,12 @@ Resources:
               - 0
               - Fn::Split:
                 - '||'
-                - {Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7}
+                - {Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598}
             - Fn::Select:
               - 1
               - Fn::Split:
                 - '||'
-                - {Ref: AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7}
+                - {Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598}
       Description: AWS CDK resource provider framework - onEvent (AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider)
       Environment:
         Variables:
@@ -435,7 +435,7 @@ Resources:
       Role:
         Fn::GetAtt: [ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0,
           Arn]
-      Runtime: nodejs14.x
+      Runtime: nodejs12.x
       Timeout: 900
     Type: AWS::Lambda::Function
   ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0:

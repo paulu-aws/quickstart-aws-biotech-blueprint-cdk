@@ -49,6 +49,9 @@ for assetFolder in folders:
             
             
             if "S3Bucket" in templateData['Resources'][resource]['Properties']['Code']:
+                
+                print(templateData['Resources'][resource]['Properties']['Code']['S3Bucket'])
+                
                 if assetId in templateData['Resources'][resource]['Properties']['Code']['S3Bucket']['Ref']:
                     
                     bucketParamName = templateData['Resources'][resource]['Properties']['Code']['S3Bucket']['Ref']
