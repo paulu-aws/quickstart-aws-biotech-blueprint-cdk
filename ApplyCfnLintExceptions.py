@@ -12,7 +12,8 @@ for parameter in templateData['Parameters']:
 if paremeterToPop != '': templateData['Parameters'].pop(paremeterToPop)
 
 for resource in templateData['Resources']:
-    if templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/ClientVpn/VpnCertificateLambdaCustomResourceRole/DefaultPolicy/Resource':
+    if templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/ClientVpn/VpnCertificateLambdaCustomResourceRole/DefaultPolicy/Resource' \
+        or templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/VpcCore/retentionRole/DefaultPolicy/Resource' :
         templateData['Resources'][resource]['Metadata']['cfn-lint'] = {
             "config": {
                 "ignore_checks": ['EIAMPolicyWildcardResource', 'EIAMPolicyActionWildcard'],
@@ -23,6 +24,8 @@ for resource in templateData['Resources']:
                     
             }
         }
+
+
         
     if templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-for-HIPAA-Security' \
     or templateData['Resources'][resource]['Metadata']['aws:cdk:path'] == 'AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-for-NIST-CSF':

@@ -259,7 +259,11 @@ Resources:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/CDKMetadata/Default
     Properties:
+<<<<<<< HEAD
       Analytics: v2:deflate64:H4sIAAAAAAAA/11TTW/bMAz9Lb0rarN2Oy91P1agKIykyGE3RWYcNbYYUFSCzPB/H2W7dpATHx9pfjxTcz1/uNN3N7/NKcxssb9tLBLoZsXG7lWGPjBFy2oJASNZUIsQgCVaOl+qLAbGeoxlW3+Jc0OmBgZKjpQqHDv0rUqtGrA/dLM+2BRb55nK46ZydhU3HjhxE1piZPg0mwomfuJkHrTOpMpjcgLPb3kyH4ZfDcPJnFVO7ihwKvzmZTbB3wn9JIO3YFFgV4NnNTAy7LMvDug8D6lXbg5Aoops6sF2A63ARnJ8fiWMh276ayKrnLRYH/xlrZH8NFQCfwCfkPZXm45Ji8g7JPeviyxjL9MY7QRplTO1bpbYBzubo+jdLd2jVoV73TxGu+/VGVBvHk2AAU7fXfqtqky9KYxcjkhQAaN/ib5XYQTyzTdO3WYm3VLQ3UmpCsugm3csR21GLGDFBKYe2N5plUW/daVuhH2Cyh2BztnOiPrVcHESjdTrAnLXxXiKW6TaeAu5XHmrKGn0U7YfTuQPBobiL/pOrcmToYGOzoI1bGTernOOxFvRAHvZMRYvqXhqmhMW6fFcZg3cxc9sZZHuHc1oeDxBS9bRybit8liA/gq3x/kvPb/X85uv4NyMomdXg1729j/CFRtuxgMAAA==
+=======
+      Analytics: v2:deflate64:H4sIAAAAAAAA/11TS2/bMAz+Lb0rarNuOy/1mq7AUHhO0cNuiswkamwxk6gEmeH/PkrybKMnfXyIj4/kUi4/38m7m2/q4he6Pt52Gh3IbkNKH0WB1pMLmkQFHoPTIIqdHfHKeyD23Bu7j4ZSOdUCgRNF8ITt/BOHqg0ZtL2IqTrQn2T3dtLR9lYWogzbxuhN2FqgqJtQhYHgVW0bmPSTjmtAbVSMPDpH8PhcxudF0ZMiuKirKJ05M5wCP1sulfF/h1zJIK2IGTi0YEkMGi720dYnNJYG11FcN3j5iYmDGWSPEsAxOdy8BZ1q3IAOztD1yWE4pYY+KorGcNa3k51nG5Wvyu2BXoAu6I4fmh+dVoEO6MzfZKlCZm60Jo560eDey45rHTOPmEHFc7QpMAsbcqDawSULvTCqlV2FOXh6S+QRJh4z6oW/X6i4JF6mXWFZdg9BH4EelAeRYfwwoPxMceYyV6zaba14OZnSBgjtOtjM6gjiBAbM2f9wg78ChFRiAr3QaHdmLzvWfIfGnMFdi4Pi+TTDmrI1uMwc8DHUcZ2zAV2rrIaST6MXLrL4hfsZ9uoHeoL6N9qUbJK4DHBno0ErUsx5ylyiox13hXkwGOp1DB6Tlg7reHFzr0E3G3fPjaQbW7jhyLxkr7PhcnthsQb57m/Py69yeS+XN+/emIULPNAWZJXff2tEHrb7AwAA
+>>>>>>> 47cf9def96734c6da860dab1fd4138bcbad6070f
     Type: AWS::CDK::Metadata
   ClientVpn0clientVpnEndpointAssociation8160B577:
     Metadata:
@@ -415,6 +419,11 @@ Resources:
         - ''
         - - 'arn:'
           - Ref: AWS::Partition
+          - :iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+      - Fn::Join:
+        - ''
+        - - 'arn:'
+          - Ref: AWS::Partition
           - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
     Type: AWS::IAM::Role
   ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1:
@@ -458,6 +467,12 @@ Resources:
                 - ClientVpnVpnConfigBucketF2E04B98
                 - Arn
               - /*
+        - Action: sqs:SendMessage
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20
+            - Arn
         Version: '2012-10-17'
       PolicyName: ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1
       Roles:
@@ -467,6 +482,15 @@ Resources:
     DeletionPolicy: Retain
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/ClientVpn/VpnConfigBucket/Resource
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      LoggingConfiguration:
+        LogFilePrefix: vpnBucketAccessLogs/
+      VersioningConfiguration:
+        Status: Enabled
     Type: AWS::S3::Bucket
     UpdateReplacePolicy: Retain
   ClientVpnVpnUsersSG5BB5DCBE:
@@ -615,6 +639,15 @@ Resources:
     DeletionPolicy: Retain
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/ConfigEnabledPromise/ConfigBucket/Resource
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      LoggingConfiguration:
+        LogFilePrefix: ConfigBucketAccessLogs/
+      VersioningConfiguration:
+        Status: Enabled
     Type: AWS::S3::Bucket
     UpdateReplacePolicy: Retain
   ConfigEnabledPromiseConfigBucketPolicy2B9A439D:
@@ -1925,6 +1958,39 @@ Resources:
         VPCRegion:
           Ref: AWS::Region
     Type: AWS::Route53::HostedZone
+  LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A:
+    DependsOn:
+    - VpcCoreretentionRoleDefaultPolicyEEAA8B99
+    - VpcCoreretentionRole1BA39518
+    Metadata:
+      aws:asset:is-bundled: false
+      aws:asset:path: asset.c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5
+      aws:asset:property: Code
+      aws:cdk:path: AwsBiotechBlueprint/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource
+    Properties:
+      Code:
+        S3Bucket:
+          Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69
+        S3Key:
+          Fn::Join:
+          - ''
+          - - Fn::Select:
+              - 0
+              - Fn::Split:
+                - '||'
+                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+            - Fn::Select:
+              - 1
+              - Fn::Split:
+                - '||'
+                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+      Handler: index.handler
+      Role:
+        Fn::GetAtt:
+        - VpcCoreretentionRole1BA39518
+        - Arn
+      Runtime: nodejs14.x
+    Type: AWS::Lambda::Function
   SingletonLambdaCreateVpnCertificateLambda14FF3DCC:
     DependsOn:
     - ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1
@@ -1965,6 +2031,11 @@ Resources:
           \ --no-cache-dir --ignore-installed --target=/tmp/'];C(F)\n\tif B[E]=='Delete':return\
           \ I(B,D)\n\telif B[E]=='Create':return J(B,D)\n\telif B[E]=='Update':I(B,D,S);return\
           \ J(B,D)"
+      DeadLetterConfig:
+        TargetArn:
+          Fn::GetAtt:
+          - SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20
+          - Arn
       Handler: index.main
       MemorySize: 1024
       Role:
@@ -1973,7 +2044,58 @@ Resources:
         - Arn
       Runtime: python3.7
       Timeout: 300
+      VpcConfig:
+        SecurityGroupIds:
+        - Fn::GetAtt:
+          - SingletonLambdaCreateVpnCertificateLambdaSecurityGroupC03A5216
+          - GroupId
+        SubnetIds:
+        - Ref: VpcCoreManagmentApplicationSubnet1Subnet1DE5C8C4
+        - Ref: VpcCoreManagmentApplicationSubnet2SubnetF1B8CE48
     Type: AWS::Lambda::Function
+  SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20:
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/DeadLetterQueue/Resource
+    Properties:
+      MessageRetentionPeriod: 1209600
+    Type: AWS::SQS::Queue
+    UpdateReplacePolicy: Delete
+  SingletonLambdaCreateVpnCertificateLambdaSecurityGroupC03A5216:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/SecurityGroup/Resource
+    Properties:
+      GroupDescription: Automatic security group for Lambda Function AwsBiotechBlueprintSingletonLambdaCreateVpnCertificateLambdaDED33AFA
+      SecurityGroupEgress:
+      - CidrIp: 0.0.0.0/0
+        Description: Allow all outbound traffic by default
+        IpProtocol: '-1'
+      VpcId:
+        Ref: VpcCoreManagment030DB556
+    Type: AWS::EC2::SecurityGroup
+  VpcCoreDevLogRtention28DE857A:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevLogRtention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreDevVpcLogGroupB93F8F61
+      RetentionInDays: 3
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
+  VpcCoreDevVpcLogGroupB93F8F61:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
   VpcCoreDevelopment37E2B994:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/Resource
@@ -2325,6 +2447,22 @@ Resources:
       VpcId:
         Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreDevlowLogFlowLog6008C134:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreDevVpcLogGroupB93F8F61
+      ResourceId:
+        Ref: VpcCoreDevelopment37E2B994
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
   VpcCoreManagment030DB556:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/Resource
@@ -2595,6 +2733,76 @@ Resources:
       VpcId:
         Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreMgmtFlowLogF6131196:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtFlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreMgmtVpcLogGroup57411704
+      ResourceId:
+        Ref: VpcCoreManagment030DB556
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
+  VpcCoreMgmtLogRtention363D019E:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtLogRtention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreMgmtVpcLogGroup57411704
+      RetentionInDays: 14
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
+  VpcCoreMgmtVpcLogGroup57411704:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
+  VpcCoreProdFlowLog514212F0:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProdFlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreProductionVpcLogGroup8B46D99C
+      ResourceId:
+        Ref: VpcCoreProductionD971AE3A
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
+  VpcCoreProdLogRetention4C6205DA:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProdLogRetention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreProductionVpcLogGroup8B46D99C
+      RetentionInDays: 30
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
   VpcCoreProductionApplicationSubnet1DefaultRouteA2D6D34E:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/DefaultRoute
@@ -2946,6 +3154,14 @@ Resources:
       VpcId:
         Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreProductionVpcLogGroup8B46D99C:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProductionVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
   VpcCoredevIsolatedToMgmt06FAE198F:
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/VpcCore/devIsolatedToMgmt-0
@@ -3180,3 +3396,102 @@ Resources:
       VpcPeeringConnectionId:
         Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
+  VpcCoreretentionRole1BA39518:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/retentionRole/Resource
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: lambda.amazonaws.com
+        Version: '2012-10-17'
+    Type: AWS::IAM::Role
+  VpcCoreretentionRoleDefaultPolicyEEAA8B99:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/retentionRole/DefaultPolicy/Resource
+      cfn-lint:
+        config:
+          ignore_checks:
+          - EIAMPolicyWildcardResource
+          - EIAMPolicyActionWildcard
+          ignore_reasons:
+            EIAMPolicyActionWildcard: The policy action wildcards in this policy are
+              generated by the AWS CDK, which the developers of this Quick Start have
+              no control over.
+            EIAMPolicyWildcardResource: This particular role gives permission to a
+              custom resource to create a certificate. We cannot provide a specific
+              certificate ARN at deployment time as it does not yet exist.
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action: logs:CreateLogGroup
+          Effect: Allow
+          Resource: '*'
+        - Action:
+          - logs:PutRetentionPolicy
+          - logs:DeleteRetentionPolicy
+          Effect: Allow
+          Resource: '*'
+        Version: '2012-10-17'
+      PolicyName: VpcCoreretentionRoleDefaultPolicyEEAA8B99
+      Roles:
+      - Ref: VpcCoreretentionRole1BA39518
+    Type: AWS::IAM::Policy
+  VpcCorevpcLogGroupRole0DE2B7DA:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/vpcLogGroupRole/Resource
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: vpc-flow-logs.amazonaws.com
+        Version: '2012-10-17'
+    Type: AWS::IAM::Role
+  VpcCorevpcLogGroupRoleDefaultPolicyCEA46C79:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/vpcLogGroupRole/DefaultPolicy/Resource
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreProductionVpcLogGroup8B46D99C
+            - Arn
+        - Action: iam:PassRole
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCorevpcLogGroupRole0DE2B7DA
+            - Arn
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreMgmtVpcLogGroup57411704
+            - Arn
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreDevVpcLogGroupB93F8F61
+            - Arn
+        Version: '2012-10-17'
+      PolicyName: VpcCorevpcLogGroupRoleDefaultPolicyCEA46C79
+      Roles:
+      - Ref: VpcCorevpcLogGroupRole0DE2B7DA
+    Type: AWS::IAM::Policy

@@ -3,72 +3,72 @@ Conditions:
     Fn::Or:
     - Fn::Or:
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - af-south-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - ap-east-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - ap-northeast-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - ap-northeast-2
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - ap-south-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - ap-southeast-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - ap-southeast-2
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - ca-central-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - cn-north-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - cn-northwest-1
     - Fn::Or:
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - eu-central-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - eu-north-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - eu-south-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - eu-west-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - eu-west-2
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - eu-west-3
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - me-south-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - sa-east-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - us-east-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - us-east-2
     - Fn::Or:
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - us-west-1
       - Fn::Equals:
-        - {Ref: 'AWS::Region'}
+        - Ref: AWS::Region
         - us-west-2
 Description: AWS Biotech Blueprint CDK is an AWS Quick Start that helps Biotech companies
   deploy core AWS Infrastructure as well as CloudFormation templates for common ISV
@@ -82,7 +82,8 @@ Parameters:
     Type: String}
 Resources:
   BlueprintServiceCatalogChemAxon00A4428F:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/ChemAxon}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/ChemAxon
     Properties:
       Description: ChemAxon's Compound Registration is a system built on a set of
         web services, aiding users to register molecular structures into a compound
@@ -92,20 +93,25 @@ Resources:
       Name: ChemAxon Compound Registry
       Owner: ChemAxon
       ProvisioningArtifactParameters:
-      - Info: {LoadTemplateFromURL: 'https://s3.amazonaws.com/aws-quickstart/quickstart-chemaxon-registry/templates/chemaxon-registry.template'}
+      - Info:
+          LoadTemplateFromURL: https://s3.amazonaws.com/aws-quickstart/quickstart-chemaxon-registry/templates/chemaxon-registry.template
       SupportDescription: You need to subscribe to the ChemAxon marketplace AMI before
         you can deploy this software. https://aws.amazon.com/marketplace/pp/B077F6VV3B?qid=1553611079631&sr=0-1&ref_=srh_res_product_title.
       SupportEmail: support@chemaxon.com
       SupportUrl: https://chemaxon.com/support
     Type: AWS::ServiceCatalog::CloudFormationProduct
   BlueprintServiceCatalogChemAxonAssociation8FDD4D57:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/ChemAxonAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/ChemAxonAssociation
     Properties:
-      PortfolioId: {Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E}
-      ProductId: {Ref: BlueprintServiceCatalogChemAxon00A4428F}
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogChemAxon00A4428F
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
   BlueprintServiceCatalogDotmatics7C3629F0:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/Dotmatics}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/Dotmatics
     Properties:
       Description: Dotmatics Suite running on AWS.  Please contact sales@dotmatics.com
         for licensing details.
@@ -113,20 +119,25 @@ Resources:
       Name: Dotmatics Suite
       Owner: Dotmatics
       ProvisioningArtifactParameters:
-      - Info: {LoadTemplateFromURL: 'https://aws-quickstart.s3.amazonaws.com/quickstart-dotmatics/templates/dotmatics.template'}
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-dotmatics/templates/dotmatics.template
       SupportDescription: "Support is provided through our usual channels \u2013 please\
         \ visit our support pages or drop us an email."
       SupportEmail: support@dotmatics.com
       SupportUrl: https://aws-quickstart.s3.amazonaws.com/quickstart-dotmatics/doc/dotmatics-suite-on-the-aws-cloud.pdf
     Type: AWS::ServiceCatalog::CloudFormationProduct
   BlueprintServiceCatalogDotmaticsAssociation19F858FD:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/DotmaticsAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/DotmaticsAssociation
     Properties:
-      PortfolioId: {Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E}
-      ProductId: {Ref: BlueprintServiceCatalogDotmatics7C3629F0}
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogDotmatics7C3629F0
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
   BlueprintServiceCatalogHailCluster2883A297:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/HailCluster}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailCluster
     Properties:
       Description: Deploys Hail 0.2, an open-source library for scalable genomic data
         exploration, on AWS EMR.
@@ -134,17 +145,22 @@ Resources:
       Name: Hail Cluster on AWS EMR
       Owner: AWS
       ProvisioningArtifactParameters:
-      - Info: {LoadTemplateFromURL: 'https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-core.template.yaml'}
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-core.template.yaml
       SupportUrl: https://aws-quickstart.github.io/quickstart-hail/
     Type: AWS::ServiceCatalog::CloudFormationProduct
   BlueprintServiceCatalogHailClusterAssociation0C188407:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/HailClusterAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailClusterAssociation
     Properties:
-      PortfolioId: {Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E}
-      ProductId: {Ref: BlueprintServiceCatalogHailCluster2883A297}
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogHailCluster2883A297
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
   BlueprintServiceCatalogHailNotebook8BAA992E:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/HailNotebook}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailNotebook
     Properties:
       Description: Deploys an AWS SageMaker notebook that can integrate with with
         Hail 0.2 cluster on EMR.
@@ -152,29 +168,40 @@ Resources:
       Name: Hail Notebook on AWS SageMaker
       Owner: AWS
       ProvisioningArtifactParameters:
-      - Info: {LoadTemplateFromURL: 'https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-sagemaker.template.yaml'}
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-hail/templates/hail-sagemaker.template.yaml
       SupportUrl: https://aws-quickstart.github.io/quickstart-hail/
     Type: AWS::ServiceCatalog::CloudFormationProduct
   BlueprintServiceCatalogHailNotebookAssociationE8CC88BA:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/HailNotebookAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/HailNotebookAssociation
     Properties:
-      PortfolioId: {Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E}
-      ProductId: {Ref: BlueprintServiceCatalogHailNotebook8BAA992E}
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogHailNotebook8BAA992E
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
   BlueprintServiceCatalogInformaticsCatalog2B70227E:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/InformaticsCatalog}
-    Properties: {Description: Collection of bio and chem informatics tools easily
-        deployed into the Biotech Blueprint., DisplayName: Biotech Blueprint Informatics
-        Catalog, ProviderName: AWS}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/InformaticsCatalog
+    Properties:
+      Description: Collection of bio and chem informatics tools easily deployed into
+        the Biotech Blueprint.
+      DisplayName: Biotech Blueprint Informatics Catalog
+      ProviderName: AWS
     Type: AWS::ServiceCatalog::Portfolio
   BlueprintServiceCatalogNextflowAssocation851EF07D:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/NextflowAssocation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/NextflowAssocation
     Properties:
-      PortfolioId: {Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E}
-      ProductId: {Ref: BlueprintServiceCatalogNextflowB4A674B7}
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogNextflowB4A674B7
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
   BlueprintServiceCatalogNextflowB4A674B7:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/Nextflow}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/Nextflow
     Properties:
       Description: Nextflow enables scalable and reproducible scientific workflows
         using software containers. It allows the adaptation of pipelines written in
@@ -184,17 +211,22 @@ Resources:
       Name: Nextflow
       Owner: AWS
       ProvisioningArtifactParameters:
-      - Info: {LoadTemplateFromURL: 'https://s3.amazonaws.com/aws-genomics-workflows/templates/aws-genomics-root-novpc.template.yaml'}
+      - Info:
+          LoadTemplateFromURL: https://s3.amazonaws.com/aws-genomics-workflows/templates/aws-genomics-root-novpc.template.yaml
       SupportUrl: https://docs.opendata.aws/genomics-workflows/orchestration/nextflow/nextflow-overview/
     Type: AWS::ServiceCatalog::CloudFormationProduct
   BlueprintServiceCatalogTitianAssociation0A117A6A:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/TitianAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/TitianAssociation
     Properties:
-      PortfolioId: {Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E}
-      ProductId: {Ref: BlueprintServiceCatalogTitianE7AADF00}
+      PortfolioId:
+        Ref: BlueprintServiceCatalogInformaticsCatalog2B70227E
+      ProductId:
+        Ref: BlueprintServiceCatalogTitianE7AADF00
     Type: AWS::ServiceCatalog::PortfolioProductAssociation
   BlueprintServiceCatalogTitianE7AADF00:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/BlueprintServiceCatalog/Titian}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/BlueprintServiceCatalog/Titian
     Properties:
       Description: 'Mosaic FreezerManagement is a comprehensive and cost-effective
         software solution for managing and tracking all types of sample inventory,
@@ -208,7 +240,8 @@ Resources:
       Name: Mosaic FreezerManagement
       Owner: Titian Software Limited
       ProvisioningArtifactParameters:
-      - Info: {LoadTemplateFromURL: 'https://aws-quickstart.s3.amazonaws.com/quickstart-titian-mosaic/templates/titian-mosaic.template'}
+      - Info:
+          LoadTemplateFromURL: https://aws-quickstart.s3.amazonaws.com/quickstart-titian-mosaic/templates/titian-mosaic.template
       SupportDescription: "Titian supports a worldwide customer base \u2013 including\
         \ customer sites in Europe, USA and Asia. Support may be provided by email,\
         \ telephone or shared Desktop sessions"
@@ -221,107 +254,164 @@ Resources:
     Properties: {Analytics: 'v2:deflate64:H4sIAAAAAAAA/11TTW/bMAz9Lb0rarN2Oy91P1agKIykyGE3RWYcNbYYUFSCzPB/H2W7dpATHx9pfjxTcz1/uNN3N7/NKcxssb9tLBLoZsXG7lWGPjBFy2oJASNZUIsQgCVaOl+qLAbGeoxlW3+Jc0OmBgZKjpQqHDv0rUqtGrA/dLM+2BRb55nK46ZydhU3HjhxE1piZPg0mwomfuJkHrTOpMpjcgLPb3kyH4ZfDcPJnFVO7ihwKvzmZTbB3wn9JIO3YFFgV4NnNTAy7LMvDug8D6lXbg5Aoops6sF2A63ARnJ8fiWMh276ayKrnLRYH/xlrZH8NFQCfwCfkPZXm45Ji8g7JPeviyxjL9MY7QRplTO1bpbYBzubo+jdLd2jVoV73TxGu+/VGVBvHk2AAU7fXfqtqky9KYxcjkhQAaN/ib5XYQTyzTdO3WYm3VLQ3UmpCsugm3csR21GLGDFBKYe2N5plUW/daVuhH2Cyh2BztnOiPrVcHESjdTrAnLXxXiKW6TaeAu5XHmrKGn0U7YfTuQPBobiL/pOrcmToYGOzoI1bGTernOOxFvRAHvZMRYvqXhqmhMW6fFcZg3cxc9sZZHuHc1oeDxBS9bRybit8liA/gq3x/kvPb/X85uv4NyMomdXg1729j/CFRtuxgMAAA=='}
     Type: AWS::CDK::Metadata
   ClientVpn0clientVpnEndpointAssociation8160B577:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/0-clientVpnEndpointAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/0-clientVpnEndpointAssociation
     Properties:
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
-      SubnetId: {Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
+      SubnetId:
+        Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E
     Type: AWS::EC2::ClientVpnTargetNetworkAssociation
   ClientVpn0developmentRouteDE605129:
-    DependsOn: [ClientVpn0clientVpnEndpointAssociation8160B577, ClientVpn1clientVpnEndpointAssociation19D93CB9]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/0-developmentRoute}
+    DependsOn:
+    - ClientVpn0clientVpnEndpointAssociation8160B577
+    - ClientVpn1clientVpnEndpointAssociation19D93CB9
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/0-developmentRoute
     Properties:
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreDevelopment37E2B994, CidrBlock]
-      TargetVpcSubnetId: {Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E}
+        Fn::GetAtt:
+        - VpcCoreDevelopment37E2B994
+        - CidrBlock
+      TargetVpcSubnetId:
+        Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E
     Type: AWS::EC2::ClientVpnRoute
   ClientVpn0productionRoute7AD177DA:
-    DependsOn: [ClientVpn0clientVpnEndpointAssociation8160B577, ClientVpn1clientVpnEndpointAssociation19D93CB9]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/0-productionRoute}
+    DependsOn:
+    - ClientVpn0clientVpnEndpointAssociation8160B577
+    - ClientVpn1clientVpnEndpointAssociation19D93CB9
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/0-productionRoute
     Properties:
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreProductionD971AE3A, CidrBlock]
-      TargetVpcSubnetId: {Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E}
+        Fn::GetAtt:
+        - VpcCoreProductionD971AE3A
+        - CidrBlock
+      TargetVpcSubnetId:
+        Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E
     Type: AWS::EC2::ClientVpnRoute
   ClientVpn1clientVpnEndpointAssociation19D93CB9:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/1-clientVpnEndpointAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/1-clientVpnEndpointAssociation
     Properties:
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
-      SubnetId: {Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
+      SubnetId:
+        Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E
     Type: AWS::EC2::ClientVpnTargetNetworkAssociation
   ClientVpn1developmentRouteBB456F2F:
-    DependsOn: [ClientVpn0clientVpnEndpointAssociation8160B577, ClientVpn1clientVpnEndpointAssociation19D93CB9]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/1-developmentRoute}
+    DependsOn:
+    - ClientVpn0clientVpnEndpointAssociation8160B577
+    - ClientVpn1clientVpnEndpointAssociation19D93CB9
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/1-developmentRoute
     Properties:
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreDevelopment37E2B994, CidrBlock]
-      TargetVpcSubnetId: {Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E}
+        Fn::GetAtt:
+        - VpcCoreDevelopment37E2B994
+        - CidrBlock
+      TargetVpcSubnetId:
+        Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E
     Type: AWS::EC2::ClientVpnRoute
   ClientVpn1productionRouteE229C4FD:
-    DependsOn: [ClientVpn0clientVpnEndpointAssociation8160B577, ClientVpn1clientVpnEndpointAssociation19D93CB9]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/1-productionRoute}
+    DependsOn:
+    - ClientVpn0clientVpnEndpointAssociation8160B577
+    - ClientVpn1clientVpnEndpointAssociation19D93CB9
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/1-productionRoute
     Properties:
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreProductionD971AE3A, CidrBlock]
-      TargetVpcSubnetId: {Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E}
+        Fn::GetAtt:
+        - VpcCoreProductionD971AE3A
+        - CidrBlock
+      TargetVpcSubnetId:
+        Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E
     Type: AWS::EC2::ClientVpnRoute
   ClientVpnClientVpnAccessLogGroup8491CD05:
     DeletionPolicy: Retain
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/ClientVpnAccessLogGroup/Resource}
-    Properties: {RetentionInDays: 180}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/ClientVpnAccessLogGroup/Resource
+    Properties:
+      RetentionInDays: 180
     Type: AWS::Logs::LogGroup
     UpdateReplacePolicy: Retain
   ClientVpnClientVpnAccessLogStream5480C352:
     DeletionPolicy: Retain
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/ClientVpnAccessLogStream/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/ClientVpnAccessLogStream/Resource
     Properties:
-      LogGroupName: {Ref: ClientVpnClientVpnAccessLogGroup8491CD05}
+      LogGroupName:
+        Ref: ClientVpnClientVpnAccessLogGroup8491CD05
     Type: AWS::Logs::LogStream
     UpdateReplacePolicy: Retain
   ClientVpnDevelopmentAuthorizationF2F84AF6:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/DevelopmentAuthorization}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/DevelopmentAuthorization
     Properties:
       AuthorizeAllGroups: true
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
       Description: Allows VPN users access to Development VPC
       TargetNetworkCidr:
-        Fn::GetAtt: [VpcCoreDevelopment37E2B994, CidrBlock]
+        Fn::GetAtt:
+        - VpcCoreDevelopment37E2B994
+        - CidrBlock
     Type: AWS::EC2::ClientVpnAuthorizationRule
   ClientVpnManagmentAuthorization5FD7AAA7:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/ManagmentAuthorization}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/ManagmentAuthorization
     Properties:
       AuthorizeAllGroups: true
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
       Description: Allows Transit VPN users access to Managment VPC
       TargetNetworkCidr:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
     Type: AWS::EC2::ClientVpnAuthorizationRule
   ClientVpnProductionAuthorization8EEF0591:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/ProductionAuthorization}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/ProductionAuthorization
     Properties:
       AuthorizeAllGroups: true
-      ClientVpnEndpointId: {Ref: ClientVpnclientVpnEndpoint53D29AAC}
+      ClientVpnEndpointId:
+        Ref: ClientVpnclientVpnEndpoint53D29AAC
       Description: Allows VPN users access to Production VPC
       TargetNetworkCidr:
-        Fn::GetAtt: [VpcCoreProductionD971AE3A, CidrBlock]
+        Fn::GetAtt:
+        - VpcCoreProductionD971AE3A
+        - CidrBlock
     Type: AWS::EC2::ClientVpnAuthorizationRule
   ClientVpnVpnCertificateLambdaCustomResourceRole042AF384:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/VpnCertificateLambdaCustomResourceRole/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/VpnCertificateLambdaCustomResourceRole/Resource
     Properties:
       AssumeRolePolicyDocument:
         Statement:
         - Action: sts:AssumeRole
           Effect: Allow
-          Principal: {Service: lambda.amazonaws.com}
+          Principal:
+            Service: lambda.amazonaws.com
         Version: '2012-10-17'
       ManagedPolicyArns:
       - Fn::Join:
         - ''
         - - 'arn:'
-          - {Ref: 'AWS::Partition'}
+          - Ref: AWS::Partition
+          - :iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole
+      - Fn::Join:
+        - ''
+        - - 'arn:'
+          - Ref: AWS::Partition
           - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
     Type: AWS::IAM::Role
   ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1:
@@ -329,79 +419,125 @@ Resources:
       aws:cdk:path: AwsBiotechBlueprint/ClientVpn/VpnCertificateLambdaCustomResourceRole/DefaultPolicy/Resource
       cfn-lint:
         config:
-          ignore_checks: [EIAMPolicyWildcardResource, EIAMPolicyActionWildcard]
-          ignore_reasons: {EIAMPolicyActionWildcard: 'The policy action wildcards
-              in this policy are generated by the AWS CDK, which the developers of
-              this Quick Start have no control over.', EIAMPolicyWildcardResource: This
-              particular role gives permission to a custom resource to create a certificate.
-              We cannot provide a specific certificate ARN at deployment time as it
-              does not yet exist.}
+          ignore_checks:
+          - EIAMPolicyWildcardResource
+          - EIAMPolicyActionWildcard
+          ignore_reasons:
+            EIAMPolicyActionWildcard: The policy action wildcards in this policy are
+              generated by the AWS CDK, which the developers of this Quick Start have
+              no control over.
+            EIAMPolicyWildcardResource: This particular role gives permission to a
+              custom resource to create a certificate. We cannot provide a specific
+              certificate ARN at deployment time as it does not yet exist.
     Properties:
       PolicyDocument:
         Statement:
-        - Action: ['acm:ImportCertificate', 'acm:DeleteCertificate']
+        - Action:
+          - acm:ImportCertificate
+          - acm:DeleteCertificate
           Effect: Allow
           Resource: '*'
-        - Action: ['s3:GetObject*', 's3:GetBucket*', 's3:List*', 's3:DeleteObject*',
-            's3:PutObject*', 's3:Abort*']
+        - Action:
+          - s3:GetObject*
+          - s3:GetBucket*
+          - s3:List*
+          - s3:DeleteObject*
+          - s3:PutObject*
+          - s3:Abort*
           Effect: Allow
           Resource:
-          - Fn::GetAtt: [ClientVpnVpnConfigBucketF2E04B98, Arn]
+          - Fn::GetAtt:
+            - ClientVpnVpnConfigBucketF2E04B98
+            - Arn
           - Fn::Join:
             - ''
-            - - Fn::GetAtt: [ClientVpnVpnConfigBucketF2E04B98, Arn]
+            - - Fn::GetAtt:
+                - ClientVpnVpnConfigBucketF2E04B98
+                - Arn
               - /*
+        - Action: sqs:SendMessage
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20
+            - Arn
         Version: '2012-10-17'
       PolicyName: ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1
       Roles:
-      - {Ref: ClientVpnVpnCertificateLambdaCustomResourceRole042AF384}
+      - Ref: ClientVpnVpnCertificateLambdaCustomResourceRole042AF384
     Type: AWS::IAM::Policy
   ClientVpnVpnConfigBucketF2E04B98:
     DeletionPolicy: Retain
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/VpnConfigBucket/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/VpnConfigBucket/Resource
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      LoggingConfiguration:
+        LogFilePrefix: vpnBucketAccessLogs/
+      VersioningConfiguration:
+        Status: Enabled
     Type: AWS::S3::Bucket
     UpdateReplacePolicy: Retain
   ClientVpnVpnUsersSG5BB5DCBE:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/VpnUsersSG/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/VpnUsersSG/Resource
     Properties:
       GroupDescription: Security group associated with VPN users accessing the network
         through the Client VPN Endpoint in the managment VPC.
       GroupName: VpnUsersSG
       SecurityGroupEgress:
-      - {CidrIp: 0.0.0.0/0, Description: Allow all outbound traffic by default, IpProtocol: '-1'}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - CidrIp: 0.0.0.0/0
+        Description: Allow all outbound traffic by default
+        IpProtocol: '-1'
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::SecurityGroup
   ClientVpnclientVpnEndpoint53D29AAC:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/clientVpnEndpoint}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/clientVpnEndpoint
     Properties:
       AuthenticationOptions:
       - MutualAuthentication:
-          ClientRootCertificateChainArn: {Ref: ClientVpnvpnCertificate550A99D6}
+          ClientRootCertificateChainArn:
+            Ref: ClientVpnvpnCertificate550A99D6
         Type: certificate-authentication
       ClientCidrBlock: 10.71.0.0/16
       ConnectionLogOptions:
-        CloudwatchLogGroup: {Ref: ClientVpnClientVpnAccessLogGroup8491CD05}
-        CloudwatchLogStream: {Ref: ClientVpnClientVpnAccessLogStream5480C352}
+        CloudwatchLogGroup:
+          Ref: ClientVpnClientVpnAccessLogGroup8491CD05
+        CloudwatchLogStream:
+          Ref: ClientVpnClientVpnAccessLogStream5480C352
         Enabled: true
       Description: Internal VPN Endpoint
-      DnsServers: [10.70.0.2]
+      DnsServers:
+      - 10.70.0.2
       SecurityGroupIds:
-      - Fn::GetAtt: [ClientVpnVpnUsersSG5BB5DCBE, GroupId]
-      ServerCertificateArn: {Ref: ClientVpnvpnCertificate550A99D6}
+      - Fn::GetAtt:
+        - ClientVpnVpnUsersSG5BB5DCBE
+        - GroupId
+      ServerCertificateArn:
+        Ref: ClientVpnvpnCertificate550A99D6
       SplitTunnel: true
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::ClientVpnEndpoint
   ClientVpnvpnCertificate550A99D6:
     DeletionPolicy: Delete
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/vpnCertificate/Default}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/vpnCertificate/Default
     Properties:
       ServiceToken:
-        Fn::GetAtt: [ClientVpnvpnCertificateProviderframeworkonEvent3C19EA05, Arn]
+        Fn::GetAtt:
+        - ClientVpnvpnCertificateProviderframeworkonEvent3C19EA05
+        - Arn
       VpnConfigBucket:
         Fn::Join:
         - ''
         - - s3://
-          - {Ref: ClientVpnVpnConfigBucketF2E04B98}
+          - Ref: ClientVpnVpnConfigBucketF2E04B98
           - /
     Type: AWS::CloudFormation::CustomResource
     UpdateReplacePolicy: Delete
@@ -430,7 +566,9 @@ Resources:
       Environment:
         Variables:
           USER_ON_EVENT_FUNCTION_ARN:
-            Fn::GetAtt: [SingletonLambdaCreateVpnCertificateLambda14FF3DCC, Arn]
+            Fn::GetAtt:
+            - SingletonLambdaCreateVpnCertificateLambda14FF3DCC
+            - Arn
       Handler: framework.onEvent
       Role:
         Fn::GetAtt: [ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0,
@@ -439,44 +577,61 @@ Resources:
       Timeout: 900
     Type: AWS::Lambda::Function
   ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider/framework-onEvent/ServiceRole/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider/framework-onEvent/ServiceRole/Resource
     Properties:
       AssumeRolePolicyDocument:
         Statement:
         - Action: sts:AssumeRole
           Effect: Allow
-          Principal: {Service: lambda.amazonaws.com}
+          Principal:
+            Service: lambda.amazonaws.com
         Version: '2012-10-17'
       ManagedPolicyArns:
       - Fn::Join:
         - ''
         - - 'arn:'
-          - {Ref: 'AWS::Partition'}
+          - Ref: AWS::Partition
           - :iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
     Type: AWS::IAM::Role
   ClientVpnvpnCertificateProviderframeworkonEventServiceRoleDefaultPolicyE25CE498:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider/framework-onEvent/ServiceRole/DefaultPolicy/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ClientVpn/vpnCertificateProvider/framework-onEvent/ServiceRole/DefaultPolicy/Resource
     Properties:
       PolicyDocument:
         Statement:
         - Action: lambda:InvokeFunction
           Effect: Allow
           Resource:
-            Fn::GetAtt: [SingletonLambdaCreateVpnCertificateLambda14FF3DCC, Arn]
+            Fn::GetAtt:
+            - SingletonLambdaCreateVpnCertificateLambda14FF3DCC
+            - Arn
         Version: '2012-10-17'
       PolicyName: ClientVpnvpnCertificateProviderframeworkonEventServiceRoleDefaultPolicyE25CE498
       Roles:
-      - {Ref: ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0}
+      - Ref: ClientVpnvpnCertificateProviderframeworkonEventServiceRole60471AD0
     Type: AWS::IAM::Policy
   ConfigEnabledPromiseConfigBucket2F967063:
     DeletionPolicy: Retain
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigEnabledPromise/ConfigBucket/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigEnabledPromise/ConfigBucket/Resource
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+        - ServerSideEncryptionByDefault:
+            SSEAlgorithm: AES256
+      LoggingConfiguration:
+        LogFilePrefix: ConfigBucketAccessLogs/
+      VersioningConfiguration:
+        Status: Enabled
     Type: AWS::S3::Bucket
     UpdateReplacePolicy: Retain
   ConfigEnabledPromiseConfigBucketPolicy2B9A439D:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigEnabledPromise/ConfigBucket/Policy/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigEnabledPromise/ConfigBucket/Policy/Resource
     Properties:
-      Bucket: {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+      Bucket:
+        Ref: ConfigEnabledPromiseConfigBucket2F967063
       PolicyDocument:
         Statement:
         - Action: s3:GetBucketAcl
@@ -486,30 +641,31 @@ Resources:
               Fn::Join:
               - ''
               - - 'arn:aws:iam::'
-                - {Ref: 'AWS::AccountId'}
+                - Ref: AWS::AccountId
                 - :role/aws-service-role/config-conforms.amazonaws.com/AWSServiceRoleForConfigConforms
           Resource:
             Fn::Join:
             - ''
             - - 'arn:aws:s3:::'
-              - {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+              - Ref: ConfigEnabledPromiseConfigBucket2F967063
           Sid: AWSConfigConformsBucketPermissionsCheck
         - Action: s3:PutObject
           Condition:
-            StringEquals: {'s3:x-amz-acl': bucket-owner-full-control}
+            StringEquals:
+              s3:x-amz-acl: bucket-owner-full-control
           Effect: Allow
           Principal:
             AWS:
               Fn::Join:
               - ''
               - - 'arn:aws:iam::'
-                - {Ref: 'AWS::AccountId'}
+                - Ref: AWS::AccountId
                 - :role/aws-service-role/config-conforms.amazonaws.com/AWSServiceRoleForConfigConforms
           Resource:
             Fn::Join:
             - ''
             - - 'arn:aws:s3:::'
-              - {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+              - Ref: ConfigEnabledPromiseConfigBucket2F967063
               - /*
           Sid: AWSConfigConformsBucketDelivery
         - Action: s3:GetObject
@@ -519,58 +675,68 @@ Resources:
               Fn::Join:
               - ''
               - - 'arn:aws:iam::'
-                - {Ref: 'AWS::AccountId'}
+                - Ref: AWS::AccountId
                 - :role/aws-service-role/config-conforms.amazonaws.com/AWSServiceRoleForConfigConforms
           Resource:
             Fn::Join:
             - ''
             - - 'arn:aws:s3:::'
-              - {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+              - Ref: ConfigEnabledPromiseConfigBucket2F967063
               - /*
           Sid: ' AWSConfigConformsBucketReadAccess'
         Version: '2012-10-17'
     Type: AWS::S3::BucketPolicy
   ConfigEnabledPromiseConfigDeliveryChannel84DA8CB8:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigEnabledPromise/ConfigDeliveryChannel}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigEnabledPromise/ConfigDeliveryChannel
     Properties:
       Name: BlueprintConfigDeliveryChannel
-      S3BucketName: {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+      S3BucketName:
+        Ref: ConfigEnabledPromiseConfigBucket2F967063
     Type: AWS::Config::DeliveryChannel
   ConfigEnabledPromiseConfigRecorder0A75B039:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigEnabledPromise/ConfigRecorder}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigEnabledPromise/ConfigRecorder
     Properties:
       Name: BlueprintConfigRecorder
-      RecordingGroup: {AllSupported: true, IncludeGlobalResourceTypes: true}
+      RecordingGroup:
+        AllSupported: true
+        IncludeGlobalResourceTypes: true
       RoleARN:
-        Fn::GetAtt: [ConfigEnabledPromiseConfigRecorderRoleFC6F886B, Arn]
+        Fn::GetAtt:
+        - ConfigEnabledPromiseConfigRecorderRoleFC6F886B
+        - Arn
     Type: AWS::Config::ConfigurationRecorder
   ConfigEnabledPromiseConfigRecorderRoleFC6F886B:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigEnabledPromise/ConfigRecorderRole/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigEnabledPromise/ConfigRecorderRole/Resource
     Properties:
       AssumeRolePolicyDocument:
         Statement:
         - Action: sts:AssumeRole
           Effect: Allow
-          Principal: {Service: config.amazonaws.com}
+          Principal:
+            Service: config.amazonaws.com
         Version: '2012-10-17'
       ManagedPolicyArns:
       - Fn::Join:
         - ''
         - - 'arn:'
-          - {Ref: 'AWS::Partition'}
+          - Ref: AWS::Partition
           - :iam::aws:policy/service-role/AWSConfigRole
       Policies:
       - PolicyDocument:
           Statement:
           - Action: s3:PutObject
             Condition:
-              StringLike: {'s3:x-amz-acl': bucket-owner-full-control}
+              StringLike:
+                s3:x-amz-acl: bucket-owner-full-control
             Effect: Allow
             Resource:
               Fn::Join:
               - ''
               - - 'arn:aws:s3:::'
-                - {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+                - Ref: ConfigEnabledPromiseConfigBucket2F967063
                 - /*
           - Action: s3:GetBucketAcl
             Effect: Allow
@@ -578,17 +744,20 @@ Resources:
               Fn::Join:
               - ''
               - - 'arn:aws:s3:::'
-                - {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+                - Ref: ConfigEnabledPromiseConfigBucket2F967063
           Version: '2012-10-17'
         PolicyName: configRecorderS3Access
     Type: AWS::IAM::Role
   ConfigPacksCPAWSControlTowerDetectiveGuardrailsConformancePack9184C90A:
-    DependsOn: [ConfigEnabledPromiseConfigRecorder0A75B039]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigPacks/CP-AWS-Control-Tower-Detective-Guardrails-Conformance-Pack}
+    DependsOn:
+    - ConfigEnabledPromiseConfigRecorder0A75B039
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigPacks/CP-AWS-Control-Tower-Detective-Guardrails-Conformance-Pack
     Properties:
       ConformancePackInputParameters: []
       ConformancePackName: AWS-Control-Tower-Detective-Guardrails-Conformance-Pack
-      DeliveryS3Bucket: {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+      DeliveryS3Bucket:
+        Ref: ConfigEnabledPromiseConfigBucket2F967063
       DeliveryS3KeyPrefix: AWS-Control-Tower-Detective-Guardrails-Conformance-Pack
       TemplateBody: "###################################################################################\n\
         #\n#   Conformance Pack:\n#     AWS Control Tower Detective Guardrails Conformance\
@@ -694,12 +863,15 @@ Resources:
         \  "
     Type: AWS::Config::ConformancePack
   ConfigPacksCPOperationalBestPracticesForAWSIdentityAndAccessManagement7100FE82:
-    DependsOn: [ConfigEnabledPromiseConfigRecorder0A75B039]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-For-AWS-Identity-And-Access-Management}
+    DependsOn:
+    - ConfigEnabledPromiseConfigRecorder0A75B039
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-For-AWS-Identity-And-Access-Management
     Properties:
       ConformancePackInputParameters: []
       ConformancePackName: Operational-Best-Practices-For-AWS-Identity-And-Access-Management
-      DeliveryS3Bucket: {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+      DeliveryS3Bucket:
+        Ref: ConfigEnabledPromiseConfigBucket2F967063
       DeliveryS3KeyPrefix: Operational-Best-Practices-For-AWS-Identity-And-Access-Management
       TemplateBody: "################################################################################\n\
         #\n#   Conformance Pack:\n#     Operational Best Practices for AWS Identity\
@@ -777,12 +949,15 @@ Resources:
         \ AWS\n          SourceIdentifier: ROOT_ACCOUNT_MFA_ENABLED\n      Type: AWS::Config::ConfigRule"
     Type: AWS::Config::ConformancePack
   ConfigPacksCPOperationalBestPracticesForAmazonS30892D47D:
-    DependsOn: [ConfigEnabledPromiseConfigRecorder0A75B039]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-For-Amazon-S3}
+    DependsOn:
+    - ConfigEnabledPromiseConfigRecorder0A75B039
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-For-Amazon-S3
     Properties:
       ConformancePackInputParameters: []
       ConformancePackName: Operational-Best-Practices-For-Amazon-S3
-      DeliveryS3Bucket: {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+      DeliveryS3Bucket:
+        Ref: ConfigEnabledPromiseConfigBucket2F967063
       DeliveryS3KeyPrefix: Operational-Best-Practices-For-Amazon-S3
       TemplateBody: "###############################################################################################\n\
         #\n#   Conformance Pack:\n#     Operational Best Practices for Amazon S3\n\
@@ -829,19 +1004,23 @@ Resources:
         \n        Source: \n          Owner: AWS\n          SourceIdentifier: S3_BUCKET_LOGGING_ENABLED"
     Type: AWS::Config::ConformancePack
   ConfigPacksCPOperationalBestPracticesforHIPAASecurity01583019:
-    DependsOn: [ConfigEnabledPromiseConfigRecorder0A75B039]
+    DependsOn:
+    - ConfigEnabledPromiseConfigRecorder0A75B039
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-for-HIPAA-Security
       cfn-lint:
         config:
-          ignore_checks: [E9101]
-          ignore_reasons: {E9101: 'The references to master in this resource refer
-              to EMR service naming. Until the EMR service changes its usage of the
-              term, this needs to be an exception.'}
+          ignore_checks:
+          - E9101
+          ignore_reasons:
+            E9101: The references to master in this resource refer to EMR service
+              naming. Until the EMR service changes its usage of the term, this needs
+              to be an exception.
     Properties:
       ConformancePackInputParameters: []
       ConformancePackName: Operational-Best-Practices-for-HIPAA-Security
-      DeliveryS3Bucket: {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+      DeliveryS3Bucket:
+        Ref: ConfigEnabledPromiseConfigBucket2F967063
       DeliveryS3KeyPrefix: Operational-Best-Practices-for-HIPAA-Security
       TemplateBody: "##################################################################################\n\
         #\n#   Conformance Pack:\n#     Operational Best Practices for HIPAA Security\n\
@@ -1265,19 +1444,23 @@ Resources:
         \    - Fn::Equals:\n      - ''\n      - Ref: S3AccountLevelPublicAccessBlocksParamRestrictPublicBuckets"
     Type: AWS::Config::ConformancePack
   ConfigPacksCPOperationalBestPracticesforNISTCSFB3E464EB:
-    DependsOn: [ConfigEnabledPromiseConfigRecorder0A75B039]
+    DependsOn:
+    - ConfigEnabledPromiseConfigRecorder0A75B039
     Metadata:
       aws:cdk:path: AwsBiotechBlueprint/ConfigPacks/CP-Operational-Best-Practices-for-NIST-CSF
       cfn-lint:
         config:
-          ignore_checks: [E9101]
-          ignore_reasons: {E9101: 'The references to master in this resource refer
-              to EMR service naming. Until the EMR service changes its usage of the
-              term, this needs to be an exception.'}
+          ignore_checks:
+          - E9101
+          ignore_reasons:
+            E9101: The references to master in this resource refer to EMR service
+              naming. Until the EMR service changes its usage of the term, this needs
+              to be an exception.
     Properties:
       ConformancePackInputParameters: []
       ConformancePackName: Operational-Best-Practices-for-NIST-CSF
-      DeliveryS3Bucket: {Ref: ConfigEnabledPromiseConfigBucket2F967063}
+      DeliveryS3Bucket:
+        Ref: ConfigEnabledPromiseConfigBucket2F967063
       DeliveryS3KeyPrefix: Operational-Best-Practices-for-NIST-CSF
       TemplateBody: "##################################################################################\n\
         #\n#   Conformance Pack:\n#     Operational Best Practices for NIST CSF\n\
@@ -1733,23 +1916,66 @@ Resources:
         \    - Fn::Equals:\n      - ''\n      - Ref: S3AccountLevelPublicAccessBlocksParamRestrictPublicBuckets"
     Type: AWS::Config::ConformancePack
   DnsHostedZone9A2A44DA:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/Dns/HostedZone/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/Dns/HostedZone/Resource
     Properties:
       Name: corp.
       VPCs:
-      - VPCId: {Ref: VpcCoreManagment030DB556}
-        VPCRegion: {Ref: 'AWS::Region'}
-      - VPCId: {Ref: VpcCoreProductionD971AE3A}
-        VPCRegion: {Ref: 'AWS::Region'}
-      - VPCId: {Ref: VpcCoreDevelopment37E2B994}
-        VPCRegion: {Ref: 'AWS::Region'}
+      - VPCId:
+          Ref: VpcCoreManagment030DB556
+        VPCRegion:
+          Ref: AWS::Region
+      - VPCId:
+          Ref: VpcCoreProductionD971AE3A
+        VPCRegion:
+          Ref: AWS::Region
+      - VPCId:
+          Ref: VpcCoreDevelopment37E2B994
+        VPCRegion:
+          Ref: AWS::Region
     Type: AWS::Route53::HostedZone
-  SingletonLambdaCreateVpnCertificateLambda14FF3DCC:
-    DependsOn: [ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1,
-      ClientVpnVpnCertificateLambdaCustomResourceRole042AF384]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/Resource}
+  LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A:
+    DependsOn:
+    - VpcCoreretentionRoleDefaultPolicyEEAA8B99
+    - VpcCoreretentionRole1BA39518
+    Metadata:
+      aws:asset:is-bundled: false
+      aws:asset:path: asset.c13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5
+      aws:asset:property: Code
+      aws:cdk:path: AwsBiotechBlueprint/LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8a/Resource
     Properties:
-      Code: {ZipFile: "S=True\nR='/tmp/'\nQ='ErrorMessage'\nP='responseData'\nO='VpnConfigBucket'\n\
+      Code:
+        S3Bucket:
+          Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69
+        S3Key:
+          Fn::Join:
+          - ''
+          - - Fn::Select:
+              - 0
+              - Fn::Split:
+                - '||'
+                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+            - Fn::Select:
+              - 1
+              - Fn::Split:
+                - '||'
+                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+      Handler: index.handler
+      Role:
+        Fn::GetAtt:
+        - VpcCoreretentionRole1BA39518
+        - Arn
+      Runtime: nodejs14.x
+    Type: AWS::Lambda::Function
+  SingletonLambdaCreateVpnCertificateLambda14FF3DCC:
+    DependsOn:
+    - ClientVpnVpnCertificateLambdaCustomResourceRoleDefaultPolicyBC6B56F1
+    - ClientVpnVpnCertificateLambdaCustomResourceRole042AF384
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/Resource
+    Properties:
+      Code:
+        ZipFile: "S=True\nR='/tmp/'\nQ='ErrorMessage'\nP='responseData'\nO='VpnConfigBucket'\n\
           N='ResourceProperties'\nM=Exception\nL='PhysicalResourceId'\nK=False\nimport\
           \ subprocess as D,os,sys,boto3 as B,logging as G,json,traceback\nT=B.client('ec2')\n\
           U=B.client('ssm')\nH=B.client('acm')\nA=G.getLogger()\nA.setLevel(G.INFO)\n\
@@ -1780,857 +2006,1468 @@ Resources:
           \tE='RequestType';D=context;B=event;A.info(B);F=['pip3 install awscli --upgrade\
           \ --no-cache-dir --ignore-installed --target=/tmp/'];C(F)\n\tif B[E]=='Delete':return\
           \ I(B,D)\n\telif B[E]=='Create':return J(B,D)\n\telif B[E]=='Update':I(B,D,S);return\
-          \ J(B,D)"}
+          \ J(B,D)"
+      DeadLetterConfig:
+        TargetArn:
+          Fn::GetAtt:
+          - SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20
+          - Arn
       Handler: index.main
       MemorySize: 1024
       Role:
-        Fn::GetAtt: [ClientVpnVpnCertificateLambdaCustomResourceRole042AF384, Arn]
+        Fn::GetAtt:
+        - ClientVpnVpnCertificateLambdaCustomResourceRole042AF384
+        - Arn
       Runtime: python3.7
       Timeout: 300
+      VpcConfig:
+        SecurityGroupIds:
+        - Fn::GetAtt:
+          - SingletonLambdaCreateVpnCertificateLambdaSecurityGroupC03A5216
+          - GroupId
+        SubnetIds:
+        - Ref: VpcCoreManagmentApplicationSubnet1Subnet1DE5C8C4
+        - Ref: VpcCoreManagmentApplicationSubnet2SubnetF1B8CE48
     Type: AWS::Lambda::Function
+  SingletonLambdaCreateVpnCertificateLambdaDeadLetterQueueFFAC7F20:
+    DeletionPolicy: Delete
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/DeadLetterQueue/Resource
+    Properties:
+      MessageRetentionPeriod: 1209600
+    Type: AWS::SQS::Queue
+    UpdateReplacePolicy: Delete
+  SingletonLambdaCreateVpnCertificateLambdaSecurityGroupC03A5216:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/SingletonLambdaCreateVpnCertificateLambda/SecurityGroup/Resource
+    Properties:
+      GroupDescription: Automatic security group for Lambda Function AwsBiotechBlueprintSingletonLambdaCreateVpnCertificateLambdaDED33AFA
+      SecurityGroupEgress:
+      - CidrIp: 0.0.0.0/0
+        Description: Allow all outbound traffic by default
+        IpProtocol: '-1'
+      VpcId:
+        Ref: VpcCoreManagment030DB556
+    Type: AWS::EC2::SecurityGroup
+  VpcCoreDevLogRtention28DE857A:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevLogRtention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreDevVpcLogGroupB93F8F61
+      RetentionInDays: 3
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
+  VpcCoreDevVpcLogGroupB93F8F61:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
   VpcCoreDevelopment37E2B994:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/Resource
     Properties:
       CidrBlock: 10.60.0.0/16
       EnableDnsHostnames: true
       EnableDnsSupport: true
       InstanceTenancy: default
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development
     Type: AWS::EC2::VPC
   VpcCoreDevelopmentApplicationSubnet1DefaultRoute1731A859:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/DefaultRoute}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: {Ref: VpcCoreDevelopmentDMZSubnet1NATGatewayD5175E96}
-      RouteTableId: {Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081}
+      NatGatewayId:
+        Ref: VpcCoreDevelopmentDMZSubnet1NATGatewayD5175E96
+      RouteTableId:
+        Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081
     Type: AWS::EC2::Route
   VpcCoreDevelopmentApplicationSubnet1RouteTableAssociationFD1A2A22:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081}
-      SubnetId: {Ref: VpcCoreDevelopmentApplicationSubnet1Subnet5A750B62}
+      RouteTableId:
+        Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081
+      SubnetId:
+        Ref: VpcCoreDevelopmentApplicationSubnet1Subnet5A750B62
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::RouteTable
   VpcCoreDevelopmentApplicationSubnet1Subnet5A750B62:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.60.4.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Application}
-      - {Key: 'aws-cdk:subnet-type', Value: Private}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: aws-cdk:subnet-name
+        Value: Application
+      - Key: aws-cdk:subnet-type
+        Value: Private
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet1
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::Subnet
   VpcCoreDevelopmentApplicationSubnet2DefaultRouteA9C5EE12:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/DefaultRoute}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: {Ref: VpcCoreDevelopmentDMZSubnet1NATGatewayD5175E96}
-      RouteTableId: {Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351}
+      NatGatewayId:
+        Ref: VpcCoreDevelopmentDMZSubnet1NATGatewayD5175E96
+      RouteTableId:
+        Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351
     Type: AWS::EC2::Route
   VpcCoreDevelopmentApplicationSubnet2RouteTableAssociation7C43FB1B:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351}
-      SubnetId: {Ref: VpcCoreDevelopmentApplicationSubnet2Subnet3230F190}
+      RouteTableId:
+        Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351
+      SubnetId:
+        Ref: VpcCoreDevelopmentApplicationSubnet2Subnet3230F190
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::RouteTable
   VpcCoreDevelopmentApplicationSubnet2Subnet3230F190:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.60.6.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Application}
-      - {Key: 'aws-cdk:subnet-type', Value: Private}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: aws-cdk:subnet-name
+        Value: Application
+      - Key: aws-cdk:subnet-type
+        Value: Private
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/ApplicationSubnet2
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::Subnet
   VpcCoreDevelopmentDMZSubnet1DefaultRouteC1A58F2B:
-    DependsOn: [VpcCoreDevelopmentVPCGW9558AC45]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/DefaultRoute}
+    DependsOn:
+    - VpcCoreDevelopmentVPCGW9558AC45
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: {Ref: VpcCoreDevelopmentIGWAD83048D}
-      RouteTableId: {Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC}
+      GatewayId:
+        Ref: VpcCoreDevelopmentIGWAD83048D
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC
     Type: AWS::EC2::Route
   VpcCoreDevelopmentDMZSubnet1EIP58CD3212:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/EIP}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/EIP
     Properties:
       Domain: vpc
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1
     Type: AWS::EC2::EIP
   VpcCoreDevelopmentDMZSubnet1NATGatewayD5175E96:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/NATGateway}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/NATGateway
     Properties:
       AllocationId:
-        Fn::GetAtt: [VpcCoreDevelopmentDMZSubnet1EIP58CD3212, AllocationId]
-      SubnetId: {Ref: VpcCoreDevelopmentDMZSubnet1SubnetD48B44F5}
+        Fn::GetAtt:
+        - VpcCoreDevelopmentDMZSubnet1EIP58CD3212
+        - AllocationId
+      SubnetId:
+        Ref: VpcCoreDevelopmentDMZSubnet1SubnetD48B44F5
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1
     Type: AWS::EC2::NatGateway
   VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::RouteTable
   VpcCoreDevelopmentDMZSubnet1RouteTableAssociationB1D7A6B7:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC}
-      SubnetId: {Ref: VpcCoreDevelopmentDMZSubnet1SubnetD48B44F5}
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC
+      SubnetId:
+        Ref: VpcCoreDevelopmentDMZSubnet1SubnetD48B44F5
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreDevelopmentDMZSubnet1SubnetD48B44F5:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.60.0.0/23
       MapPublicIpOnLaunch: true
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: DMZ}
-      - {Key: 'aws-cdk:subnet-type', Value: Public}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: aws-cdk:subnet-name
+        Value: DMZ
+      - Key: aws-cdk:subnet-type
+        Value: Public
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet1
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::Subnet
   VpcCoreDevelopmentDMZSubnet2DefaultRoute705CC16F:
-    DependsOn: [VpcCoreDevelopmentVPCGW9558AC45]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/DefaultRoute}
+    DependsOn:
+    - VpcCoreDevelopmentVPCGW9558AC45
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: {Ref: VpcCoreDevelopmentIGWAD83048D}
-      RouteTableId: {Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2}
+      GatewayId:
+        Ref: VpcCoreDevelopmentIGWAD83048D
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2
     Type: AWS::EC2::Route
   VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::RouteTable
   VpcCoreDevelopmentDMZSubnet2RouteTableAssociationAD80DA52:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2}
-      SubnetId: {Ref: VpcCoreDevelopmentDMZSubnet2SubnetD5020296}
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2
+      SubnetId:
+        Ref: VpcCoreDevelopmentDMZSubnet2SubnetD5020296
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreDevelopmentDMZSubnet2SubnetD5020296:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.60.2.0/23
       MapPublicIpOnLaunch: true
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: DMZ}
-      - {Key: 'aws-cdk:subnet-type', Value: Public}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: aws-cdk:subnet-name
+        Value: DMZ
+      - Key: aws-cdk:subnet-type
+        Value: Public
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DMZSubnet2
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::Subnet
   VpcCoreDevelopmentDatabaseSubnet1RouteTableAssociation386F1245:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreDevelopmentDatabaseSubnet1RouteTableB0F16F62}
-      SubnetId: {Ref: VpcCoreDevelopmentDatabaseSubnet1Subnet08D67DFC}
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDatabaseSubnet1RouteTableB0F16F62
+      SubnetId:
+        Ref: VpcCoreDevelopmentDatabaseSubnet1Subnet08D67DFC
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreDevelopmentDatabaseSubnet1RouteTableB0F16F62:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::RouteTable
   VpcCoreDevelopmentDatabaseSubnet1Subnet08D67DFC:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.60.8.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Database}
-      - {Key: 'aws-cdk:subnet-type', Value: Isolated}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: aws-cdk:subnet-name
+        Value: Database
+      - Key: aws-cdk:subnet-type
+        Value: Isolated
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet1
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::Subnet
   VpcCoreDevelopmentDatabaseSubnet2RouteTable07847265:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::RouteTable
   VpcCoreDevelopmentDatabaseSubnet2RouteTableAssociation43E36BB0:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreDevelopmentDatabaseSubnet2RouteTable07847265}
-      SubnetId: {Ref: VpcCoreDevelopmentDatabaseSubnet2Subnet05D038F0}
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDatabaseSubnet2RouteTable07847265
+      SubnetId:
+        Ref: VpcCoreDevelopmentDatabaseSubnet2Subnet05D038F0
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreDevelopmentDatabaseSubnet2Subnet05D038F0:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.60.10.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Database}
-      - {Key: 'aws-cdk:subnet-type', Value: Isolated}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      - Key: aws-cdk:subnet-name
+        Value: Database
+      - Key: aws-cdk:subnet-type
+        Value: Isolated
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development/DatabaseSubnet2
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::Subnet
   VpcCoreDevelopmentIGWAD83048D:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/IGW}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/IGW
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Development}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Development
     Type: AWS::EC2::InternetGateway
   VpcCoreDevelopmentS37F7BBD0F:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/S3/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/S3/Resource
     Properties:
       RouteTableIds:
-      - {Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081}
-      - {Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351}
-      - {Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC}
-      - {Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2}
-      - {Ref: VpcCoreDevelopmentDatabaseSubnet1RouteTableB0F16F62}
-      - {Ref: VpcCoreDevelopmentDatabaseSubnet2RouteTable07847265}
+      - Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081
+      - Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351
+      - Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC
+      - Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2
+      - Ref: VpcCoreDevelopmentDatabaseSubnet1RouteTableB0F16F62
+      - Ref: VpcCoreDevelopmentDatabaseSubnet2RouteTable07847265
       ServiceName:
         Fn::Join:
         - ''
         - - com.amazonaws.
-          - {Ref: 'AWS::Region'}
+          - Ref: AWS::Region
           - .s3
       VpcEndpointType: Gateway
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::VPCEndpoint
   VpcCoreDevelopmentVPCGW9558AC45:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Development/VPCGW}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Development/VPCGW
     Properties:
-      InternetGatewayId: {Ref: VpcCoreDevelopmentIGWAD83048D}
-      VpcId: {Ref: VpcCoreDevelopment37E2B994}
+      InternetGatewayId:
+        Ref: VpcCoreDevelopmentIGWAD83048D
+      VpcId:
+        Ref: VpcCoreDevelopment37E2B994
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreDevlowLogFlowLog6008C134:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/DevlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreDevVpcLogGroupB93F8F61
+      ResourceId:
+        Ref: VpcCoreDevelopment37E2B994
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
   VpcCoreManagment030DB556:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/Resource
     Properties:
       CidrBlock: 10.70.0.0/16
       EnableDnsHostnames: true
       EnableDnsSupport: true
       InstanceTenancy: default
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment
     Type: AWS::EC2::VPC
   VpcCoreManagmentApplicationSubnet1DefaultRoute2CE87E61:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/DefaultRoute}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: {Ref: VpcCoreManagmentDMZSubnet1NATGatewayC5BFB186}
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22}
+      NatGatewayId:
+        Ref: VpcCoreManagmentDMZSubnet1NATGatewayC5BFB186
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22
     Type: AWS::EC2::Route
   VpcCoreManagmentApplicationSubnet1RouteTable12C52E22:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::RouteTable
   VpcCoreManagmentApplicationSubnet1RouteTableAssociation06F8E2E2:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22}
-      SubnetId: {Ref: VpcCoreManagmentApplicationSubnet1Subnet1DE5C8C4}
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22
+      SubnetId:
+        Ref: VpcCoreManagmentApplicationSubnet1Subnet1DE5C8C4
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreManagmentApplicationSubnet1Subnet1DE5C8C4:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.70.4.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Application}
-      - {Key: 'aws-cdk:subnet-type', Value: Private}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: aws-cdk:subnet-name
+        Value: Application
+      - Key: aws-cdk:subnet-type
+        Value: Private
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet1
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::Subnet
   VpcCoreManagmentApplicationSubnet2DefaultRoute05B09043:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/DefaultRoute}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: {Ref: VpcCoreManagmentDMZSubnet1NATGatewayC5BFB186}
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8}
+      NatGatewayId:
+        Ref: VpcCoreManagmentDMZSubnet1NATGatewayC5BFB186
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8
     Type: AWS::EC2::Route
   VpcCoreManagmentApplicationSubnet2RouteTableAssociationD38A75C2:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8}
-      SubnetId: {Ref: VpcCoreManagmentApplicationSubnet2SubnetF1B8CE48}
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8
+      SubnetId:
+        Ref: VpcCoreManagmentApplicationSubnet2SubnetF1B8CE48
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::RouteTable
   VpcCoreManagmentApplicationSubnet2SubnetF1B8CE48:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.70.6.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Application}
-      - {Key: 'aws-cdk:subnet-type', Value: Private}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: aws-cdk:subnet-name
+        Value: Application
+      - Key: aws-cdk:subnet-type
+        Value: Private
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/ApplicationSubnet2
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::Subnet
   VpcCoreManagmentDMZSubnet1DefaultRouteB7ED8FC9:
-    DependsOn: [VpcCoreManagmentVPCGW52A2E34D]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/DefaultRoute}
+    DependsOn:
+    - VpcCoreManagmentVPCGW52A2E34D
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: {Ref: VpcCoreManagmentIGWE905604F}
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583}
+      GatewayId:
+        Ref: VpcCoreManagmentIGWE905604F
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583
     Type: AWS::EC2::Route
   VpcCoreManagmentDMZSubnet1EIP7EFCA2AF:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/EIP}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/EIP
     Properties:
       Domain: vpc
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1
     Type: AWS::EC2::EIP
   VpcCoreManagmentDMZSubnet1NATGatewayC5BFB186:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/NATGateway}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/NATGateway
     Properties:
       AllocationId:
-        Fn::GetAtt: [VpcCoreManagmentDMZSubnet1EIP7EFCA2AF, AllocationId]
-      SubnetId: {Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E}
+        Fn::GetAtt:
+        - VpcCoreManagmentDMZSubnet1EIP7EFCA2AF
+        - AllocationId
+      SubnetId:
+        Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1
     Type: AWS::EC2::NatGateway
   VpcCoreManagmentDMZSubnet1RouteTableA3569583:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::RouteTable
   VpcCoreManagmentDMZSubnet1RouteTableAssociationCB71CE11:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583}
-      SubnetId: {Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E}
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583
+      SubnetId:
+        Ref: VpcCoreManagmentDMZSubnet1Subnet3D4DB21E
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreManagmentDMZSubnet1Subnet3D4DB21E:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.70.0.0/23
       MapPublicIpOnLaunch: true
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: DMZ}
-      - {Key: 'aws-cdk:subnet-type', Value: Public}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: aws-cdk:subnet-name
+        Value: DMZ
+      - Key: aws-cdk:subnet-type
+        Value: Public
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet1
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::Subnet
   VpcCoreManagmentDMZSubnet2DefaultRoute05771B64:
-    DependsOn: [VpcCoreManagmentVPCGW52A2E34D]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/DefaultRoute}
+    DependsOn:
+    - VpcCoreManagmentVPCGW52A2E34D
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: {Ref: VpcCoreManagmentIGWE905604F}
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3}
+      GatewayId:
+        Ref: VpcCoreManagmentIGWE905604F
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3
     Type: AWS::EC2::Route
   VpcCoreManagmentDMZSubnet2RouteTable6C5999E3:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::RouteTable
   VpcCoreManagmentDMZSubnet2RouteTableAssociation642ADD19:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3}
-      SubnetId: {Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E}
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3
+      SubnetId:
+        Ref: VpcCoreManagmentDMZSubnet2SubnetB133424E
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreManagmentDMZSubnet2SubnetB133424E:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.70.2.0/23
       MapPublicIpOnLaunch: true
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: DMZ}
-      - {Key: 'aws-cdk:subnet-type', Value: Public}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      - Key: aws-cdk:subnet-name
+        Value: DMZ
+      - Key: aws-cdk:subnet-type
+        Value: Public
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment/DMZSubnet2
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::Subnet
   VpcCoreManagmentIGWE905604F:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/IGW}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/IGW
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Managment}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Managment
     Type: AWS::EC2::InternetGateway
   VpcCoreManagmentToDevelopmentPeering3A7C248E:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/ManagmentToDevelopmentPeering}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ManagmentToDevelopmentPeering
     Properties:
-      PeerVpcId: {Ref: VpcCoreDevelopment37E2B994}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      PeerVpcId:
+        Ref: VpcCoreDevelopment37E2B994
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::VPCPeeringConnection
   VpcCoreManagmentToProductionPeering22C33F18:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/ManagmentToProductionPeering}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ManagmentToProductionPeering
     Properties:
-      PeerVpcId: {Ref: VpcCoreProductionD971AE3A}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      PeerVpcId:
+        Ref: VpcCoreProductionD971AE3A
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::VPCPeeringConnection
   VpcCoreManagmentVPCGW52A2E34D:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Managment/VPCGW}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Managment/VPCGW
     Properties:
-      InternetGatewayId: {Ref: VpcCoreManagmentIGWE905604F}
-      VpcId: {Ref: VpcCoreManagment030DB556}
+      InternetGatewayId:
+        Ref: VpcCoreManagmentIGWE905604F
+      VpcId:
+        Ref: VpcCoreManagment030DB556
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreMgmtFlowLogF6131196:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtFlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreMgmtVpcLogGroup57411704
+      ResourceId:
+        Ref: VpcCoreManagment030DB556
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
+  VpcCoreMgmtLogRtention363D019E:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtLogRtention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreMgmtVpcLogGroup57411704
+      RetentionInDays: 14
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
+  VpcCoreMgmtVpcLogGroup57411704:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/MgmtVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
+  VpcCoreProdFlowLog514212F0:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProdFlowLog/FlowLog
+    Properties:
+      DeliverLogsPermissionArn:
+        Fn::GetAtt:
+        - VpcCorevpcLogGroupRole0DE2B7DA
+        - Arn
+      LogDestinationType: cloud-watch-logs
+      LogGroupName:
+        Ref: VpcCoreProductionVpcLogGroup8B46D99C
+      ResourceId:
+        Ref: VpcCoreProductionD971AE3A
+      ResourceType: VPC
+      TrafficType: ALL
+    Type: AWS::EC2::FlowLog
+  VpcCoreProdLogRetention4C6205DA:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProdLogRetention/Resource
+    Properties:
+      LogGroupName:
+        Ref: VpcCoreProductionVpcLogGroup8B46D99C
+      RetentionInDays: 30
+      SdkRetry:
+        base: 1800000
+        maxRetries: 3
+      ServiceToken:
+        Fn::GetAtt:
+        - LogRetentionaae0aa3c5b4d4f87b02d85b201efdd8aFD4BFC8A
+        - Arn
+    Type: Custom::LogRetention
   VpcCoreProductionApplicationSubnet1DefaultRouteA2D6D34E:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/DefaultRoute}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: {Ref: VpcCoreProductionDMZSubnet1NATGatewayC224625E}
-      RouteTableId: {Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39}
+      NatGatewayId:
+        Ref: VpcCoreProductionDMZSubnet1NATGatewayC224625E
+      RouteTableId:
+        Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39
     Type: AWS::EC2::Route
   VpcCoreProductionApplicationSubnet1RouteTableAssociation7EDAC97B:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39}
-      SubnetId: {Ref: VpcCoreProductionApplicationSubnet1SubnetE209B72D}
+      RouteTableId:
+        Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39
+      SubnetId:
+        Ref: VpcCoreProductionApplicationSubnet1SubnetE209B72D
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::RouteTable
   VpcCoreProductionApplicationSubnet1SubnetE209B72D:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.50.4.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Application}
-      - {Key: 'aws-cdk:subnet-type', Value: Private}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: aws-cdk:subnet-name
+        Value: Application
+      - Key: aws-cdk:subnet-type
+        Value: Private
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet1
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::Subnet
   VpcCoreProductionApplicationSubnet2DefaultRoute115CEEEB:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/DefaultRoute}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      NatGatewayId: {Ref: VpcCoreProductionDMZSubnet1NATGatewayC224625E}
-      RouteTableId: {Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C}
+      NatGatewayId:
+        Ref: VpcCoreProductionDMZSubnet1NATGatewayC224625E
+      RouteTableId:
+        Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C
     Type: AWS::EC2::Route
   VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::RouteTable
   VpcCoreProductionApplicationSubnet2RouteTableAssociation7D462ED9:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C}
-      SubnetId: {Ref: VpcCoreProductionApplicationSubnet2SubnetFF60B9F3}
+      RouteTableId:
+        Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C
+      SubnetId:
+        Ref: VpcCoreProductionApplicationSubnet2SubnetFF60B9F3
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreProductionApplicationSubnet2SubnetFF60B9F3:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.50.6.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Application}
-      - {Key: 'aws-cdk:subnet-type', Value: Private}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: aws-cdk:subnet-name
+        Value: Application
+      - Key: aws-cdk:subnet-type
+        Value: Private
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/ApplicationSubnet2
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::Subnet
   VpcCoreProductionD971AE3A:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/Resource
     Properties:
       CidrBlock: 10.50.0.0/16
       EnableDnsHostnames: true
       EnableDnsSupport: true
       InstanceTenancy: default
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production
     Type: AWS::EC2::VPC
   VpcCoreProductionDMZSubnet1DefaultRoute078E8974:
-    DependsOn: [VpcCoreProductionVPCGW30B6BDB2]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/DefaultRoute}
+    DependsOn:
+    - VpcCoreProductionVPCGW30B6BDB2
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: {Ref: VpcCoreProductionIGW5A93E1A8}
-      RouteTableId: {Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B}
+      GatewayId:
+        Ref: VpcCoreProductionIGW5A93E1A8
+      RouteTableId:
+        Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B
     Type: AWS::EC2::Route
   VpcCoreProductionDMZSubnet1EIP624812A4:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/EIP}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/EIP
     Properties:
       Domain: vpc
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1
     Type: AWS::EC2::EIP
   VpcCoreProductionDMZSubnet1NATGatewayC224625E:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/NATGateway}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/NATGateway
     Properties:
       AllocationId:
-        Fn::GetAtt: [VpcCoreProductionDMZSubnet1EIP624812A4, AllocationId]
-      SubnetId: {Ref: VpcCoreProductionDMZSubnet1Subnet8CB63360}
+        Fn::GetAtt:
+        - VpcCoreProductionDMZSubnet1EIP624812A4
+        - AllocationId
+      SubnetId:
+        Ref: VpcCoreProductionDMZSubnet1Subnet8CB63360
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1
     Type: AWS::EC2::NatGateway
   VpcCoreProductionDMZSubnet1RouteTable93117E8B:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::RouteTable
   VpcCoreProductionDMZSubnet1RouteTableAssociation4C99EF6F:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B}
-      SubnetId: {Ref: VpcCoreProductionDMZSubnet1Subnet8CB63360}
+      RouteTableId:
+        Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B
+      SubnetId:
+        Ref: VpcCoreProductionDMZSubnet1Subnet8CB63360
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreProductionDMZSubnet1Subnet8CB63360:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.50.0.0/23
       MapPublicIpOnLaunch: true
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: DMZ}
-      - {Key: 'aws-cdk:subnet-type', Value: Public}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: aws-cdk:subnet-name
+        Value: DMZ
+      - Key: aws-cdk:subnet-type
+        Value: Public
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet1
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::Subnet
   VpcCoreProductionDMZSubnet2DefaultRoute3F9FD113:
-    DependsOn: [VpcCoreProductionVPCGW30B6BDB2]
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/DefaultRoute}
+    DependsOn:
+    - VpcCoreProductionVPCGW30B6BDB2
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/DefaultRoute
     Properties:
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: {Ref: VpcCoreProductionIGW5A93E1A8}
-      RouteTableId: {Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86}
+      GatewayId:
+        Ref: VpcCoreProductionIGW5A93E1A8
+      RouteTableId:
+        Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86
     Type: AWS::EC2::Route
   VpcCoreProductionDMZSubnet2RouteTable280A8E86:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::RouteTable
   VpcCoreProductionDMZSubnet2RouteTableAssociation1698D572:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86}
-      SubnetId: {Ref: VpcCoreProductionDMZSubnet2Subnet544A7F20}
+      RouteTableId:
+        Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86
+      SubnetId:
+        Ref: VpcCoreProductionDMZSubnet2Subnet544A7F20
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreProductionDMZSubnet2Subnet544A7F20:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.50.2.0/23
       MapPublicIpOnLaunch: true
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: DMZ}
-      - {Key: 'aws-cdk:subnet-type', Value: Public}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: aws-cdk:subnet-name
+        Value: DMZ
+      - Key: aws-cdk:subnet-type
+        Value: Public
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DMZSubnet2
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::Subnet
   VpcCoreProductionDatabaseSubnet1RouteTable4189D151:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::RouteTable
   VpcCoreProductionDatabaseSubnet1RouteTableAssociationD1A8D4E9:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreProductionDatabaseSubnet1RouteTable4189D151}
-      SubnetId: {Ref: VpcCoreProductionDatabaseSubnet1Subnet09EF33D9}
+      RouteTableId:
+        Ref: VpcCoreProductionDatabaseSubnet1RouteTable4189D151
+      SubnetId:
+        Ref: VpcCoreProductionDatabaseSubnet1Subnet09EF33D9
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreProductionDatabaseSubnet1Subnet09EF33D9:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 0
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.50.8.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Database}
-      - {Key: 'aws-cdk:subnet-type', Value: Isolated}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: aws-cdk:subnet-name
+        Value: Database
+      - Key: aws-cdk:subnet-type
+        Value: Isolated
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet1
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::Subnet
   VpcCoreProductionDatabaseSubnet2RouteTable72412D1A:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2/RouteTable}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2/RouteTable
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::RouteTable
   VpcCoreProductionDatabaseSubnet2RouteTableAssociation63113979:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2/RouteTableAssociation}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2/RouteTableAssociation
     Properties:
-      RouteTableId: {Ref: VpcCoreProductionDatabaseSubnet2RouteTable72412D1A}
-      SubnetId: {Ref: VpcCoreProductionDatabaseSubnet2Subnet128DE8A2}
+      RouteTableId:
+        Ref: VpcCoreProductionDatabaseSubnet2RouteTable72412D1A
+      SubnetId:
+        Ref: VpcCoreProductionDatabaseSubnet2Subnet128DE8A2
     Type: AWS::EC2::SubnetRouteTableAssociation
   VpcCoreProductionDatabaseSubnet2Subnet128DE8A2:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2/Subnet}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2/Subnet
     Properties:
       AvailabilityZone:
         Fn::Select:
         - 1
-        - {'Fn::GetAZs': ''}
+        - Fn::GetAZs: ''
       CidrBlock: 10.50.10.0/23
       MapPublicIpOnLaunch: false
       Tags:
-      - {Key: 'aws-cdk:subnet-name', Value: Database}
-      - {Key: 'aws-cdk:subnet-type', Value: Isolated}
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      - Key: aws-cdk:subnet-name
+        Value: Database
+      - Key: aws-cdk:subnet-type
+        Value: Isolated
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production/DatabaseSubnet2
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::Subnet
   VpcCoreProductionIGW5A93E1A8:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/IGW}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/IGW
     Properties:
       Tags:
-      - {Key: Name, Value: AwsBiotechBlueprint/VpcCore/Production}
+      - Key: Name
+        Value: AwsBiotechBlueprint/VpcCore/Production
     Type: AWS::EC2::InternetGateway
   VpcCoreProductionS39B8E42EB:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/S3/Resource}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/S3/Resource
     Properties:
       RouteTableIds:
-      - {Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39}
-      - {Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C}
-      - {Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B}
-      - {Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86}
-      - {Ref: VpcCoreProductionDatabaseSubnet1RouteTable4189D151}
-      - {Ref: VpcCoreProductionDatabaseSubnet2RouteTable72412D1A}
+      - Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39
+      - Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C
+      - Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B
+      - Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86
+      - Ref: VpcCoreProductionDatabaseSubnet1RouteTable4189D151
+      - Ref: VpcCoreProductionDatabaseSubnet2RouteTable72412D1A
       ServiceName:
         Fn::Join:
         - ''
         - - com.amazonaws.
-          - {Ref: 'AWS::Region'}
+          - Ref: AWS::Region
           - .s3
       VpcEndpointType: Gateway
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::VPCEndpoint
   VpcCoreProductionVPCGW30B6BDB2:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/Production/VPCGW}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/Production/VPCGW
     Properties:
-      InternetGatewayId: {Ref: VpcCoreProductionIGW5A93E1A8}
-      VpcId: {Ref: VpcCoreProductionD971AE3A}
+      InternetGatewayId:
+        Ref: VpcCoreProductionIGW5A93E1A8
+      VpcId:
+        Ref: VpcCoreProductionD971AE3A
     Type: AWS::EC2::VPCGatewayAttachment
+  VpcCoreProductionVpcLogGroup8B46D99C:
+    DeletionPolicy: Retain
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/ProductionVpcLogGroup/Resource
+    Properties:
+      RetentionInDays: 731
+    Type: AWS::Logs::LogGroup
+    UpdateReplacePolicy: Retain
   VpcCoredevIsolatedToMgmt06FAE198F:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/devIsolatedToMgmt-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/devIsolatedToMgmt-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreDevelopmentDatabaseSubnet1RouteTableB0F16F62}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDatabaseSubnet1RouteTableB0F16F62
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoredevIsolatedToMgmt1D9C968A0:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/devIsolatedToMgmt-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/devIsolatedToMgmt-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreDevelopmentDatabaseSubnet2RouteTable07847265}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDatabaseSubnet2RouteTable07847265
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoredevPrivateToMgmt015322763:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/devPrivateToMgmt-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/devPrivateToMgmt-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreDevelopmentApplicationSubnet1RouteTableD5BB8081
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoredevPrivateToMgmt18C0769D9:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/devPrivateToMgmt-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/devPrivateToMgmt-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreDevelopmentApplicationSubnet2RouteTableFDC2C351
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoredevPublicToMgmt0A0CBE086:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/devPublicToMgmt-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/devPublicToMgmt-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDMZSubnet1RouteTable8E3AF8CC
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoredevPublicToMgmt17BB06B4B:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/devPublicToMgmt-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/devPublicToMgmt-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreDevelopmentDMZSubnet2RouteTable1EB1E7D2
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoremgmtPrivateToDev0786AB1D9:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPrivateToDev-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPrivateToDev-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreDevelopment37E2B994, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreDevelopment37E2B994
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoremgmtPrivateToDev19BBE4CA7:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPrivateToDev-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPrivateToDev-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreDevelopment37E2B994, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreDevelopment37E2B994
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoremgmtPrivateToProd02E427081:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPrivateToProd-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPrivateToProd-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreProductionD971AE3A, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreProductionD971AE3A
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet1RouteTable12C52E22
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
   VpcCoremgmtPrivateToProd190B37EA5:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPrivateToProd-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPrivateToProd-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreProductionD971AE3A, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreProductionD971AE3A
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentApplicationSubnet2RouteTableFD53ABE8
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
   VpcCoremgmtPublicToDev00CE2841B:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPublicToDev-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPublicToDev-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreDevelopment37E2B994, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreDevelopment37E2B994
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoremgmtPublicToDev11C8BD95A:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPublicToDev-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPublicToDev-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreDevelopment37E2B994, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E}
+        Fn::GetAtt:
+        - VpcCoreDevelopment37E2B994
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToDevelopmentPeering3A7C248E
     Type: AWS::EC2::Route
   VpcCoremgmtPublicToProd09E91CB4A:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPublicToProd-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPublicToProd-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreProductionD971AE3A, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreProductionD971AE3A
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet1RouteTableA3569583
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
   VpcCoremgmtPublicToProd13B87535A:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/mgmtPublicToProd-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/mgmtPublicToProd-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreProductionD971AE3A, CidrBlock]
-      RouteTableId: {Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreProductionD971AE3A
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreManagmentDMZSubnet2RouteTable6C5999E3
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
   VpcCoreprodPrivateToMgmt0A8B14018:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/prodPrivateToMgmt-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/prodPrivateToMgmt-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreProductionApplicationSubnet1RouteTableC5D4BB39
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
   VpcCoreprodPrivateToMgmt1C6119F45:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/prodPrivateToMgmt-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/prodPrivateToMgmt-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreProductionApplicationSubnet2RouteTable4DF63A0C
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
   VpcCoreprodPublicToMgmt0A4005CA8:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/prodPublicToMgmt-0}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/prodPublicToMgmt-0
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreProductionDMZSubnet1RouteTable93117E8B
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
   VpcCoreprodPublicToMgmt1EC8240AC:
-    Metadata: {'aws:cdk:path': AwsBiotechBlueprint/VpcCore/prodPublicToMgmt-1}
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/prodPublicToMgmt-1
     Properties:
       DestinationCidrBlock:
-        Fn::GetAtt: [VpcCoreManagment030DB556, CidrBlock]
-      RouteTableId: {Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86}
-      VpcPeeringConnectionId: {Ref: VpcCoreManagmentToProductionPeering22C33F18}
+        Fn::GetAtt:
+        - VpcCoreManagment030DB556
+        - CidrBlock
+      RouteTableId:
+        Ref: VpcCoreProductionDMZSubnet2RouteTable280A8E86
+      VpcPeeringConnectionId:
+        Ref: VpcCoreManagmentToProductionPeering22C33F18
     Type: AWS::EC2::Route
+  VpcCoreretentionRole1BA39518:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/retentionRole/Resource
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: lambda.amazonaws.com
+        Version: '2012-10-17'
+    Type: AWS::IAM::Role
+  VpcCoreretentionRoleDefaultPolicyEEAA8B99:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/retentionRole/DefaultPolicy/Resource
+      cfn-lint:
+        config:
+          ignore_checks:
+          - EIAMPolicyWildcardResource
+          - EIAMPolicyActionWildcard
+          ignore_reasons:
+            EIAMPolicyActionWildcard: The policy action wildcards in this policy are
+              generated by the AWS CDK, which the developers of this Quick Start have
+              no control over.
+            EIAMPolicyWildcardResource: This particular role gives permission to a
+              custom resource to create a certificate. We cannot provide a specific
+              certificate ARN at deployment time as it does not yet exist.
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action: logs:CreateLogGroup
+          Effect: Allow
+          Resource: '*'
+        - Action:
+          - logs:PutRetentionPolicy
+          - logs:DeleteRetentionPolicy
+          Effect: Allow
+          Resource: '*'
+        Version: '2012-10-17'
+      PolicyName: VpcCoreretentionRoleDefaultPolicyEEAA8B99
+      Roles:
+      - Ref: VpcCoreretentionRole1BA39518
+    Type: AWS::IAM::Policy
+  VpcCorevpcLogGroupRole0DE2B7DA:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/vpcLogGroupRole/Resource
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: vpc-flow-logs.amazonaws.com
+        Version: '2012-10-17'
+    Type: AWS::IAM::Role
+  VpcCorevpcLogGroupRoleDefaultPolicyCEA46C79:
+    Metadata:
+      aws:cdk:path: AwsBiotechBlueprint/VpcCore/vpcLogGroupRole/DefaultPolicy/Resource
+    Properties:
+      PolicyDocument:
+        Statement:
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreProductionVpcLogGroup8B46D99C
+            - Arn
+        - Action: iam:PassRole
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCorevpcLogGroupRole0DE2B7DA
+            - Arn
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreMgmtVpcLogGroup57411704
+            - Arn
+        - Action:
+          - logs:CreateLogStream
+          - logs:PutLogEvents
+          - logs:DescribeLogStreams
+          Effect: Allow
+          Resource:
+            Fn::GetAtt:
+            - VpcCoreDevVpcLogGroupB93F8F61
+            - Arn
+        Version: '2012-10-17'
+      PolicyName: VpcCorevpcLogGroupRoleDefaultPolicyCEA46C79
+      Roles:
+      - Ref: VpcCorevpcLogGroupRole0DE2B7DA
+    Type: AWS::IAM::Policy
