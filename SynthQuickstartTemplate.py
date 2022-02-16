@@ -49,20 +49,19 @@ for assetFolder in folders:
             
             
             if "S3Bucket" in templateData['Resources'][resource]['Properties']['Code']:
-                if "S3Bucket" in templateData['Resources'][resource]['Properties']['Code']['S3Bucket']: 
-                    if assetId in templateData['Resources'][resource]['Properties']['Code']['S3Bucket']['Ref']:
-                        
-                        bucketParamName = templateData['Resources'][resource]['Properties']['Code']['S3Bucket']['Ref']
-                        
-                        templateData['Resources'][resource]['Properties']['Code']['S3Bucket'] = {
-                            "Fn::If": [f'UsingDefaultQuickstartBucket{assetId}', { "Fn::Join" : ['-', [ {"Ref": bucketParamName} , {"Ref": 'AWS::Region'} ] ] } , {"Ref": bucketParamName}]
-                            
-                        }
+                
+                print(templateData['Resources'][resource]['Properties']['Code']['S3Bucket'])
+                
+                if assetId in templateData['Resources'][resource]['Properties']['Code']['S3Bucket']['Ref']:
                     
+                    bucketParamName = templateData['Resources'][resource]['Properties']['Code']['S3Bucket']['Ref']
+                    
+                    templateData['Resources'][resource]['Properties']['Code']['S3Bucket'] = {
+                        "Fn::If": [f'UsingDefaultQuickstartBucket{assetId}', { "Fn::Join" : ['-', [ {"Ref": bucketParamName} , {"Ref": 'AWS::Region'} ] ] } , {"Ref": bucketParamName}]
+                    }
 
-   
     
-    os.replace(assetFolder, f"./lambda_functions/source/asset{assetId}")
+   os.replace(assetFolder, f"./lambda_functions/source/asset{assetId}")
 
     
 with open('./templates/AwsBiotechBlueprint.template.quickstart.yml', 'w') as yaml_file:
