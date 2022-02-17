@@ -3,6 +3,9 @@ general:
 project:
   name: quickstart-aws-biotech-blueprint-cdk
   owner: quickstart-eng@amazon.com
+  parameters:
+    lambda_source_path: lambda_functions/source
+    lambda_zip_path: lambda_functions/packages
   regions:
   - us-east-1
 tests:
