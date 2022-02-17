@@ -1966,7 +1966,7 @@ Resources:
     Properties:
       Code:
         S3Bucket:
-          Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3Bucket51CDED69
+          Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3BucketA00C8555
         S3Key:
           Fn::Join:
           - ''
@@ -1974,12 +1974,12 @@ Resources:
               - 0
               - Fn::Split:
                 - '||'
-                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+                - Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598
             - Fn::Select:
               - 1
               - Fn::Split:
                 - '||'
-                - Ref: AssetParametersc13434f8f1aa2ea30fa577b2feb208a41368b11787b752e10bfc71fe8eb919d5S3VersionKey50C3CFF0
+                - Ref: AssetParameters7ef22dac3421fb2d25175b3386053dbc5bdc110e87cbd58600263bf70a6324cdS3VersionKey27C92598
       Handler: index.handler
       Role:
         Fn::GetAtt:
